@@ -1,0 +1,2 @@
+#The mem simulator that submits messages directly to the DC-DP interface
+eu.toop.simulator.mock.MockDCDPMessageExchange
