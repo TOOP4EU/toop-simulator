@@ -29,6 +29,7 @@ import eu.toop.simulator.mock.MultiNsSMMConceptProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.io.InputStream;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
@@ -48,10 +49,14 @@ public class ToopSimulatorMain {
    */
   private static final Logger LOGGER = LoggerFactory.getLogger(ToopSimulatorMain.class);
 
-  static IParticipantIdentifier sampleParticipantIdentifier = new SimpleParticipantIdentifier("dummyscheme", "dummyvalue");
+  static IParticipantIdentifier dummyParticipantIdentifier;
+
+  static IR2D2Endpoint dummyR2D2Endpoint;
 
 
   public static void main(String[] args) throws Exception {
+
+    prepareSimulator();
 
     int port = 8090;
 
@@ -65,12 +70,6 @@ public class ToopSimulatorMain {
       LOGGER.warn("No port argument provided, default HTTP port [" + port + "] will be used ");
     }
 
-    prepareDirectorySimulator();
-
-    prepareSMPSimulator();
-
-    prepareSMSSimulator();
-
     final JettyStarter js = new JettyStarter(ToopSimulatorMain.class).setPort(port)
         .setStopPort(port + 100)
         .setSessionCookieName("TOOP_TC_SESSION")
@@ -78,11 +77,50 @@ public class ToopSimulatorMain {
     js.run();
   }
 
+  private static void prepareSimulator() throws Exception {
+    initializeDummyValues();
+
+    prepareDirectorySimulator();
+
+    prepareSMPSimulator();
+
+    prepareSMSSimulator();
+  }
+
+  private static void initializeDummyValues() throws Exception {
+
+    dummyParticipantIdentifier = new SimpleParticipantIdentifier("dummyscheme", "dummyvalue") {
+      @Override
+      public String toString() {
+        return "Dummy participant identifier: " + this.getScheme() + ":" + this.getValue();
+      }
+    };
+
+    InputStream crtStream = ToopSimulatorMain.class.getResourceAsStream("/sample.x509");
+    X509Certificate x509 = (X509Certificate) CertificateFactory.getInstance("X509").generateCertificate(crtStream);
+    dummyR2D2Endpoint = new R2D2Endpoint(dummyParticipantIdentifier, "http", "http://dummyhttpurl", x509) {
+      @Override
+      public String toString() {
+        return "Dummy R2D2Endpoint: " + this.getEndpointURL();
+      }
+    };
+  }
+
   private static void prepareSMSSimulator() {
     LOGGER.debug("Preparing SMS Simulator");
 
-    Config config = ConfigFactory.load("smm").resolve();
+    Config config;
 
+    //first check if we have a file nameds sms.conf and if exists, load it first
+
+    File file = new File("sms.conf");
+    if (file.exists()) {
+      LOGGER.info("Loading semantic mappings from the file \"sms.conf\"");
+      config = ConfigFactory.parseFile(file).resolve();
+    } else {
+      LOGGER.info("Loading semantic mappings from the resource \"sms.conf\"");
+      config = ConfigFactory.load("sms").resolve();
+    }
 
     List<Map<String, Object>> mappings = (List<Map<String, Object>>) config.getAnyRef("Mappings");
 
@@ -134,15 +172,12 @@ public class ToopSimulatorMain {
   }
 
   private static void prepareSMPSimulator() throws CertificateException {
-    InputStream crtStream = ToopSimulatorMain.class.getResourceAsStream("/sample.x509");
-    X509Certificate x509 = (X509Certificate) CertificateFactory.getInstance("X509").generateCertificate(crtStream);
-    IR2D2Endpoint aEndpoint = new R2D2Endpoint(sampleParticipantIdentifier, "http", "http://dummyhttpurl", x509);
-    R2D2EndpointProviderConstant mockEndpointProvider = new R2D2EndpointProviderConstant(aEndpoint);
+    R2D2EndpointProviderConstant mockEndpointProvider = new R2D2EndpointProviderConstant(dummyR2D2Endpoint);
     MPConfig.setEndpointProvider(mockEndpointProvider);
   }
 
   private static void prepareDirectorySimulator() {
-    R2D2ParticipantIDProviderConstant constantIDProvider = new R2D2ParticipantIDProviderConstant(sampleParticipantIdentifier);
+    R2D2ParticipantIDProviderConstant constantIDProvider = new R2D2ParticipantIDProviderConstant(dummyParticipantIdentifier);
     MPConfig.setParticipantIDProvider(constantIDProvider);
   }
 }
