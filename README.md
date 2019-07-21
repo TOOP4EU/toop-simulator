@@ -15,7 +15,9 @@ To compile the entire project, run "mvn verify".
 
 To run the application, 
 * go to `./target` directory : ```cd ./target```
-* copy the run `java -jar toop-simulator-{version}.jar` and open `http://localhost:8090` to verify that it is working.
+* copy the `toop-simulator.jks` to the current directory: `cp ../toop-simulator.jks .`
+* run the app: `java -jar toop-simulator-{version}.jar`
+* Browse http://localhost:8090 to verify that it is working.
 
 Note: You can provide a different http port as below:
 ```
