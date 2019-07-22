@@ -19,7 +19,7 @@ import java.io.IOException;
 
 import com.helger.photon.jetty.JettyStopper;
 
-public final class JettyStopToopTC
+public final class JettyStopTOOPSIM
 {
   public static void main (final String [] args) throws IOException
   {

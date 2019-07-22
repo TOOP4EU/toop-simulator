@@ -26,11 +26,11 @@ import com.helger.photon.jetty.JettyStarter;
  * @author Philip Helger
  */
 @Immutable
-public final class RunInJettyToopTC
+public final class RunInJettyTOOPSIM
 {
   public static void main (final String [] args) throws Exception
   {
-    final JettyStarter js = new JettyStarter (RunInJettyToopTC.class).setPort (8090)
+    final JettyStarter js = new JettyStarter (RunInJettyTOOPSIM.class).setPort (8090)
                                                                         .setStopPort (9090)
                                                                         .setSessionCookieName ("TOOP_TC_DC_SESSION")
                                                                         .setContainerIncludeJarPattern (".*/classes/.*");
