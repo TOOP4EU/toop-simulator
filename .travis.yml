@@ -4,11 +4,11 @@ language: java
 env:
   global:
     - SONATYPE_USERNAME=ph@phloc.com
-    - secure: "hp7NkNQFCrpHbUgCEnTeY6cd5f0Ro+Jrq4++LIqF3WVrFDc6asWoZHkKjoBQQt81niyFyKC5wcHpAtzDxbP8AFqiiO77R2kGjaIjkvIHDjS1mNViNdN8Z5gMt+jvk6bxFtf+UGBioGyXi9s4iVD20
-X53XvhyAh7NRIaOxZnGKQtX94UkBvh938BJsLdzwaRDeBSsF0rqFyslmm3F/85EqdI6zLTvRwPkrsgy8keh4W+piANo7fpry65K34D/ObaqRAxBNcw2bXvKOxq+zg0ucFQIClCDubQMqByiXpl1NAYkHhNnpKkde
-br0BJ4u6zUELd1/mpc/Vd8RuKJ/wFiGJr+2aFQ4zjv24Y5PhB/QDOJkEnhXBXAj1pT320+UfcebFE8ewYN1pm14uo6FZTSAHUuL/8O9muovOovif613ufuPTveHYKlF1/B1AY5ug0fd1qCgN3v6QrYRgur4sGyhq
-OOKLagdfeVswbcWJ1wx4Y5q/eUWmyLIdNTX4otP+ZZdhS6tUqSCeSCfaxIrGXZOIJRiKIxssogLVijbA4pXRB6gKkc+nK8W0evKnWp8AeJ4l9RSfERkjosI6NYH5pQP0GrBfWDTgNXyypUHhw8QK2FyTtz+92cGh
-o0m2Wh7QTarfrrZFNMNZYfnbP3dR7OUV+XIMoiCgaQR+pxiRyS3+8U="
+    -   secure: "VBJ/jb21wQc62GHgt/sK09glULV8Vwb2ACO5+oyoAyOc0CJ46UaE9Zeg8cw3mUXJhhxQmmbFXNG3hcvhP1xsdcXYFWXbuSFA63YKkqERR4ri8bK5AkoI0OaEqhf7ENa4MLdBRclZOmh70iyesv9e7
++cGSCZSWrQX5bnQAkTu4rmMdnhz5ik6w8D8jDIn8KO2Qk0NpzYd5LCEJPyCj1EwsQ/IlHbV8EjyO/9Fop99bqdd0nMs2/JgT2a3geBUb0N5JbmnXsy2GGCLVvmPdAzxPApJRjBbayePY+41mV51zRbNnP78K+jqV
+NB7MAp+27XJOtfgArkYuepDxLSTB97IYgT0t6Ejo2UPKE1uUrotW3IGOLwtH9cGlGCOzosDRStLI5QrJiuLXHT6BE3VPossA+HjxL35SC0JKpw72vd63jK229751z69XZbF2ZgvJrB4FdSX8LKzlPmCQzeHdY3Z3
+Mxv67fU8FtevkfLrTWgHxB907LoFm8pi43qxmu66sPzl70i6CfRaX4Hoj/z6CFA5znM/xVnphDfjNvA0D3rcFb/tqjoQRYWGrukucywoFULdwLlX5kAz6jXAjupP371M3OkSXwtZvLLGuEALftIBxCj4UjWnBlS3
+ekpHqOoZgDtccr7PrRyeU1NHesetVZtjFvDK62bsgQOQF/Q8e3/YP4="
 
 install:
 #  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V -U -P jdeps
@@ -36,6 +36,6 @@ jobs:
       script:
         - mvn test -B
     - stage: test
-      jdk: oraclejdk11
+      jdk: openjdk12
       script:
         - mvn test -B

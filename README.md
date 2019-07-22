@@ -20,7 +20,8 @@ To run the application,
 * Browse http://localhost:8090 to verify that it is working.
 
 Note: You can provide a different http port as below:
-```
+
+```bash
  java -jar toop-simulator-{version}.jar 9789
 ```
 
