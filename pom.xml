@@ -27,7 +27,7 @@
   <artifactId>toop-simulator</artifactId>
   <name>toop-simulator</name>
   <version>0.10.6-SNAPSHOT</version>
-  <packaging>jar</packaging>"pom.xml"
+  <packaging>jar</packaging>
   <description>Contains the TOOP Simulator Web Application</description>
   <url>https://github.com/toop4eu/toop-simulator</url>
   <inceptionYear>2019</inceptionYear>
