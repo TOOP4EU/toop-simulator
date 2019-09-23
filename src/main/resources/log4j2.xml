@@ -20,12 +20,16 @@
   <Appenders>
     <Console name="STDOUT" target="SYSTEM_OUT">
       <!-- Location may be an issue when async logging is used! -->
-      <PatternLayout pattern="[TOOP TC][%date{ISO8601}] [%-5level] [%thread] %msg -- %location%n" />
+      <PatternLayout pattern="[TOOP TS][%date{ISO8601}] [%-5level] [%thread] %msg -- %location%n" />
     </Console>
   </Appenders>
   <Loggers>
     <Root level="info">
       <AppenderRef ref="STDOUT" />
     </Root>
+
+    <Logger name="org.eclipse.jetty" level="off" additivity="false">
+       <AppenderRef ref="STDOUT"/>
+    </Logger>
   </Loggers>
 </Configuration>

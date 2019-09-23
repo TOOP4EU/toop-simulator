@@ -28,7 +28,6 @@ import eu.toop.commons.exchange.AsicReadEntry;
 import eu.toop.commons.exchange.ToopMessageBuilder140;
 import eu.toop.commons.exchange.ToopRequestWithAttachments140;
 import eu.toop.commons.exchange.ToopResponseWithAttachments140;
-import eu.toop.connector.api.TCConfig;
 import eu.toop.connector.api.as4.*;
 import eu.toop.kafkaclient.ToopKafkaClient;
 import org.slf4j.Logger;
