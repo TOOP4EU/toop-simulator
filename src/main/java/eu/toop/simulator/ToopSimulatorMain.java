@@ -17,13 +17,11 @@ package eu.toop.simulator;
 
 import com.helger.peppolid.IParticipantIdentifier;
 import com.helger.peppolid.simple.participant.SimpleParticipantIdentifier;
-import com.helger.photon.jetty.JettyRunner;
 import com.helger.photon.jetty.JettyStarter;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
 import com.typesafe.config.impl.ConfigImpl;
-import eu.toop.commander.Command;
-import eu.toop.commander.ToopCommanderMain;
+import eu.toop.commons.util.CliCommand;
 import eu.toop.connector.api.TCConfig;
 import eu.toop.connector.api.r2d2.IR2D2Endpoint;
 import eu.toop.connector.api.r2d2.R2D2Endpoint;
@@ -38,7 +36,7 @@ import org.slf4j.LoggerFactory;
 import javax.annotation.Nonnull;
 import java.io.File;
 import java.io.InputStream;
-import java.net.URL;
+import java.lang.reflect.Method;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
@@ -65,7 +63,7 @@ public class ToopSimulatorMain {
   /**
    * Arguments:
    * No args: If no arguments are provided, the sim works in a sole mode (i.e. no dc and do dp, only toop connector) <br/>
-   * [-mode 0/1/2]: The Working Mode. If 0: Sole, 1: DC, 2: DP
+   * [-mode 0/1/2]: The Working Mode. If 0: Sole, 1: DC, 2: DP. Default: SOLE
    * [-dcPort PORT]: Toop commander DC Port (DC simulated, dcURL ignored) - default: 25800 <br/>
    * [-dcURL "URL"]: Only used when -dcPort not provided, ie. don't simulate DC and expect an external URL (another DC) <br/>
    * [-dpPort PORT]: Toop commander DC Port (DC simulated, dcURL ignored) - default: 25802 <br/>
@@ -91,7 +89,7 @@ public class ToopSimulatorMain {
     boolean dpURLUserSet = false;
 
     if (args.length > 0) {
-      Command command = Command.parse(Arrays.asList(args), false);
+      CliCommand command = CliCommand.parse(Arrays.asList(args), false);
 
       if (command.hasOption("simPort")) {
         simPort = Integer.parseInt(command.getArguments("simPort").get(0));
@@ -120,6 +118,16 @@ public class ToopSimulatorMain {
       }
     }
 
+    //check if Toop commander is on classpath (if we are not in SOLE mode)
+    Class<?> toopCommanderMainClass = null;
+    if (mode != SOLE) {
+      try {
+        toopCommanderMainClass = Class.forName("eu.toop.commander.ToopCommanderMain");
+      } catch (Exception ex) {
+        LOGGER.error("Toop Commander doesn't exist on classpath. ");
+        return;
+      }
+    }
 
     if (!dcURLUserSet)
       dcURL = "http://localhost:" + dcPort + "/to-dc";
@@ -135,33 +143,36 @@ public class ToopSimulatorMain {
 
     Thread simulatorThread = runJetty(serverLock, simPort);
 
-    //enter the commander mode
-    if (mode == DP)
-      System.setProperty("CLI_ENABLED", "false");
-
-
-    System.setProperty("DC_PORT", dcPort + "");
-    System.setProperty("DC_ENABLED", mode == DC ? "true" : "false");
-    System.setProperty("DP_PORT", dpPort + "");
-    System.setProperty("DP_ENABLED", mode == DP ? "true" : "false");
-    System.setProperty("FROM_DC_HOST", "localhost");
-    System.setProperty("FROM_DC_PORT", simPort + "");
-    System.setProperty("FROM_DP_HOST", "localhost");
-    System.setProperty("FROM_DP_PORT", simPort + "");
-
-
-    ConfigImpl.reloadSystemPropertiesConfig();
-
     synchronized (serverLock) {
       //wait for the server to come up
       serverLock.wait();
     }
 
-    ToopCommanderMain.main(args);
+    if (mode != SOLE) {
+      //enter the commander mode
+      if (mode == DP)
+        System.setProperty("CLI_ENABLED", "false");
 
-    simulatorThread.join();
 
-    return;
+      System.setProperty("DC_PORT", dcPort + "");
+      System.setProperty("DC_ENABLED", mode == DC ? "true" : "false");
+      System.setProperty("DP_PORT", dpPort + "");
+      System.setProperty("DP_ENABLED", mode == DP ? "true" : "false");
+      System.setProperty("FROM_DC_HOST", "localhost");
+      System.setProperty("FROM_DC_PORT", simPort + "");
+      System.setProperty("FROM_DP_HOST", "localhost");
+      System.setProperty("FROM_DP_PORT", simPort + "");
+
+
+      ConfigImpl.reloadSystemPropertiesConfig();
+
+      //RUN TOOP Commander via reflection.
+      final Method main = toopCommanderMainClass.getMethod("main", String[].class);
+      System.out.println(main);
+      main.invoke(null, (Object)args);
+
+      simulatorThread.join();
+    }
   }
 
   public static Thread runJetty(final Object serverLock, final int simPort) {
