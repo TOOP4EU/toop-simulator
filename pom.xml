@@ -59,6 +59,10 @@
       <email>myildiz83(at)gmail.com</email>
     </developer>
   </developers>
+
+  <properties>
+    <main.class.name>eu.toop.simulator.ToopSimulatorMain</main.class.name>
+  </properties>
   
   <dependencyManagement>
     <dependencies>
@@ -175,7 +179,7 @@
               <resource>.SF</resource>
             </transformer>
             <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-              <mainClass>eu.toop.simulator.ToopSimulatorMainDC</mainClass>
+              <mainClass>${main.class.name}</mainClass>
             </transformer>
           </transformers>
         </configuration>
@@ -190,4 +194,5 @@
       </plugin>
     </plugins>
   </build>
+
 </project>
