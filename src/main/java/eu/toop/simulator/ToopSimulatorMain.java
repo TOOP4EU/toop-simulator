@@ -37,6 +37,8 @@ import javax.annotation.Nonnull;
 import java.io.File;
 import java.io.InputStream;
 import java.lang.reflect.Method;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
@@ -122,7 +124,10 @@ public class ToopSimulatorMain {
     Class<?> toopCommanderMainClass = null;
     if (mode != SOLE) {
       try {
-        toopCommanderMainClass = Class.forName("eu.toop.commander.ToopCommanderMain");
+        toopCommanderMainClass = Class.forName("eu.toop.commander.ToopCommanderMain", true,
+            new URLClassLoader(
+                new URL[]{new File("./toop-commander-0.10.6-SNAPSHOT.jar").toURI().toURL()}
+            ));
       } catch (Exception ex) {
         LOGGER.error("Toop Commander doesn't exist on classpath. ");
         return;
@@ -221,9 +226,9 @@ public class ToopSimulatorMain {
       }
     };
 
-    InputStream crtStream = ToopSimulatorMain.class.getResourceAsStream("/sample.x509");
+    InputStream crtStream = ToopSimulatorMain.class.getResourceAsStream(System.getenv("CERT"));
     X509Certificate x509 = (X509Certificate) CertificateFactory.getInstance("X509").generateCertificate(crtStream);
-    dummyR2D2Endpoint = new R2D2Endpoint(dummyParticipantIdentifier, "http", "http://dummyhttpurl", x509) {
+    dummyR2D2Endpoint = new R2D2Endpoint(dummyParticipantIdentifier, "http", System.getenv("MSH_URL"), x509) {
       @Override
       public String toString() {
         return "Dummy R2D2Endpoint: " + this.getEndpointURL();
