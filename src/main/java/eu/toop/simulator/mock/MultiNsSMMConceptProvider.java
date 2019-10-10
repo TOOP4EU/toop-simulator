@@ -15,15 +15,18 @@
  */
 package eu.toop.simulator.mock;
 
-import com.helger.commons.ValueEnforcer;
 import com.helger.commons.string.ToStringGenerator;
+import com.typesafe.config.Config;
 import eu.toop.connector.api.smm.ISMMConceptProvider;
 import eu.toop.connector.api.smm.MappedValueList;
+import eu.toop.simulator.util.ConfigUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nonnull;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -40,12 +43,65 @@ public class MultiNsSMMConceptProvider implements ISMMConceptProvider {
 
   private final Map<String, Map<String, Map<String, String>>> m_nsMap;
 
-  public MultiNsSMMConceptProvider(Map<String, Map<String, Map<String, String>>> nsMap) {
-
-    ValueEnforcer.notNull(nsMap, "namespace mapping");
-
-    this.m_nsMap = nsMap;
+  public MultiNsSMMConceptProvider() {
+    this.m_nsMap = initializeSemanticMap();
   }
+
+  private static Map<String, Map<String, Map<String, String>>> initializeSemanticMap() {
+    LOGGER.debug("Preparing SMS Simulator");
+
+    Config config = ConfigUtil.resolveConfiguration("sms");
+
+    List<Map<String, Object>> mappings = (List<Map<String, Object>>) config.getAnyRef("Mappings");
+
+    //iterate over every mapping, create an inverse of it as well, and add both to the MultiNSSmm...
+    //this can be simplified by helper objects
+
+    Map<String, Map<String, Map<String, String>>> mapOpMapsOfMaps = new HashMap<>();
+
+    for (Map<String, Object> mapping : mappings) {
+
+      Map<String, String> conceptMap = new HashMap<>();
+      Map<String, String> inverseConceptMap = new HashMap<>();
+
+      String sourceNS = (String) mapping.get("sourceNS");
+      String targetNS = (String) mapping.get("targetNS");
+      Map<String, String> concepts = (Map<String, String>) mapping.get("concepts");
+
+      for (String key : concepts.keySet()) {
+        String value = concepts.get(key);
+        conceptMap.put(key, value);
+        inverseConceptMap.put(value, key);
+      }
+
+      //forward mapping
+      populateMapping(mapOpMapsOfMaps, conceptMap, sourceNS, targetNS);
+
+      //backwards mappind
+      populateMapping(mapOpMapsOfMaps, inverseConceptMap, targetNS, sourceNS);
+    }
+
+    return mapOpMapsOfMaps;
+
+  }
+
+  private static void populateMapping(Map<String, Map<String, Map<String, String>>> conversionMap,
+                                      Map<String, String> conceptMap, String sourceNS, String targetNS) {
+    Map<String, Map<String, String>> nsMap;
+    if (conversionMap.containsKey(sourceNS)) {
+      nsMap = conversionMap.get(sourceNS);
+    } else {
+      nsMap = new HashMap<>();
+      conversionMap.put(sourceNS, nsMap);
+    }
+
+    if (nsMap.containsKey(targetNS)) {
+      throw new IllegalStateException(sourceNS + "->" + targetNS + " mapping already defined");
+    }
+
+    nsMap.put(targetNS, conceptMap);
+  }
+
 
   @Nonnull
   @Override

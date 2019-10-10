@@ -1,5 +1,5 @@
 
-package eu.toop.directory.schema;
+package eu.toop.schema.smp;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlValue;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "nameType", namespace = "http://www.peppol.eu/schema/pd/businesscard-generic/201907/", propOrder = {
+@XmlType(name = "nameType", propOrder = {
     "value"
 })
 public class NameType {

@@ -7,18 +7,21 @@ import com.helger.peppolid.IParticipantIdentifier;
 import eu.toop.connector.api.TCIdentifierFactory;
 import eu.toop.connector.api.r2d2.IR2D2ErrorHandler;
 import eu.toop.connector.api.r2d2.IR2D2ParticipantIDProvider;
+import eu.toop.simulator.util.JAXBUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nonnull;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.Unmarshaller;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * This class represents a participant id provider that builds on the xml data exported
+ * from the toop directory. <br/>
+ * The XML format is not standard and that is a TODO for the future releases
+ */
 public class XMLBasedParticipantIDProvider implements IR2D2ParticipantIDProvider {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(XMLBasedParticipantIDProvider.class);
@@ -39,11 +42,8 @@ public class XMLBasedParticipantIDProvider implements IR2D2ParticipantIDProvider
    */
   public XMLBasedParticipantIDProvider() {
     try {
-      JAXBContext jaxbContext = JAXBContext.newInstance(eu.toop.directory.schema.ObjectFactory.class);
 
-      Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-
-      eu.toop.directory.schema.RootType rootType = ((JAXBElement<eu.toop.directory.schema.RootType>) jaxbUnmarshaller.unmarshal(this.getClass().getResourceAsStream("/directory-business-cards.xml"))).getValue();
+      eu.toop.schema.directory.RootType rootType = JAXBUtil.parseFileOrResource("directory-business-cards.xml", eu.toop.schema.directory.ObjectFactory.class);
 
       // ok now that we have parsed the XML document and we will be serving queries with country code and doc type,
       // then no need to hold the root type and long loop at each query.
@@ -67,7 +67,7 @@ public class XMLBasedParticipantIDProvider implements IR2D2ParticipantIDProvider
           //obtain the submap for countrycode
           String countrycode = entityType.getCountrycode();
           Map<String, ICommonsSet<IParticipantIdentifier>> innerMap;
-          if(directoryMap.containsKey(countrycode)){
+          if (directoryMap.containsKey(countrycode)) {
             innerMap = directoryMap.get(countrycode);
           } else {
             innerMap = new HashMap<>();
@@ -78,7 +78,7 @@ public class XMLBasedParticipantIDProvider implements IR2D2ParticipantIDProvider
           _tmpDocTypes.forEach(uri -> {
 
             ICommonsSet<IParticipantIdentifier> identifierSet;
-            if (innerMap.containsKey(uri)){
+            if (innerMap.containsKey(uri)) {
               identifierSet = innerMap.get(uri);
             } else {
               identifierSet = new CommonsHashSet<>();
@@ -108,10 +108,10 @@ public class XMLBasedParticipantIDProvider implements IR2D2ParticipantIDProvider
     LOGGER.info(sLogPrefix + "Query directory for [countryCode: " + sCountryCode +
         ", doctype: " + documentTypeIDURIEncoded + "]");
 
-    if (directoryMap.containsKey(sCountryCode)){
+    if (directoryMap.containsKey(sCountryCode)) {
       Map<String, ICommonsSet<IParticipantIdentifier>> innerMap = directoryMap.get(sCountryCode);
 
-      if (innerMap.containsKey(documentTypeIDURIEncoded)){
+      if (innerMap.containsKey(documentTypeIDURIEncoded)) {
         return innerMap.get(documentTypeIDURIEncoded);
       } else {
         LOGGER.warn(sLogPrefix + "The country " + sCountryCode + " does not support " + documentTypeIDURIEncoded);

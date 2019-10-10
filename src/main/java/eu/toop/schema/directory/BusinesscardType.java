@@ -1,5 +1,5 @@
 
-package eu.toop.directory.schema;
+package eu.toop.schema.directory;
 
 import java.util.ArrayList;
 import java.util.List;

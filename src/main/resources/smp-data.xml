@@ -1,0 +1,1385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<smp-data version="1.0">
+
+
+
+  <servicegroup ownerid="admin">
+    <participant scheme="iso6523-actorid-upis" value="9915:test3" />
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9915:test3">
+      <doctypeidentifier scheme="toop-docid" value="maritime:ShipCertificate:request" />
+      <process>
+        <processidentifier scheme="toop-procid" value="toop-request" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="https://www.as4gateway.com/msh" reqblsig="false" techcontacturl="Jerry">
+          <certificate>MIIC9jCCAd6gAwIBAgIJAPSpezIv0ttXMA0GCSqGSIb3DQEBCwUAMD4xHTAbBgNV&#xD;
+            BAMMFHRvb3AtcGxheWdyb3VuZC1yb290MRAwDgYDVQQKDAd0b29wNGV1MQswCQYD&#xD;
+            VQQGEwJFVTAeFw0xODAzMDUxMTI1MDhaFw0yMDExMjkxMTI1MDdaMDcxFjAUBgNV&#xD;
+            BAMMDWZyZWVkb25pYS1hczQxEDAOBgNVBAoMB3Rvb3A0ZXUxCzAJBgNVBAYTAkVV&#xD;
+            MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyt9BB96Vpa4U6qxv7td6&#xD;
+            ex5VcVDkxd8sxBt0FE2h7Sl+NVQTRxh4aBqUEYOevuqRBx4XQmLyNlPajQHt7u04&#xD;
+            tA3YeHp+l8whwA2R3o+AsiK2QZUHFsTzByxqGD+rZ1J+hXNIXMaVpxOqdFxKMTdk&#xD;
+            uCKAQwi02AO/9MT6DQpVmW6KNuojG+i56HrwsPtvKIZUz3RYQLVcATqcsYdcxx5Q&#xD;
+            Yumpy5RArWWOLW5d40GCEgSGEb5Z5zuEIRb5AF3buFdM1wy49SLr8ivDUrLH9IaC&#xD;
+            uuJd8w6HlAr65TTPoWZamkMaPQEyOT0D0JUyUPB/E92LQr08+CS6yNQgJgxcSkpq&#xD;
+            +wIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQCZfDRw1ye+3D1iiZCpw9fUm1QbpjvL&#xD;
+            OTEdJPReOlJwhHnXQQfynCDgCAxQiyl6rMN+NqYUPXEGoy1UrUwICPqiSOk4RK80&#xD;
+            bjTo/qDQ6bsuq9nTeQTthTIF1TDhBJ2criN8NMoQwCgc+KiKlIuJ9Ach02GsKjbV&#xD;
+            aVvlOjn1zg4FyQnkhnYsDvojNjpQxYx6jNt6bUsP3knSewgNY1oyQNug9Lrtq8hq&#xD;
+            vtKfisW5FdBte0rrm6q39/LIStxzKkxDLtC6Rq4eZ5LAlY8/M0c5/cbF0iDeO0Ju&#xD;
+            A32EeEOPG/Esux0yjdSkM7YkjSrRMs5KpgbKxDeeeSbXpYKUqaBxo2dt</certificate>
+          <svcdescription>RO 1 Endpoint</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+  </servicegroup>
+  <servicegroup ownerid="admin">
+    <participant scheme="iso6523-actorid-upis" value="9999:elonia" />
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:elonia">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p40::Request##urn:eu.toop.request.crewcertificate-list::1.40" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.twophasedrequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://gw-elonia.acc.exchange.toop.eu/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEvTCCAqWgAwIBAgICEBEwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xOTA0MjQxODMyMzBaFw0yMTA0&#xD;
+            MjMxODMyMzBaMEwxCzAJBgNVBAYTAkVVMQ0wCwYDVQQKDARUT09QMQ0wCwYDVQQL&#xD;
+            DARDQ1RGMR8wHQYDVQQDDBZnYXRld2F5LmVsb25pYS50b29wLmV1MIIBIjANBgkq&#xD;
+            hkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzBbWuqRILiMKRxJkHxYiZFYw1pRGplx4&#xD;
+            HtlTY1+RxjHT/mTQDv1cQ4PZ8RbPSLUl3dHzeddMBURX8ssGIz+UvCaA8bChCBvR&#xD;
+            eFVtEWU0CZTb+eWqyYzgByTXdu5fEFsDiw55SHixo/c0zvqLMU9Qcatroa9wy4IU&#xD;
+            V+YCSiRudjSdNqKh3uoAixKSgPf7XRA6GLXQBxb/QJZQ5gIMRAN5Ql3YwsAai0ZQ&#xD;
+            trTHJ07sDq6061uYL/JU4WOuXRDomZsIDH0lUakChdHf0UdPPWT6bDauq8T4d499&#xD;
+            oo33NqRyPneuijvEwZrV/cEgpWSFWKETRFxqJdCZMFpuONJ4V3aZWwIDAQABo4Gd&#xD;
+            MIGaMAkGA1UdEwQCMAAwEQYJYIZIAYb4QgEBBAQDAgQwMCoGCWCGSAGG+EIBDQQd&#xD;
+            FhtUT09QIFBpbG90IFRlc3QgQ2VydGlmaWNhdGUwDgYDVR0PAQH/BAQDAgXgMB0G&#xD;
+            A1UdDgQWBBRp1HcAq76F4SH3JzmS8Nzenk1sYzAfBgNVHSMEGDAWgBQVzruhPMDA&#xD;
+            NGRod8/RFMMvwVGnwTANBgkqhkiG9w0BAQsFAAOCAgEARQPqia+/iULw07a9P59W&#xD;
+            WxmGqX+8OWJdN4cQNODNW3xL6z7RQkBGvQNPFnyTLAy9wjr8/ZmLxYoD754UTXQO&#xD;
+            XqHl+6pPGZarVpyCpP3CIAxkDUkehrYznmdYHgtcNHvX9L2Nx4s10HWidR+RLdzb&#xD;
+            H74Re2XoB7EFs0SKdPg5KAhEU5yiKUTrg/82ltyJuagnBjrS7nJguXlGmLPXc4n9&#xD;
+            WE38MS2tnDs/1hSpiUkM60G0Ut773hFHeT4ld3O3gU1/g6sra3tsy+cpBIe41mdN&#xD;
+            BiCVlwA7TwD1Tto9sq7DUXjsSzUoRylydEED1ulRN54aCKflDV9HMZpn71Ylv2z7&#xD;
+            frqb30NKHYMCCKqbNLcJNzvgWA0kU6EuCqPlGJgrkJrgPKXLYiWXh6Z62d0s/f6k&#xD;
+            +uJGOMPsh7yl+gWSsRHnw1zw9TNlz5KGTvcalkhOdDI+8isjzGMW6e6Skh+XsJxO&#xD;
+            lgNRNVXxE3Ar0448gOuKbw3Skh28Ddr2amd6uWEg9hWWUVb2GtQBT+2OxFi8Lk96&#xD;
+            GwGCgVDG2S7VPfKHiGPapDw6K3DVnrsRnSuzf8FnYT8tMNoLVGmvspkf4RO3eAx5&#xD;
+            HF0mx3i78whACBcP/4HmAtAStK1hh1fXe0niGuJP+6A4leAUItfSWGM6q3o2lIfS&#xD;
+            EBz1sW2Kb8zULWMmsskUITk=&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:elonia">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p40::Request##urn:eu.toop.request.crewcertificate::1.40" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.twophasedrequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://gw-elonia.acc.exchange.toop.eu/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEvTCCAqWgAwIBAgICEBEwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xOTA0MjQxODMyMzBaFw0yMTA0&#xD;
+            MjMxODMyMzBaMEwxCzAJBgNVBAYTAkVVMQ0wCwYDVQQKDARUT09QMQ0wCwYDVQQL&#xD;
+            DARDQ1RGMR8wHQYDVQQDDBZnYXRld2F5LmVsb25pYS50b29wLmV1MIIBIjANBgkq&#xD;
+            hkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzBbWuqRILiMKRxJkHxYiZFYw1pRGplx4&#xD;
+            HtlTY1+RxjHT/mTQDv1cQ4PZ8RbPSLUl3dHzeddMBURX8ssGIz+UvCaA8bChCBvR&#xD;
+            eFVtEWU0CZTb+eWqyYzgByTXdu5fEFsDiw55SHixo/c0zvqLMU9Qcatroa9wy4IU&#xD;
+            V+YCSiRudjSdNqKh3uoAixKSgPf7XRA6GLXQBxb/QJZQ5gIMRAN5Ql3YwsAai0ZQ&#xD;
+            trTHJ07sDq6061uYL/JU4WOuXRDomZsIDH0lUakChdHf0UdPPWT6bDauq8T4d499&#xD;
+            oo33NqRyPneuijvEwZrV/cEgpWSFWKETRFxqJdCZMFpuONJ4V3aZWwIDAQABo4Gd&#xD;
+            MIGaMAkGA1UdEwQCMAAwEQYJYIZIAYb4QgEBBAQDAgQwMCoGCWCGSAGG+EIBDQQd&#xD;
+            FhtUT09QIFBpbG90IFRlc3QgQ2VydGlmaWNhdGUwDgYDVR0PAQH/BAQDAgXgMB0G&#xD;
+            A1UdDgQWBBRp1HcAq76F4SH3JzmS8Nzenk1sYzAfBgNVHSMEGDAWgBQVzruhPMDA&#xD;
+            NGRod8/RFMMvwVGnwTANBgkqhkiG9w0BAQsFAAOCAgEARQPqia+/iULw07a9P59W&#xD;
+            WxmGqX+8OWJdN4cQNODNW3xL6z7RQkBGvQNPFnyTLAy9wjr8/ZmLxYoD754UTXQO&#xD;
+            XqHl+6pPGZarVpyCpP3CIAxkDUkehrYznmdYHgtcNHvX9L2Nx4s10HWidR+RLdzb&#xD;
+            H74Re2XoB7EFs0SKdPg5KAhEU5yiKUTrg/82ltyJuagnBjrS7nJguXlGmLPXc4n9&#xD;
+            WE38MS2tnDs/1hSpiUkM60G0Ut773hFHeT4ld3O3gU1/g6sra3tsy+cpBIe41mdN&#xD;
+            BiCVlwA7TwD1Tto9sq7DUXjsSzUoRylydEED1ulRN54aCKflDV9HMZpn71Ylv2z7&#xD;
+            frqb30NKHYMCCKqbNLcJNzvgWA0kU6EuCqPlGJgrkJrgPKXLYiWXh6Z62d0s/f6k&#xD;
+            +uJGOMPsh7yl+gWSsRHnw1zw9TNlz5KGTvcalkhOdDI+8isjzGMW6e6Skh+XsJxO&#xD;
+            lgNRNVXxE3Ar0448gOuKbw3Skh28Ddr2amd6uWEg9hWWUVb2GtQBT+2OxFi8Lk96&#xD;
+            GwGCgVDG2S7VPfKHiGPapDw6K3DVnrsRnSuzf8FnYT8tMNoLVGmvspkf4RO3eAx5&#xD;
+            HF0mx3i78whACBcP/4HmAtAStK1hh1fXe0niGuJP+6A4leAUItfSWGM6q3o2lIfS&#xD;
+            EBz1sW2Kb8zULWMmsskUITk=&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:elonia">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p40::Request##urn:eu.toop.request.registeredorganization::1.40" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.datarequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://gw-elonia.acc.exchange.toop.eu/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEvTCCAqWgAwIBAgICEBEwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xOTA0MjQxODMyMzBaFw0yMTA0&#xD;
+            MjMxODMyMzBaMEwxCzAJBgNVBAYTAkVVMQ0wCwYDVQQKDARUT09QMQ0wCwYDVQQL&#xD;
+            DARDQ1RGMR8wHQYDVQQDDBZnYXRld2F5LmVsb25pYS50b29wLmV1MIIBIjANBgkq&#xD;
+            hkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzBbWuqRILiMKRxJkHxYiZFYw1pRGplx4&#xD;
+            HtlTY1+RxjHT/mTQDv1cQ4PZ8RbPSLUl3dHzeddMBURX8ssGIz+UvCaA8bChCBvR&#xD;
+            eFVtEWU0CZTb+eWqyYzgByTXdu5fEFsDiw55SHixo/c0zvqLMU9Qcatroa9wy4IU&#xD;
+            V+YCSiRudjSdNqKh3uoAixKSgPf7XRA6GLXQBxb/QJZQ5gIMRAN5Ql3YwsAai0ZQ&#xD;
+            trTHJ07sDq6061uYL/JU4WOuXRDomZsIDH0lUakChdHf0UdPPWT6bDauq8T4d499&#xD;
+            oo33NqRyPneuijvEwZrV/cEgpWSFWKETRFxqJdCZMFpuONJ4V3aZWwIDAQABo4Gd&#xD;
+            MIGaMAkGA1UdEwQCMAAwEQYJYIZIAYb4QgEBBAQDAgQwMCoGCWCGSAGG+EIBDQQd&#xD;
+            FhtUT09QIFBpbG90IFRlc3QgQ2VydGlmaWNhdGUwDgYDVR0PAQH/BAQDAgXgMB0G&#xD;
+            A1UdDgQWBBRp1HcAq76F4SH3JzmS8Nzenk1sYzAfBgNVHSMEGDAWgBQVzruhPMDA&#xD;
+            NGRod8/RFMMvwVGnwTANBgkqhkiG9w0BAQsFAAOCAgEARQPqia+/iULw07a9P59W&#xD;
+            WxmGqX+8OWJdN4cQNODNW3xL6z7RQkBGvQNPFnyTLAy9wjr8/ZmLxYoD754UTXQO&#xD;
+            XqHl+6pPGZarVpyCpP3CIAxkDUkehrYznmdYHgtcNHvX9L2Nx4s10HWidR+RLdzb&#xD;
+            H74Re2XoB7EFs0SKdPg5KAhEU5yiKUTrg/82ltyJuagnBjrS7nJguXlGmLPXc4n9&#xD;
+            WE38MS2tnDs/1hSpiUkM60G0Ut773hFHeT4ld3O3gU1/g6sra3tsy+cpBIe41mdN&#xD;
+            BiCVlwA7TwD1Tto9sq7DUXjsSzUoRylydEED1ulRN54aCKflDV9HMZpn71Ylv2z7&#xD;
+            frqb30NKHYMCCKqbNLcJNzvgWA0kU6EuCqPlGJgrkJrgPKXLYiWXh6Z62d0s/f6k&#xD;
+            +uJGOMPsh7yl+gWSsRHnw1zw9TNlz5KGTvcalkhOdDI+8isjzGMW6e6Skh+XsJxO&#xD;
+            lgNRNVXxE3Ar0448gOuKbw3Skh28Ddr2amd6uWEg9hWWUVb2GtQBT+2OxFi8Lk96&#xD;
+            GwGCgVDG2S7VPfKHiGPapDw6K3DVnrsRnSuzf8FnYT8tMNoLVGmvspkf4RO3eAx5&#xD;
+            HF0mx3i78whACBcP/4HmAtAStK1hh1fXe0niGuJP+6A4leAUItfSWGM6q3o2lIfS&#xD;
+            EBz1sW2Kb8zULWMmsskUITk=&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:elonia">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p40::Request##urn:eu.toop.request.shipcertificate-list::1.40" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.twophasedrequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://gw-elonia.acc.exchange.toop.eu/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEvTCCAqWgAwIBAgICEBEwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xOTA0MjQxODMyMzBaFw0yMTA0&#xD;
+            MjMxODMyMzBaMEwxCzAJBgNVBAYTAkVVMQ0wCwYDVQQKDARUT09QMQ0wCwYDVQQL&#xD;
+            DARDQ1RGMR8wHQYDVQQDDBZnYXRld2F5LmVsb25pYS50b29wLmV1MIIBIjANBgkq&#xD;
+            hkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzBbWuqRILiMKRxJkHxYiZFYw1pRGplx4&#xD;
+            HtlTY1+RxjHT/mTQDv1cQ4PZ8RbPSLUl3dHzeddMBURX8ssGIz+UvCaA8bChCBvR&#xD;
+            eFVtEWU0CZTb+eWqyYzgByTXdu5fEFsDiw55SHixo/c0zvqLMU9Qcatroa9wy4IU&#xD;
+            V+YCSiRudjSdNqKh3uoAixKSgPf7XRA6GLXQBxb/QJZQ5gIMRAN5Ql3YwsAai0ZQ&#xD;
+            trTHJ07sDq6061uYL/JU4WOuXRDomZsIDH0lUakChdHf0UdPPWT6bDauq8T4d499&#xD;
+            oo33NqRyPneuijvEwZrV/cEgpWSFWKETRFxqJdCZMFpuONJ4V3aZWwIDAQABo4Gd&#xD;
+            MIGaMAkGA1UdEwQCMAAwEQYJYIZIAYb4QgEBBAQDAgQwMCoGCWCGSAGG+EIBDQQd&#xD;
+            FhtUT09QIFBpbG90IFRlc3QgQ2VydGlmaWNhdGUwDgYDVR0PAQH/BAQDAgXgMB0G&#xD;
+            A1UdDgQWBBRp1HcAq76F4SH3JzmS8Nzenk1sYzAfBgNVHSMEGDAWgBQVzruhPMDA&#xD;
+            NGRod8/RFMMvwVGnwTANBgkqhkiG9w0BAQsFAAOCAgEARQPqia+/iULw07a9P59W&#xD;
+            WxmGqX+8OWJdN4cQNODNW3xL6z7RQkBGvQNPFnyTLAy9wjr8/ZmLxYoD754UTXQO&#xD;
+            XqHl+6pPGZarVpyCpP3CIAxkDUkehrYznmdYHgtcNHvX9L2Nx4s10HWidR+RLdzb&#xD;
+            H74Re2XoB7EFs0SKdPg5KAhEU5yiKUTrg/82ltyJuagnBjrS7nJguXlGmLPXc4n9&#xD;
+            WE38MS2tnDs/1hSpiUkM60G0Ut773hFHeT4ld3O3gU1/g6sra3tsy+cpBIe41mdN&#xD;
+            BiCVlwA7TwD1Tto9sq7DUXjsSzUoRylydEED1ulRN54aCKflDV9HMZpn71Ylv2z7&#xD;
+            frqb30NKHYMCCKqbNLcJNzvgWA0kU6EuCqPlGJgrkJrgPKXLYiWXh6Z62d0s/f6k&#xD;
+            +uJGOMPsh7yl+gWSsRHnw1zw9TNlz5KGTvcalkhOdDI+8isjzGMW6e6Skh+XsJxO&#xD;
+            lgNRNVXxE3Ar0448gOuKbw3Skh28Ddr2amd6uWEg9hWWUVb2GtQBT+2OxFi8Lk96&#xD;
+            GwGCgVDG2S7VPfKHiGPapDw6K3DVnrsRnSuzf8FnYT8tMNoLVGmvspkf4RO3eAx5&#xD;
+            HF0mx3i78whACBcP/4HmAtAStK1hh1fXe0niGuJP+6A4leAUItfSWGM6q3o2lIfS&#xD;
+            EBz1sW2Kb8zULWMmsskUITk=&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:elonia">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p40::Request##urn:eu.toop.request.shipcertificate::1.40" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.twophasedrequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://gw-elonia.acc.exchange.toop.eu/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEvTCCAqWgAwIBAgICEBEwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xOTA0MjQxODMyMzBaFw0yMTA0&#xD;
+            MjMxODMyMzBaMEwxCzAJBgNVBAYTAkVVMQ0wCwYDVQQKDARUT09QMQ0wCwYDVQQL&#xD;
+            DARDQ1RGMR8wHQYDVQQDDBZnYXRld2F5LmVsb25pYS50b29wLmV1MIIBIjANBgkq&#xD;
+            hkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzBbWuqRILiMKRxJkHxYiZFYw1pRGplx4&#xD;
+            HtlTY1+RxjHT/mTQDv1cQ4PZ8RbPSLUl3dHzeddMBURX8ssGIz+UvCaA8bChCBvR&#xD;
+            eFVtEWU0CZTb+eWqyYzgByTXdu5fEFsDiw55SHixo/c0zvqLMU9Qcatroa9wy4IU&#xD;
+            V+YCSiRudjSdNqKh3uoAixKSgPf7XRA6GLXQBxb/QJZQ5gIMRAN5Ql3YwsAai0ZQ&#xD;
+            trTHJ07sDq6061uYL/JU4WOuXRDomZsIDH0lUakChdHf0UdPPWT6bDauq8T4d499&#xD;
+            oo33NqRyPneuijvEwZrV/cEgpWSFWKETRFxqJdCZMFpuONJ4V3aZWwIDAQABo4Gd&#xD;
+            MIGaMAkGA1UdEwQCMAAwEQYJYIZIAYb4QgEBBAQDAgQwMCoGCWCGSAGG+EIBDQQd&#xD;
+            FhtUT09QIFBpbG90IFRlc3QgQ2VydGlmaWNhdGUwDgYDVR0PAQH/BAQDAgXgMB0G&#xD;
+            A1UdDgQWBBRp1HcAq76F4SH3JzmS8Nzenk1sYzAfBgNVHSMEGDAWgBQVzruhPMDA&#xD;
+            NGRod8/RFMMvwVGnwTANBgkqhkiG9w0BAQsFAAOCAgEARQPqia+/iULw07a9P59W&#xD;
+            WxmGqX+8OWJdN4cQNODNW3xL6z7RQkBGvQNPFnyTLAy9wjr8/ZmLxYoD754UTXQO&#xD;
+            XqHl+6pPGZarVpyCpP3CIAxkDUkehrYznmdYHgtcNHvX9L2Nx4s10HWidR+RLdzb&#xD;
+            H74Re2XoB7EFs0SKdPg5KAhEU5yiKUTrg/82ltyJuagnBjrS7nJguXlGmLPXc4n9&#xD;
+            WE38MS2tnDs/1hSpiUkM60G0Ut773hFHeT4ld3O3gU1/g6sra3tsy+cpBIe41mdN&#xD;
+            BiCVlwA7TwD1Tto9sq7DUXjsSzUoRylydEED1ulRN54aCKflDV9HMZpn71Ylv2z7&#xD;
+            frqb30NKHYMCCKqbNLcJNzvgWA0kU6EuCqPlGJgrkJrgPKXLYiWXh6Z62d0s/f6k&#xD;
+            +uJGOMPsh7yl+gWSsRHnw1zw9TNlz5KGTvcalkhOdDI+8isjzGMW6e6Skh+XsJxO&#xD;
+            lgNRNVXxE3Ar0448gOuKbw3Skh28Ddr2amd6uWEg9hWWUVb2GtQBT+2OxFi8Lk96&#xD;
+            GwGCgVDG2S7VPfKHiGPapDw6K3DVnrsRnSuzf8FnYT8tMNoLVGmvspkf4RO3eAx5&#xD;
+            HF0mx3i78whACBcP/4HmAtAStK1hh1fXe0niGuJP+6A4leAUItfSWGM6q3o2lIfS&#xD;
+            EBz1sW2Kb8zULWMmsskUITk=&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+  </servicegroup>
+  <servicegroup ownerid="admin">
+    <participant scheme="iso6523-actorid-upis" value="9999:elonia-dev" />
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:elonia-dev">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p40::Request##urn:eu.toop.request.crewcertificate-list::1.40" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.twophasedrequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://gw-elonia.dev.exchange.toop.eu:8082/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEvTCCAqWgAwIBAgICEBEwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xOTA0MjQxODMyMzBaFw0yMTA0&#xD;
+            MjMxODMyMzBaMEwxCzAJBgNVBAYTAkVVMQ0wCwYDVQQKDARUT09QMQ0wCwYDVQQL&#xD;
+            DARDQ1RGMR8wHQYDVQQDDBZnYXRld2F5LmVsb25pYS50b29wLmV1MIIBIjANBgkq&#xD;
+            hkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzBbWuqRILiMKRxJkHxYiZFYw1pRGplx4&#xD;
+            HtlTY1+RxjHT/mTQDv1cQ4PZ8RbPSLUl3dHzeddMBURX8ssGIz+UvCaA8bChCBvR&#xD;
+            eFVtEWU0CZTb+eWqyYzgByTXdu5fEFsDiw55SHixo/c0zvqLMU9Qcatroa9wy4IU&#xD;
+            V+YCSiRudjSdNqKh3uoAixKSgPf7XRA6GLXQBxb/QJZQ5gIMRAN5Ql3YwsAai0ZQ&#xD;
+            trTHJ07sDq6061uYL/JU4WOuXRDomZsIDH0lUakChdHf0UdPPWT6bDauq8T4d499&#xD;
+            oo33NqRyPneuijvEwZrV/cEgpWSFWKETRFxqJdCZMFpuONJ4V3aZWwIDAQABo4Gd&#xD;
+            MIGaMAkGA1UdEwQCMAAwEQYJYIZIAYb4QgEBBAQDAgQwMCoGCWCGSAGG+EIBDQQd&#xD;
+            FhtUT09QIFBpbG90IFRlc3QgQ2VydGlmaWNhdGUwDgYDVR0PAQH/BAQDAgXgMB0G&#xD;
+            A1UdDgQWBBRp1HcAq76F4SH3JzmS8Nzenk1sYzAfBgNVHSMEGDAWgBQVzruhPMDA&#xD;
+            NGRod8/RFMMvwVGnwTANBgkqhkiG9w0BAQsFAAOCAgEARQPqia+/iULw07a9P59W&#xD;
+            WxmGqX+8OWJdN4cQNODNW3xL6z7RQkBGvQNPFnyTLAy9wjr8/ZmLxYoD754UTXQO&#xD;
+            XqHl+6pPGZarVpyCpP3CIAxkDUkehrYznmdYHgtcNHvX9L2Nx4s10HWidR+RLdzb&#xD;
+            H74Re2XoB7EFs0SKdPg5KAhEU5yiKUTrg/82ltyJuagnBjrS7nJguXlGmLPXc4n9&#xD;
+            WE38MS2tnDs/1hSpiUkM60G0Ut773hFHeT4ld3O3gU1/g6sra3tsy+cpBIe41mdN&#xD;
+            BiCVlwA7TwD1Tto9sq7DUXjsSzUoRylydEED1ulRN54aCKflDV9HMZpn71Ylv2z7&#xD;
+            frqb30NKHYMCCKqbNLcJNzvgWA0kU6EuCqPlGJgrkJrgPKXLYiWXh6Z62d0s/f6k&#xD;
+            +uJGOMPsh7yl+gWSsRHnw1zw9TNlz5KGTvcalkhOdDI+8isjzGMW6e6Skh+XsJxO&#xD;
+            lgNRNVXxE3Ar0448gOuKbw3Skh28Ddr2amd6uWEg9hWWUVb2GtQBT+2OxFi8Lk96&#xD;
+            GwGCgVDG2S7VPfKHiGPapDw6K3DVnrsRnSuzf8FnYT8tMNoLVGmvspkf4RO3eAx5&#xD;
+            HF0mx3i78whACBcP/4HmAtAStK1hh1fXe0niGuJP+6A4leAUItfSWGM6q3o2lIfS&#xD;
+            EBz1sW2Kb8zULWMmsskUITk=&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:elonia-dev">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p40::Request##urn:eu.toop.request.crewcertificate::1.40" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.twophasedrequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://gw-elonia.dev.exchange.toop.eu:8082/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEvTCCAqWgAwIBAgICEBEwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xOTA0MjQxODMyMzBaFw0yMTA0&#xD;
+            MjMxODMyMzBaMEwxCzAJBgNVBAYTAkVVMQ0wCwYDVQQKDARUT09QMQ0wCwYDVQQL&#xD;
+            DARDQ1RGMR8wHQYDVQQDDBZnYXRld2F5LmVsb25pYS50b29wLmV1MIIBIjANBgkq&#xD;
+            hkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzBbWuqRILiMKRxJkHxYiZFYw1pRGplx4&#xD;
+            HtlTY1+RxjHT/mTQDv1cQ4PZ8RbPSLUl3dHzeddMBURX8ssGIz+UvCaA8bChCBvR&#xD;
+            eFVtEWU0CZTb+eWqyYzgByTXdu5fEFsDiw55SHixo/c0zvqLMU9Qcatroa9wy4IU&#xD;
+            V+YCSiRudjSdNqKh3uoAixKSgPf7XRA6GLXQBxb/QJZQ5gIMRAN5Ql3YwsAai0ZQ&#xD;
+            trTHJ07sDq6061uYL/JU4WOuXRDomZsIDH0lUakChdHf0UdPPWT6bDauq8T4d499&#xD;
+            oo33NqRyPneuijvEwZrV/cEgpWSFWKETRFxqJdCZMFpuONJ4V3aZWwIDAQABo4Gd&#xD;
+            MIGaMAkGA1UdEwQCMAAwEQYJYIZIAYb4QgEBBAQDAgQwMCoGCWCGSAGG+EIBDQQd&#xD;
+            FhtUT09QIFBpbG90IFRlc3QgQ2VydGlmaWNhdGUwDgYDVR0PAQH/BAQDAgXgMB0G&#xD;
+            A1UdDgQWBBRp1HcAq76F4SH3JzmS8Nzenk1sYzAfBgNVHSMEGDAWgBQVzruhPMDA&#xD;
+            NGRod8/RFMMvwVGnwTANBgkqhkiG9w0BAQsFAAOCAgEARQPqia+/iULw07a9P59W&#xD;
+            WxmGqX+8OWJdN4cQNODNW3xL6z7RQkBGvQNPFnyTLAy9wjr8/ZmLxYoD754UTXQO&#xD;
+            XqHl+6pPGZarVpyCpP3CIAxkDUkehrYznmdYHgtcNHvX9L2Nx4s10HWidR+RLdzb&#xD;
+            H74Re2XoB7EFs0SKdPg5KAhEU5yiKUTrg/82ltyJuagnBjrS7nJguXlGmLPXc4n9&#xD;
+            WE38MS2tnDs/1hSpiUkM60G0Ut773hFHeT4ld3O3gU1/g6sra3tsy+cpBIe41mdN&#xD;
+            BiCVlwA7TwD1Tto9sq7DUXjsSzUoRylydEED1ulRN54aCKflDV9HMZpn71Ylv2z7&#xD;
+            frqb30NKHYMCCKqbNLcJNzvgWA0kU6EuCqPlGJgrkJrgPKXLYiWXh6Z62d0s/f6k&#xD;
+            +uJGOMPsh7yl+gWSsRHnw1zw9TNlz5KGTvcalkhOdDI+8isjzGMW6e6Skh+XsJxO&#xD;
+            lgNRNVXxE3Ar0448gOuKbw3Skh28Ddr2amd6uWEg9hWWUVb2GtQBT+2OxFi8Lk96&#xD;
+            GwGCgVDG2S7VPfKHiGPapDw6K3DVnrsRnSuzf8FnYT8tMNoLVGmvspkf4RO3eAx5&#xD;
+            HF0mx3i78whACBcP/4HmAtAStK1hh1fXe0niGuJP+6A4leAUItfSWGM6q3o2lIfS&#xD;
+            EBz1sW2Kb8zULWMmsskUITk=&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:elonia-dev">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p40::Request##urn:eu.toop.request.registeredorganization::1.40" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.datarequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://gw-elonia.dev.exchange.toop.eu:8082/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEvTCCAqWgAwIBAgICEBEwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xOTA0MjQxODMyMzBaFw0yMTA0&#xD;
+            MjMxODMyMzBaMEwxCzAJBgNVBAYTAkVVMQ0wCwYDVQQKDARUT09QMQ0wCwYDVQQL&#xD;
+            DARDQ1RGMR8wHQYDVQQDDBZnYXRld2F5LmVsb25pYS50b29wLmV1MIIBIjANBgkq&#xD;
+            hkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzBbWuqRILiMKRxJkHxYiZFYw1pRGplx4&#xD;
+            HtlTY1+RxjHT/mTQDv1cQ4PZ8RbPSLUl3dHzeddMBURX8ssGIz+UvCaA8bChCBvR&#xD;
+            eFVtEWU0CZTb+eWqyYzgByTXdu5fEFsDiw55SHixo/c0zvqLMU9Qcatroa9wy4IU&#xD;
+            V+YCSiRudjSdNqKh3uoAixKSgPf7XRA6GLXQBxb/QJZQ5gIMRAN5Ql3YwsAai0ZQ&#xD;
+            trTHJ07sDq6061uYL/JU4WOuXRDomZsIDH0lUakChdHf0UdPPWT6bDauq8T4d499&#xD;
+            oo33NqRyPneuijvEwZrV/cEgpWSFWKETRFxqJdCZMFpuONJ4V3aZWwIDAQABo4Gd&#xD;
+            MIGaMAkGA1UdEwQCMAAwEQYJYIZIAYb4QgEBBAQDAgQwMCoGCWCGSAGG+EIBDQQd&#xD;
+            FhtUT09QIFBpbG90IFRlc3QgQ2VydGlmaWNhdGUwDgYDVR0PAQH/BAQDAgXgMB0G&#xD;
+            A1UdDgQWBBRp1HcAq76F4SH3JzmS8Nzenk1sYzAfBgNVHSMEGDAWgBQVzruhPMDA&#xD;
+            NGRod8/RFMMvwVGnwTANBgkqhkiG9w0BAQsFAAOCAgEARQPqia+/iULw07a9P59W&#xD;
+            WxmGqX+8OWJdN4cQNODNW3xL6z7RQkBGvQNPFnyTLAy9wjr8/ZmLxYoD754UTXQO&#xD;
+            XqHl+6pPGZarVpyCpP3CIAxkDUkehrYznmdYHgtcNHvX9L2Nx4s10HWidR+RLdzb&#xD;
+            H74Re2XoB7EFs0SKdPg5KAhEU5yiKUTrg/82ltyJuagnBjrS7nJguXlGmLPXc4n9&#xD;
+            WE38MS2tnDs/1hSpiUkM60G0Ut773hFHeT4ld3O3gU1/g6sra3tsy+cpBIe41mdN&#xD;
+            BiCVlwA7TwD1Tto9sq7DUXjsSzUoRylydEED1ulRN54aCKflDV9HMZpn71Ylv2z7&#xD;
+            frqb30NKHYMCCKqbNLcJNzvgWA0kU6EuCqPlGJgrkJrgPKXLYiWXh6Z62d0s/f6k&#xD;
+            +uJGOMPsh7yl+gWSsRHnw1zw9TNlz5KGTvcalkhOdDI+8isjzGMW6e6Skh+XsJxO&#xD;
+            lgNRNVXxE3Ar0448gOuKbw3Skh28Ddr2amd6uWEg9hWWUVb2GtQBT+2OxFi8Lk96&#xD;
+            GwGCgVDG2S7VPfKHiGPapDw6K3DVnrsRnSuzf8FnYT8tMNoLVGmvspkf4RO3eAx5&#xD;
+            HF0mx3i78whACBcP/4HmAtAStK1hh1fXe0niGuJP+6A4leAUItfSWGM6q3o2lIfS&#xD;
+            EBz1sW2Kb8zULWMmsskUITk=&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:elonia-dev">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p40::Request##urn:eu.toop.request.shipcertificate-list::1.40" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.twophasedrequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://gw-elonia.dev.exchange.toop.eu:8082/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEvTCCAqWgAwIBAgICEBEwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xOTA0MjQxODMyMzBaFw0yMTA0&#xD;
+            MjMxODMyMzBaMEwxCzAJBgNVBAYTAkVVMQ0wCwYDVQQKDARUT09QMQ0wCwYDVQQL&#xD;
+            DARDQ1RGMR8wHQYDVQQDDBZnYXRld2F5LmVsb25pYS50b29wLmV1MIIBIjANBgkq&#xD;
+            hkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzBbWuqRILiMKRxJkHxYiZFYw1pRGplx4&#xD;
+            HtlTY1+RxjHT/mTQDv1cQ4PZ8RbPSLUl3dHzeddMBURX8ssGIz+UvCaA8bChCBvR&#xD;
+            eFVtEWU0CZTb+eWqyYzgByTXdu5fEFsDiw55SHixo/c0zvqLMU9Qcatroa9wy4IU&#xD;
+            V+YCSiRudjSdNqKh3uoAixKSgPf7XRA6GLXQBxb/QJZQ5gIMRAN5Ql3YwsAai0ZQ&#xD;
+            trTHJ07sDq6061uYL/JU4WOuXRDomZsIDH0lUakChdHf0UdPPWT6bDauq8T4d499&#xD;
+            oo33NqRyPneuijvEwZrV/cEgpWSFWKETRFxqJdCZMFpuONJ4V3aZWwIDAQABo4Gd&#xD;
+            MIGaMAkGA1UdEwQCMAAwEQYJYIZIAYb4QgEBBAQDAgQwMCoGCWCGSAGG+EIBDQQd&#xD;
+            FhtUT09QIFBpbG90IFRlc3QgQ2VydGlmaWNhdGUwDgYDVR0PAQH/BAQDAgXgMB0G&#xD;
+            A1UdDgQWBBRp1HcAq76F4SH3JzmS8Nzenk1sYzAfBgNVHSMEGDAWgBQVzruhPMDA&#xD;
+            NGRod8/RFMMvwVGnwTANBgkqhkiG9w0BAQsFAAOCAgEARQPqia+/iULw07a9P59W&#xD;
+            WxmGqX+8OWJdN4cQNODNW3xL6z7RQkBGvQNPFnyTLAy9wjr8/ZmLxYoD754UTXQO&#xD;
+            XqHl+6pPGZarVpyCpP3CIAxkDUkehrYznmdYHgtcNHvX9L2Nx4s10HWidR+RLdzb&#xD;
+            H74Re2XoB7EFs0SKdPg5KAhEU5yiKUTrg/82ltyJuagnBjrS7nJguXlGmLPXc4n9&#xD;
+            WE38MS2tnDs/1hSpiUkM60G0Ut773hFHeT4ld3O3gU1/g6sra3tsy+cpBIe41mdN&#xD;
+            BiCVlwA7TwD1Tto9sq7DUXjsSzUoRylydEED1ulRN54aCKflDV9HMZpn71Ylv2z7&#xD;
+            frqb30NKHYMCCKqbNLcJNzvgWA0kU6EuCqPlGJgrkJrgPKXLYiWXh6Z62d0s/f6k&#xD;
+            +uJGOMPsh7yl+gWSsRHnw1zw9TNlz5KGTvcalkhOdDI+8isjzGMW6e6Skh+XsJxO&#xD;
+            lgNRNVXxE3Ar0448gOuKbw3Skh28Ddr2amd6uWEg9hWWUVb2GtQBT+2OxFi8Lk96&#xD;
+            GwGCgVDG2S7VPfKHiGPapDw6K3DVnrsRnSuzf8FnYT8tMNoLVGmvspkf4RO3eAx5&#xD;
+            HF0mx3i78whACBcP/4HmAtAStK1hh1fXe0niGuJP+6A4leAUItfSWGM6q3o2lIfS&#xD;
+            EBz1sW2Kb8zULWMmsskUITk=&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:elonia-dev">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p40::Request##urn:eu.toop.request.shipcertificate::1.40" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.twophasedrequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://gw-elonia.dev.exchange.toop.eu:8082/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEvTCCAqWgAwIBAgICEBEwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xOTA0MjQxODMyMzBaFw0yMTA0&#xD;
+            MjMxODMyMzBaMEwxCzAJBgNVBAYTAkVVMQ0wCwYDVQQKDARUT09QMQ0wCwYDVQQL&#xD;
+            DARDQ1RGMR8wHQYDVQQDDBZnYXRld2F5LmVsb25pYS50b29wLmV1MIIBIjANBgkq&#xD;
+            hkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzBbWuqRILiMKRxJkHxYiZFYw1pRGplx4&#xD;
+            HtlTY1+RxjHT/mTQDv1cQ4PZ8RbPSLUl3dHzeddMBURX8ssGIz+UvCaA8bChCBvR&#xD;
+            eFVtEWU0CZTb+eWqyYzgByTXdu5fEFsDiw55SHixo/c0zvqLMU9Qcatroa9wy4IU&#xD;
+            V+YCSiRudjSdNqKh3uoAixKSgPf7XRA6GLXQBxb/QJZQ5gIMRAN5Ql3YwsAai0ZQ&#xD;
+            trTHJ07sDq6061uYL/JU4WOuXRDomZsIDH0lUakChdHf0UdPPWT6bDauq8T4d499&#xD;
+            oo33NqRyPneuijvEwZrV/cEgpWSFWKETRFxqJdCZMFpuONJ4V3aZWwIDAQABo4Gd&#xD;
+            MIGaMAkGA1UdEwQCMAAwEQYJYIZIAYb4QgEBBAQDAgQwMCoGCWCGSAGG+EIBDQQd&#xD;
+            FhtUT09QIFBpbG90IFRlc3QgQ2VydGlmaWNhdGUwDgYDVR0PAQH/BAQDAgXgMB0G&#xD;
+            A1UdDgQWBBRp1HcAq76F4SH3JzmS8Nzenk1sYzAfBgNVHSMEGDAWgBQVzruhPMDA&#xD;
+            NGRod8/RFMMvwVGnwTANBgkqhkiG9w0BAQsFAAOCAgEARQPqia+/iULw07a9P59W&#xD;
+            WxmGqX+8OWJdN4cQNODNW3xL6z7RQkBGvQNPFnyTLAy9wjr8/ZmLxYoD754UTXQO&#xD;
+            XqHl+6pPGZarVpyCpP3CIAxkDUkehrYznmdYHgtcNHvX9L2Nx4s10HWidR+RLdzb&#xD;
+            H74Re2XoB7EFs0SKdPg5KAhEU5yiKUTrg/82ltyJuagnBjrS7nJguXlGmLPXc4n9&#xD;
+            WE38MS2tnDs/1hSpiUkM60G0Ut773hFHeT4ld3O3gU1/g6sra3tsy+cpBIe41mdN&#xD;
+            BiCVlwA7TwD1Tto9sq7DUXjsSzUoRylydEED1ulRN54aCKflDV9HMZpn71Ylv2z7&#xD;
+            frqb30NKHYMCCKqbNLcJNzvgWA0kU6EuCqPlGJgrkJrgPKXLYiWXh6Z62d0s/f6k&#xD;
+            +uJGOMPsh7yl+gWSsRHnw1zw9TNlz5KGTvcalkhOdDI+8isjzGMW6e6Skh+XsJxO&#xD;
+            lgNRNVXxE3Ar0448gOuKbw3Skh28Ddr2amd6uWEg9hWWUVb2GtQBT+2OxFi8Lk96&#xD;
+            GwGCgVDG2S7VPfKHiGPapDw6K3DVnrsRnSuzf8FnYT8tMNoLVGmvspkf4RO3eAx5&#xD;
+            HF0mx3i78whACBcP/4HmAtAStK1hh1fXe0niGuJP+6A4leAUItfSWGM6q3o2lIfS&#xD;
+            EBz1sW2Kb8zULWMmsskUITk=&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+  </servicegroup>
+  <servicegroup ownerid="admin">
+    <participant scheme="iso6523-actorid-upis" value="9999:freedonia" />
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:freedonia">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p10::Request##urn:eu.toop.request.registeredorganization::1.10" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.datarequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://gw-freedonia.acc.exchange.toop.eu/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEwDCCAqigAwIBAgICEBIwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xOTA0MjQxODM1MDVaFw0yMTA0&#xD;
+            MjMxODM1MDVaME8xCzAJBgNVBAYTAkVVMQ0wCwYDVQQKDARUT09QMQ0wCwYDVQQL&#xD;
+            DARDQ1RGMSIwIAYDVQQDDBlnYXRld2F5LmZyZWVkb25pYS50b29wLmV1MIIBIjAN&#xD;
+            BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAz7uD1TrmwOdl+dJQ7nBjDWZtmu+u&#xD;
+            lG7vWEdP7jBCSDT0bV37hn8z45LIhUaLLvS5MHIyGxf7fvhXZOkPb8QXiU1C7Puo&#xD;
+            5P4i0YdMBS8IuTZmTPMTIO36+Ek5oYlgZ2ZB+LCOE0N1Pi0ko1ERM5mpkYA0+09F&#xD;
+            8HrE+lI6Ezob37A1n+kDpz5n/zsTs64vK+zKm/rjuB6Q6TUN3AhLr+3Me/j3o49K&#xD;
+            9NjMiUh2H6rWrSo9nLppXGMO1oMrqSv5SmkWdy1JYj0oBCjkXQSQWN0LnMcAUBrU&#xD;
+            r4xSXLOuXx6kY+24JbKGgDu6nFKbtPPZtA8/emb48FbJc0nf+PchonYitQIDAQAB&#xD;
+            o4GdMIGaMAkGA1UdEwQCMAAwEQYJYIZIAYb4QgEBBAQDAgQwMCoGCWCGSAGG+EIB&#xD;
+            DQQdFhtUT09QIFBpbG90IFRlc3QgQ2VydGlmaWNhdGUwDgYDVR0PAQH/BAQDAgXg&#xD;
+            MB0GA1UdDgQWBBRz4VScxtiXwurCYBlUc1yjCq8A4jAfBgNVHSMEGDAWgBQVzruh&#xD;
+            PMDANGRod8/RFMMvwVGnwTANBgkqhkiG9w0BAQsFAAOCAgEAvwN2MvamBWubmWg+&#xD;
+            RC7QeGcLbjeNXiaLX3/8abGJZyI6aqMfQANkACV6MNhoR9jPdrbgFys8qmZnA0La&#xD;
+            IyUiXuoN+anDyi+wF7zQiqB0Mnq/f51fl+qL8wq2T8Hzl5eHJ4IEzvxySEyrSl0s&#xD;
+            w+QiEbzbWLnFMh9lsxhZXxsEeyr+idGXSaQbF4dICsic1LKBxDASbxztdis8zuQs&#xD;
+            /YpiPQMMawFDkq1gYldcG3WUXmC8bPo7OpW9qRqlTYRPLkSud4qIYy4F+bSMWvqT&#xD;
+            PMs7TKftDHk+9e8awMf/CkwCsqLKyyhgws8EHKc1soq6Aw4lgvsJGe4nNkxzcUVc&#xD;
+            k4R4SpQYLpFkr0XDcK+0qHYgev0pJ3kzKe/m3O9S+57xd6CCSHEX2E7QrEm9XVYW&#xD;
+            Y4MBcQzDKR1P999lwwKGFu7sSswSW6yjXkllJcyU3o5ghDDZhM3IoMeug7keWP3f&#xD;
+            31rTkHKElGNaVn+Ibhk0QO4QNtxnSuOtNkXc7AwTT5E9AsjcVUlupqUhySkBA51a&#xD;
+            TyNVTn5inHxPdPqT4ZzkB2wNcWcY+jZoJDxuQdefWqN4uFWlmI38DNpgM6pfNlI5&#xD;
+            GoSQd1RNOgBeVLbtCWTTPZrvLx8EZzMCcsAMehYOsW9y8o+kucS1ssJ+Lhw6argf&#xD;
+            XInjAqMNHgrWIaRW4BlwegMAEao=&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:freedonia">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p10::Response##urn:eu.toop.response.registeredorganization::1.10" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.datarequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://gw-freedonia.acc.exchange.toop.eu/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEwDCCAqigAwIBAgICEBIwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xOTA0MjQxODM1MDVaFw0yMTA0&#xD;
+            MjMxODM1MDVaME8xCzAJBgNVBAYTAkVVMQ0wCwYDVQQKDARUT09QMQ0wCwYDVQQL&#xD;
+            DARDQ1RGMSIwIAYDVQQDDBlnYXRld2F5LmZyZWVkb25pYS50b29wLmV1MIIBIjAN&#xD;
+            BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAz7uD1TrmwOdl+dJQ7nBjDWZtmu+u&#xD;
+            lG7vWEdP7jBCSDT0bV37hn8z45LIhUaLLvS5MHIyGxf7fvhXZOkPb8QXiU1C7Puo&#xD;
+            5P4i0YdMBS8IuTZmTPMTIO36+Ek5oYlgZ2ZB+LCOE0N1Pi0ko1ERM5mpkYA0+09F&#xD;
+            8HrE+lI6Ezob37A1n+kDpz5n/zsTs64vK+zKm/rjuB6Q6TUN3AhLr+3Me/j3o49K&#xD;
+            9NjMiUh2H6rWrSo9nLppXGMO1oMrqSv5SmkWdy1JYj0oBCjkXQSQWN0LnMcAUBrU&#xD;
+            r4xSXLOuXx6kY+24JbKGgDu6nFKbtPPZtA8/emb48FbJc0nf+PchonYitQIDAQAB&#xD;
+            o4GdMIGaMAkGA1UdEwQCMAAwEQYJYIZIAYb4QgEBBAQDAgQwMCoGCWCGSAGG+EIB&#xD;
+            DQQdFhtUT09QIFBpbG90IFRlc3QgQ2VydGlmaWNhdGUwDgYDVR0PAQH/BAQDAgXg&#xD;
+            MB0GA1UdDgQWBBRz4VScxtiXwurCYBlUc1yjCq8A4jAfBgNVHSMEGDAWgBQVzruh&#xD;
+            PMDANGRod8/RFMMvwVGnwTANBgkqhkiG9w0BAQsFAAOCAgEAvwN2MvamBWubmWg+&#xD;
+            RC7QeGcLbjeNXiaLX3/8abGJZyI6aqMfQANkACV6MNhoR9jPdrbgFys8qmZnA0La&#xD;
+            IyUiXuoN+anDyi+wF7zQiqB0Mnq/f51fl+qL8wq2T8Hzl5eHJ4IEzvxySEyrSl0s&#xD;
+            w+QiEbzbWLnFMh9lsxhZXxsEeyr+idGXSaQbF4dICsic1LKBxDASbxztdis8zuQs&#xD;
+            /YpiPQMMawFDkq1gYldcG3WUXmC8bPo7OpW9qRqlTYRPLkSud4qIYy4F+bSMWvqT&#xD;
+            PMs7TKftDHk+9e8awMf/CkwCsqLKyyhgws8EHKc1soq6Aw4lgvsJGe4nNkxzcUVc&#xD;
+            k4R4SpQYLpFkr0XDcK+0qHYgev0pJ3kzKe/m3O9S+57xd6CCSHEX2E7QrEm9XVYW&#xD;
+            Y4MBcQzDKR1P999lwwKGFu7sSswSW6yjXkllJcyU3o5ghDDZhM3IoMeug7keWP3f&#xD;
+            31rTkHKElGNaVn+Ibhk0QO4QNtxnSuOtNkXc7AwTT5E9AsjcVUlupqUhySkBA51a&#xD;
+            TyNVTn5inHxPdPqT4ZzkB2wNcWcY+jZoJDxuQdefWqN4uFWlmI38DNpgM6pfNlI5&#xD;
+            GoSQd1RNOgBeVLbtCWTTPZrvLx8EZzMCcsAMehYOsW9y8o+kucS1ssJ+Lhw6argf&#xD;
+            XInjAqMNHgrWIaRW4BlwegMAEao=&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:freedonia">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p40::Request##urn:eu.toop.request.registeredorganization::1.40" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.datarequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://gw-freedonia.acc.exchange.toop.eu/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEwDCCAqigAwIBAgICEBIwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xOTA0MjQxODM1MDVaFw0yMTA0&#xD;
+            MjMxODM1MDVaME8xCzAJBgNVBAYTAkVVMQ0wCwYDVQQKDARUT09QMQ0wCwYDVQQL&#xD;
+            DARDQ1RGMSIwIAYDVQQDDBlnYXRld2F5LmZyZWVkb25pYS50b29wLmV1MIIBIjAN&#xD;
+            BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAz7uD1TrmwOdl+dJQ7nBjDWZtmu+u&#xD;
+            lG7vWEdP7jBCSDT0bV37hn8z45LIhUaLLvS5MHIyGxf7fvhXZOkPb8QXiU1C7Puo&#xD;
+            5P4i0YdMBS8IuTZmTPMTIO36+Ek5oYlgZ2ZB+LCOE0N1Pi0ko1ERM5mpkYA0+09F&#xD;
+            8HrE+lI6Ezob37A1n+kDpz5n/zsTs64vK+zKm/rjuB6Q6TUN3AhLr+3Me/j3o49K&#xD;
+            9NjMiUh2H6rWrSo9nLppXGMO1oMrqSv5SmkWdy1JYj0oBCjkXQSQWN0LnMcAUBrU&#xD;
+            r4xSXLOuXx6kY+24JbKGgDu6nFKbtPPZtA8/emb48FbJc0nf+PchonYitQIDAQAB&#xD;
+            o4GdMIGaMAkGA1UdEwQCMAAwEQYJYIZIAYb4QgEBBAQDAgQwMCoGCWCGSAGG+EIB&#xD;
+            DQQdFhtUT09QIFBpbG90IFRlc3QgQ2VydGlmaWNhdGUwDgYDVR0PAQH/BAQDAgXg&#xD;
+            MB0GA1UdDgQWBBRz4VScxtiXwurCYBlUc1yjCq8A4jAfBgNVHSMEGDAWgBQVzruh&#xD;
+            PMDANGRod8/RFMMvwVGnwTANBgkqhkiG9w0BAQsFAAOCAgEAvwN2MvamBWubmWg+&#xD;
+            RC7QeGcLbjeNXiaLX3/8abGJZyI6aqMfQANkACV6MNhoR9jPdrbgFys8qmZnA0La&#xD;
+            IyUiXuoN+anDyi+wF7zQiqB0Mnq/f51fl+qL8wq2T8Hzl5eHJ4IEzvxySEyrSl0s&#xD;
+            w+QiEbzbWLnFMh9lsxhZXxsEeyr+idGXSaQbF4dICsic1LKBxDASbxztdis8zuQs&#xD;
+            /YpiPQMMawFDkq1gYldcG3WUXmC8bPo7OpW9qRqlTYRPLkSud4qIYy4F+bSMWvqT&#xD;
+            PMs7TKftDHk+9e8awMf/CkwCsqLKyyhgws8EHKc1soq6Aw4lgvsJGe4nNkxzcUVc&#xD;
+            k4R4SpQYLpFkr0XDcK+0qHYgev0pJ3kzKe/m3O9S+57xd6CCSHEX2E7QrEm9XVYW&#xD;
+            Y4MBcQzDKR1P999lwwKGFu7sSswSW6yjXkllJcyU3o5ghDDZhM3IoMeug7keWP3f&#xD;
+            31rTkHKElGNaVn+Ibhk0QO4QNtxnSuOtNkXc7AwTT5E9AsjcVUlupqUhySkBA51a&#xD;
+            TyNVTn5inHxPdPqT4ZzkB2wNcWcY+jZoJDxuQdefWqN4uFWlmI38DNpgM6pfNlI5&#xD;
+            GoSQd1RNOgBeVLbtCWTTPZrvLx8EZzMCcsAMehYOsW9y8o+kucS1ssJ+Lhw6argf&#xD;
+            XInjAqMNHgrWIaRW4BlwegMAEao=&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:freedonia">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p40::Response##urn:eu.toop.response.crewcertificate-list::1.40" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.twophasedrequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://gw-freedonia.acc.exchange.toop.eu/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEwDCCAqigAwIBAgICEBIwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xOTA0MjQxODM1MDVaFw0yMTA0&#xD;
+            MjMxODM1MDVaME8xCzAJBgNVBAYTAkVVMQ0wCwYDVQQKDARUT09QMQ0wCwYDVQQL&#xD;
+            DARDQ1RGMSIwIAYDVQQDDBlnYXRld2F5LmZyZWVkb25pYS50b29wLmV1MIIBIjAN&#xD;
+            BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAz7uD1TrmwOdl+dJQ7nBjDWZtmu+u&#xD;
+            lG7vWEdP7jBCSDT0bV37hn8z45LIhUaLLvS5MHIyGxf7fvhXZOkPb8QXiU1C7Puo&#xD;
+            5P4i0YdMBS8IuTZmTPMTIO36+Ek5oYlgZ2ZB+LCOE0N1Pi0ko1ERM5mpkYA0+09F&#xD;
+            8HrE+lI6Ezob37A1n+kDpz5n/zsTs64vK+zKm/rjuB6Q6TUN3AhLr+3Me/j3o49K&#xD;
+            9NjMiUh2H6rWrSo9nLppXGMO1oMrqSv5SmkWdy1JYj0oBCjkXQSQWN0LnMcAUBrU&#xD;
+            r4xSXLOuXx6kY+24JbKGgDu6nFKbtPPZtA8/emb48FbJc0nf+PchonYitQIDAQAB&#xD;
+            o4GdMIGaMAkGA1UdEwQCMAAwEQYJYIZIAYb4QgEBBAQDAgQwMCoGCWCGSAGG+EIB&#xD;
+            DQQdFhtUT09QIFBpbG90IFRlc3QgQ2VydGlmaWNhdGUwDgYDVR0PAQH/BAQDAgXg&#xD;
+            MB0GA1UdDgQWBBRz4VScxtiXwurCYBlUc1yjCq8A4jAfBgNVHSMEGDAWgBQVzruh&#xD;
+            PMDANGRod8/RFMMvwVGnwTANBgkqhkiG9w0BAQsFAAOCAgEAvwN2MvamBWubmWg+&#xD;
+            RC7QeGcLbjeNXiaLX3/8abGJZyI6aqMfQANkACV6MNhoR9jPdrbgFys8qmZnA0La&#xD;
+            IyUiXuoN+anDyi+wF7zQiqB0Mnq/f51fl+qL8wq2T8Hzl5eHJ4IEzvxySEyrSl0s&#xD;
+            w+QiEbzbWLnFMh9lsxhZXxsEeyr+idGXSaQbF4dICsic1LKBxDASbxztdis8zuQs&#xD;
+            /YpiPQMMawFDkq1gYldcG3WUXmC8bPo7OpW9qRqlTYRPLkSud4qIYy4F+bSMWvqT&#xD;
+            PMs7TKftDHk+9e8awMf/CkwCsqLKyyhgws8EHKc1soq6Aw4lgvsJGe4nNkxzcUVc&#xD;
+            k4R4SpQYLpFkr0XDcK+0qHYgev0pJ3kzKe/m3O9S+57xd6CCSHEX2E7QrEm9XVYW&#xD;
+            Y4MBcQzDKR1P999lwwKGFu7sSswSW6yjXkllJcyU3o5ghDDZhM3IoMeug7keWP3f&#xD;
+            31rTkHKElGNaVn+Ibhk0QO4QNtxnSuOtNkXc7AwTT5E9AsjcVUlupqUhySkBA51a&#xD;
+            TyNVTn5inHxPdPqT4ZzkB2wNcWcY+jZoJDxuQdefWqN4uFWlmI38DNpgM6pfNlI5&#xD;
+            GoSQd1RNOgBeVLbtCWTTPZrvLx8EZzMCcsAMehYOsW9y8o+kucS1ssJ+Lhw6argf&#xD;
+            XInjAqMNHgrWIaRW4BlwegMAEao=&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:freedonia">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p40::Response##urn:eu.toop.response.crewcertificate::1.40" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.twophasedrequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://gw-freedonia.acc.exchange.toop.eu/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEwDCCAqigAwIBAgICEBIwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xOTA0MjQxODM1MDVaFw0yMTA0&#xD;
+            MjMxODM1MDVaME8xCzAJBgNVBAYTAkVVMQ0wCwYDVQQKDARUT09QMQ0wCwYDVQQL&#xD;
+            DARDQ1RGMSIwIAYDVQQDDBlnYXRld2F5LmZyZWVkb25pYS50b29wLmV1MIIBIjAN&#xD;
+            BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAz7uD1TrmwOdl+dJQ7nBjDWZtmu+u&#xD;
+            lG7vWEdP7jBCSDT0bV37hn8z45LIhUaLLvS5MHIyGxf7fvhXZOkPb8QXiU1C7Puo&#xD;
+            5P4i0YdMBS8IuTZmTPMTIO36+Ek5oYlgZ2ZB+LCOE0N1Pi0ko1ERM5mpkYA0+09F&#xD;
+            8HrE+lI6Ezob37A1n+kDpz5n/zsTs64vK+zKm/rjuB6Q6TUN3AhLr+3Me/j3o49K&#xD;
+            9NjMiUh2H6rWrSo9nLppXGMO1oMrqSv5SmkWdy1JYj0oBCjkXQSQWN0LnMcAUBrU&#xD;
+            r4xSXLOuXx6kY+24JbKGgDu6nFKbtPPZtA8/emb48FbJc0nf+PchonYitQIDAQAB&#xD;
+            o4GdMIGaMAkGA1UdEwQCMAAwEQYJYIZIAYb4QgEBBAQDAgQwMCoGCWCGSAGG+EIB&#xD;
+            DQQdFhtUT09QIFBpbG90IFRlc3QgQ2VydGlmaWNhdGUwDgYDVR0PAQH/BAQDAgXg&#xD;
+            MB0GA1UdDgQWBBRz4VScxtiXwurCYBlUc1yjCq8A4jAfBgNVHSMEGDAWgBQVzruh&#xD;
+            PMDANGRod8/RFMMvwVGnwTANBgkqhkiG9w0BAQsFAAOCAgEAvwN2MvamBWubmWg+&#xD;
+            RC7QeGcLbjeNXiaLX3/8abGJZyI6aqMfQANkACV6MNhoR9jPdrbgFys8qmZnA0La&#xD;
+            IyUiXuoN+anDyi+wF7zQiqB0Mnq/f51fl+qL8wq2T8Hzl5eHJ4IEzvxySEyrSl0s&#xD;
+            w+QiEbzbWLnFMh9lsxhZXxsEeyr+idGXSaQbF4dICsic1LKBxDASbxztdis8zuQs&#xD;
+            /YpiPQMMawFDkq1gYldcG3WUXmC8bPo7OpW9qRqlTYRPLkSud4qIYy4F+bSMWvqT&#xD;
+            PMs7TKftDHk+9e8awMf/CkwCsqLKyyhgws8EHKc1soq6Aw4lgvsJGe4nNkxzcUVc&#xD;
+            k4R4SpQYLpFkr0XDcK+0qHYgev0pJ3kzKe/m3O9S+57xd6CCSHEX2E7QrEm9XVYW&#xD;
+            Y4MBcQzDKR1P999lwwKGFu7sSswSW6yjXkllJcyU3o5ghDDZhM3IoMeug7keWP3f&#xD;
+            31rTkHKElGNaVn+Ibhk0QO4QNtxnSuOtNkXc7AwTT5E9AsjcVUlupqUhySkBA51a&#xD;
+            TyNVTn5inHxPdPqT4ZzkB2wNcWcY+jZoJDxuQdefWqN4uFWlmI38DNpgM6pfNlI5&#xD;
+            GoSQd1RNOgBeVLbtCWTTPZrvLx8EZzMCcsAMehYOsW9y8o+kucS1ssJ+Lhw6argf&#xD;
+            XInjAqMNHgrWIaRW4BlwegMAEao=&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:freedonia">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p40::Response##urn:eu.toop.response.registeredorganization::1.40" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.datarequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://gw-freedonia.acc.exchange.toop.eu/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEwDCCAqigAwIBAgICEBIwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xOTA0MjQxODM1MDVaFw0yMTA0&#xD;
+            MjMxODM1MDVaME8xCzAJBgNVBAYTAkVVMQ0wCwYDVQQKDARUT09QMQ0wCwYDVQQL&#xD;
+            DARDQ1RGMSIwIAYDVQQDDBlnYXRld2F5LmZyZWVkb25pYS50b29wLmV1MIIBIjAN&#xD;
+            BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAz7uD1TrmwOdl+dJQ7nBjDWZtmu+u&#xD;
+            lG7vWEdP7jBCSDT0bV37hn8z45LIhUaLLvS5MHIyGxf7fvhXZOkPb8QXiU1C7Puo&#xD;
+            5P4i0YdMBS8IuTZmTPMTIO36+Ek5oYlgZ2ZB+LCOE0N1Pi0ko1ERM5mpkYA0+09F&#xD;
+            8HrE+lI6Ezob37A1n+kDpz5n/zsTs64vK+zKm/rjuB6Q6TUN3AhLr+3Me/j3o49K&#xD;
+            9NjMiUh2H6rWrSo9nLppXGMO1oMrqSv5SmkWdy1JYj0oBCjkXQSQWN0LnMcAUBrU&#xD;
+            r4xSXLOuXx6kY+24JbKGgDu6nFKbtPPZtA8/emb48FbJc0nf+PchonYitQIDAQAB&#xD;
+            o4GdMIGaMAkGA1UdEwQCMAAwEQYJYIZIAYb4QgEBBAQDAgQwMCoGCWCGSAGG+EIB&#xD;
+            DQQdFhtUT09QIFBpbG90IFRlc3QgQ2VydGlmaWNhdGUwDgYDVR0PAQH/BAQDAgXg&#xD;
+            MB0GA1UdDgQWBBRz4VScxtiXwurCYBlUc1yjCq8A4jAfBgNVHSMEGDAWgBQVzruh&#xD;
+            PMDANGRod8/RFMMvwVGnwTANBgkqhkiG9w0BAQsFAAOCAgEAvwN2MvamBWubmWg+&#xD;
+            RC7QeGcLbjeNXiaLX3/8abGJZyI6aqMfQANkACV6MNhoR9jPdrbgFys8qmZnA0La&#xD;
+            IyUiXuoN+anDyi+wF7zQiqB0Mnq/f51fl+qL8wq2T8Hzl5eHJ4IEzvxySEyrSl0s&#xD;
+            w+QiEbzbWLnFMh9lsxhZXxsEeyr+idGXSaQbF4dICsic1LKBxDASbxztdis8zuQs&#xD;
+            /YpiPQMMawFDkq1gYldcG3WUXmC8bPo7OpW9qRqlTYRPLkSud4qIYy4F+bSMWvqT&#xD;
+            PMs7TKftDHk+9e8awMf/CkwCsqLKyyhgws8EHKc1soq6Aw4lgvsJGe4nNkxzcUVc&#xD;
+            k4R4SpQYLpFkr0XDcK+0qHYgev0pJ3kzKe/m3O9S+57xd6CCSHEX2E7QrEm9XVYW&#xD;
+            Y4MBcQzDKR1P999lwwKGFu7sSswSW6yjXkllJcyU3o5ghDDZhM3IoMeug7keWP3f&#xD;
+            31rTkHKElGNaVn+Ibhk0QO4QNtxnSuOtNkXc7AwTT5E9AsjcVUlupqUhySkBA51a&#xD;
+            TyNVTn5inHxPdPqT4ZzkB2wNcWcY+jZoJDxuQdefWqN4uFWlmI38DNpgM6pfNlI5&#xD;
+            GoSQd1RNOgBeVLbtCWTTPZrvLx8EZzMCcsAMehYOsW9y8o+kucS1ssJ+Lhw6argf&#xD;
+            XInjAqMNHgrWIaRW4BlwegMAEao=&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:freedonia">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p40::Response##urn:eu.toop.response.shipcertificate-list::1.40" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.twophasedrequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://gw-freedonia.acc.exchange.toop.eu/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEwDCCAqigAwIBAgICEBIwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xOTA0MjQxODM1MDVaFw0yMTA0&#xD;
+            MjMxODM1MDVaME8xCzAJBgNVBAYTAkVVMQ0wCwYDVQQKDARUT09QMQ0wCwYDVQQL&#xD;
+            DARDQ1RGMSIwIAYDVQQDDBlnYXRld2F5LmZyZWVkb25pYS50b29wLmV1MIIBIjAN&#xD;
+            BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAz7uD1TrmwOdl+dJQ7nBjDWZtmu+u&#xD;
+            lG7vWEdP7jBCSDT0bV37hn8z45LIhUaLLvS5MHIyGxf7fvhXZOkPb8QXiU1C7Puo&#xD;
+            5P4i0YdMBS8IuTZmTPMTIO36+Ek5oYlgZ2ZB+LCOE0N1Pi0ko1ERM5mpkYA0+09F&#xD;
+            8HrE+lI6Ezob37A1n+kDpz5n/zsTs64vK+zKm/rjuB6Q6TUN3AhLr+3Me/j3o49K&#xD;
+            9NjMiUh2H6rWrSo9nLppXGMO1oMrqSv5SmkWdy1JYj0oBCjkXQSQWN0LnMcAUBrU&#xD;
+            r4xSXLOuXx6kY+24JbKGgDu6nFKbtPPZtA8/emb48FbJc0nf+PchonYitQIDAQAB&#xD;
+            o4GdMIGaMAkGA1UdEwQCMAAwEQYJYIZIAYb4QgEBBAQDAgQwMCoGCWCGSAGG+EIB&#xD;
+            DQQdFhtUT09QIFBpbG90IFRlc3QgQ2VydGlmaWNhdGUwDgYDVR0PAQH/BAQDAgXg&#xD;
+            MB0GA1UdDgQWBBRz4VScxtiXwurCYBlUc1yjCq8A4jAfBgNVHSMEGDAWgBQVzruh&#xD;
+            PMDANGRod8/RFMMvwVGnwTANBgkqhkiG9w0BAQsFAAOCAgEAvwN2MvamBWubmWg+&#xD;
+            RC7QeGcLbjeNXiaLX3/8abGJZyI6aqMfQANkACV6MNhoR9jPdrbgFys8qmZnA0La&#xD;
+            IyUiXuoN+anDyi+wF7zQiqB0Mnq/f51fl+qL8wq2T8Hzl5eHJ4IEzvxySEyrSl0s&#xD;
+            w+QiEbzbWLnFMh9lsxhZXxsEeyr+idGXSaQbF4dICsic1LKBxDASbxztdis8zuQs&#xD;
+            /YpiPQMMawFDkq1gYldcG3WUXmC8bPo7OpW9qRqlTYRPLkSud4qIYy4F+bSMWvqT&#xD;
+            PMs7TKftDHk+9e8awMf/CkwCsqLKyyhgws8EHKc1soq6Aw4lgvsJGe4nNkxzcUVc&#xD;
+            k4R4SpQYLpFkr0XDcK+0qHYgev0pJ3kzKe/m3O9S+57xd6CCSHEX2E7QrEm9XVYW&#xD;
+            Y4MBcQzDKR1P999lwwKGFu7sSswSW6yjXkllJcyU3o5ghDDZhM3IoMeug7keWP3f&#xD;
+            31rTkHKElGNaVn+Ibhk0QO4QNtxnSuOtNkXc7AwTT5E9AsjcVUlupqUhySkBA51a&#xD;
+            TyNVTn5inHxPdPqT4ZzkB2wNcWcY+jZoJDxuQdefWqN4uFWlmI38DNpgM6pfNlI5&#xD;
+            GoSQd1RNOgBeVLbtCWTTPZrvLx8EZzMCcsAMehYOsW9y8o+kucS1ssJ+Lhw6argf&#xD;
+            XInjAqMNHgrWIaRW4BlwegMAEao=&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:freedonia">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p40::Response##urn:eu.toop.response.shipcertificate::1.40" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.twophasedrequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://gw-freedonia.acc.exchange.toop.eu/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEwDCCAqigAwIBAgICEBIwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xOTA0MjQxODM1MDVaFw0yMTA0&#xD;
+            MjMxODM1MDVaME8xCzAJBgNVBAYTAkVVMQ0wCwYDVQQKDARUT09QMQ0wCwYDVQQL&#xD;
+            DARDQ1RGMSIwIAYDVQQDDBlnYXRld2F5LmZyZWVkb25pYS50b29wLmV1MIIBIjAN&#xD;
+            BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAz7uD1TrmwOdl+dJQ7nBjDWZtmu+u&#xD;
+            lG7vWEdP7jBCSDT0bV37hn8z45LIhUaLLvS5MHIyGxf7fvhXZOkPb8QXiU1C7Puo&#xD;
+            5P4i0YdMBS8IuTZmTPMTIO36+Ek5oYlgZ2ZB+LCOE0N1Pi0ko1ERM5mpkYA0+09F&#xD;
+            8HrE+lI6Ezob37A1n+kDpz5n/zsTs64vK+zKm/rjuB6Q6TUN3AhLr+3Me/j3o49K&#xD;
+            9NjMiUh2H6rWrSo9nLppXGMO1oMrqSv5SmkWdy1JYj0oBCjkXQSQWN0LnMcAUBrU&#xD;
+            r4xSXLOuXx6kY+24JbKGgDu6nFKbtPPZtA8/emb48FbJc0nf+PchonYitQIDAQAB&#xD;
+            o4GdMIGaMAkGA1UdEwQCMAAwEQYJYIZIAYb4QgEBBAQDAgQwMCoGCWCGSAGG+EIB&#xD;
+            DQQdFhtUT09QIFBpbG90IFRlc3QgQ2VydGlmaWNhdGUwDgYDVR0PAQH/BAQDAgXg&#xD;
+            MB0GA1UdDgQWBBRz4VScxtiXwurCYBlUc1yjCq8A4jAfBgNVHSMEGDAWgBQVzruh&#xD;
+            PMDANGRod8/RFMMvwVGnwTANBgkqhkiG9w0BAQsFAAOCAgEAvwN2MvamBWubmWg+&#xD;
+            RC7QeGcLbjeNXiaLX3/8abGJZyI6aqMfQANkACV6MNhoR9jPdrbgFys8qmZnA0La&#xD;
+            IyUiXuoN+anDyi+wF7zQiqB0Mnq/f51fl+qL8wq2T8Hzl5eHJ4IEzvxySEyrSl0s&#xD;
+            w+QiEbzbWLnFMh9lsxhZXxsEeyr+idGXSaQbF4dICsic1LKBxDASbxztdis8zuQs&#xD;
+            /YpiPQMMawFDkq1gYldcG3WUXmC8bPo7OpW9qRqlTYRPLkSud4qIYy4F+bSMWvqT&#xD;
+            PMs7TKftDHk+9e8awMf/CkwCsqLKyyhgws8EHKc1soq6Aw4lgvsJGe4nNkxzcUVc&#xD;
+            k4R4SpQYLpFkr0XDcK+0qHYgev0pJ3kzKe/m3O9S+57xd6CCSHEX2E7QrEm9XVYW&#xD;
+            Y4MBcQzDKR1P999lwwKGFu7sSswSW6yjXkllJcyU3o5ghDDZhM3IoMeug7keWP3f&#xD;
+            31rTkHKElGNaVn+Ibhk0QO4QNtxnSuOtNkXc7AwTT5E9AsjcVUlupqUhySkBA51a&#xD;
+            TyNVTn5inHxPdPqT4ZzkB2wNcWcY+jZoJDxuQdefWqN4uFWlmI38DNpgM6pfNlI5&#xD;
+            GoSQd1RNOgBeVLbtCWTTPZrvLx8EZzMCcsAMehYOsW9y8o+kucS1ssJ+Lhw6argf&#xD;
+            XInjAqMNHgrWIaRW4BlwegMAEao=&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+  </servicegroup>
+  <servicegroup ownerid="admin">
+    <participant scheme="iso6523-actorid-upis" value="9999:freedonia-dev" />
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:freedonia-dev">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p40::Response##urn:eu.toop.response.crewcertificate-list::1.40" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.twophasedrequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://gw-freedonia.dev.exchange.toop.eu:9082/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEwDCCAqigAwIBAgICEBIwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xOTA0MjQxODM1MDVaFw0yMTA0&#xD;
+            MjMxODM1MDVaME8xCzAJBgNVBAYTAkVVMQ0wCwYDVQQKDARUT09QMQ0wCwYDVQQL&#xD;
+            DARDQ1RGMSIwIAYDVQQDDBlnYXRld2F5LmZyZWVkb25pYS50b29wLmV1MIIBIjAN&#xD;
+            BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAz7uD1TrmwOdl+dJQ7nBjDWZtmu+u&#xD;
+            lG7vWEdP7jBCSDT0bV37hn8z45LIhUaLLvS5MHIyGxf7fvhXZOkPb8QXiU1C7Puo&#xD;
+            5P4i0YdMBS8IuTZmTPMTIO36+Ek5oYlgZ2ZB+LCOE0N1Pi0ko1ERM5mpkYA0+09F&#xD;
+            8HrE+lI6Ezob37A1n+kDpz5n/zsTs64vK+zKm/rjuB6Q6TUN3AhLr+3Me/j3o49K&#xD;
+            9NjMiUh2H6rWrSo9nLppXGMO1oMrqSv5SmkWdy1JYj0oBCjkXQSQWN0LnMcAUBrU&#xD;
+            r4xSXLOuXx6kY+24JbKGgDu6nFKbtPPZtA8/emb48FbJc0nf+PchonYitQIDAQAB&#xD;
+            o4GdMIGaMAkGA1UdEwQCMAAwEQYJYIZIAYb4QgEBBAQDAgQwMCoGCWCGSAGG+EIB&#xD;
+            DQQdFhtUT09QIFBpbG90IFRlc3QgQ2VydGlmaWNhdGUwDgYDVR0PAQH/BAQDAgXg&#xD;
+            MB0GA1UdDgQWBBRz4VScxtiXwurCYBlUc1yjCq8A4jAfBgNVHSMEGDAWgBQVzruh&#xD;
+            PMDANGRod8/RFMMvwVGnwTANBgkqhkiG9w0BAQsFAAOCAgEAvwN2MvamBWubmWg+&#xD;
+            RC7QeGcLbjeNXiaLX3/8abGJZyI6aqMfQANkACV6MNhoR9jPdrbgFys8qmZnA0La&#xD;
+            IyUiXuoN+anDyi+wF7zQiqB0Mnq/f51fl+qL8wq2T8Hzl5eHJ4IEzvxySEyrSl0s&#xD;
+            w+QiEbzbWLnFMh9lsxhZXxsEeyr+idGXSaQbF4dICsic1LKBxDASbxztdis8zuQs&#xD;
+            /YpiPQMMawFDkq1gYldcG3WUXmC8bPo7OpW9qRqlTYRPLkSud4qIYy4F+bSMWvqT&#xD;
+            PMs7TKftDHk+9e8awMf/CkwCsqLKyyhgws8EHKc1soq6Aw4lgvsJGe4nNkxzcUVc&#xD;
+            k4R4SpQYLpFkr0XDcK+0qHYgev0pJ3kzKe/m3O9S+57xd6CCSHEX2E7QrEm9XVYW&#xD;
+            Y4MBcQzDKR1P999lwwKGFu7sSswSW6yjXkllJcyU3o5ghDDZhM3IoMeug7keWP3f&#xD;
+            31rTkHKElGNaVn+Ibhk0QO4QNtxnSuOtNkXc7AwTT5E9AsjcVUlupqUhySkBA51a&#xD;
+            TyNVTn5inHxPdPqT4ZzkB2wNcWcY+jZoJDxuQdefWqN4uFWlmI38DNpgM6pfNlI5&#xD;
+            GoSQd1RNOgBeVLbtCWTTPZrvLx8EZzMCcsAMehYOsW9y8o+kucS1ssJ+Lhw6argf&#xD;
+            XInjAqMNHgrWIaRW4BlwegMAEao=&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:freedonia-dev">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p40::Response##urn:eu.toop.response.crewcertificate::1.40" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.twophasedrequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://gw-freedonia.dev.exchange.toop.eu:9082/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEwDCCAqigAwIBAgICEBIwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xOTA0MjQxODM1MDVaFw0yMTA0&#xD;
+            MjMxODM1MDVaME8xCzAJBgNVBAYTAkVVMQ0wCwYDVQQKDARUT09QMQ0wCwYDVQQL&#xD;
+            DARDQ1RGMSIwIAYDVQQDDBlnYXRld2F5LmZyZWVkb25pYS50b29wLmV1MIIBIjAN&#xD;
+            BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAz7uD1TrmwOdl+dJQ7nBjDWZtmu+u&#xD;
+            lG7vWEdP7jBCSDT0bV37hn8z45LIhUaLLvS5MHIyGxf7fvhXZOkPb8QXiU1C7Puo&#xD;
+            5P4i0YdMBS8IuTZmTPMTIO36+Ek5oYlgZ2ZB+LCOE0N1Pi0ko1ERM5mpkYA0+09F&#xD;
+            8HrE+lI6Ezob37A1n+kDpz5n/zsTs64vK+zKm/rjuB6Q6TUN3AhLr+3Me/j3o49K&#xD;
+            9NjMiUh2H6rWrSo9nLppXGMO1oMrqSv5SmkWdy1JYj0oBCjkXQSQWN0LnMcAUBrU&#xD;
+            r4xSXLOuXx6kY+24JbKGgDu6nFKbtPPZtA8/emb48FbJc0nf+PchonYitQIDAQAB&#xD;
+            o4GdMIGaMAkGA1UdEwQCMAAwEQYJYIZIAYb4QgEBBAQDAgQwMCoGCWCGSAGG+EIB&#xD;
+            DQQdFhtUT09QIFBpbG90IFRlc3QgQ2VydGlmaWNhdGUwDgYDVR0PAQH/BAQDAgXg&#xD;
+            MB0GA1UdDgQWBBRz4VScxtiXwurCYBlUc1yjCq8A4jAfBgNVHSMEGDAWgBQVzruh&#xD;
+            PMDANGRod8/RFMMvwVGnwTANBgkqhkiG9w0BAQsFAAOCAgEAvwN2MvamBWubmWg+&#xD;
+            RC7QeGcLbjeNXiaLX3/8abGJZyI6aqMfQANkACV6MNhoR9jPdrbgFys8qmZnA0La&#xD;
+            IyUiXuoN+anDyi+wF7zQiqB0Mnq/f51fl+qL8wq2T8Hzl5eHJ4IEzvxySEyrSl0s&#xD;
+            w+QiEbzbWLnFMh9lsxhZXxsEeyr+idGXSaQbF4dICsic1LKBxDASbxztdis8zuQs&#xD;
+            /YpiPQMMawFDkq1gYldcG3WUXmC8bPo7OpW9qRqlTYRPLkSud4qIYy4F+bSMWvqT&#xD;
+            PMs7TKftDHk+9e8awMf/CkwCsqLKyyhgws8EHKc1soq6Aw4lgvsJGe4nNkxzcUVc&#xD;
+            k4R4SpQYLpFkr0XDcK+0qHYgev0pJ3kzKe/m3O9S+57xd6CCSHEX2E7QrEm9XVYW&#xD;
+            Y4MBcQzDKR1P999lwwKGFu7sSswSW6yjXkllJcyU3o5ghDDZhM3IoMeug7keWP3f&#xD;
+            31rTkHKElGNaVn+Ibhk0QO4QNtxnSuOtNkXc7AwTT5E9AsjcVUlupqUhySkBA51a&#xD;
+            TyNVTn5inHxPdPqT4ZzkB2wNcWcY+jZoJDxuQdefWqN4uFWlmI38DNpgM6pfNlI5&#xD;
+            GoSQd1RNOgBeVLbtCWTTPZrvLx8EZzMCcsAMehYOsW9y8o+kucS1ssJ+Lhw6argf&#xD;
+            XInjAqMNHgrWIaRW4BlwegMAEao=&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:freedonia-dev">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p40::Response##urn:eu.toop.response.registeredorganization::1.40" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.datarequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://gw-freedonia.dev.exchange.toop.eu:9082/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEwDCCAqigAwIBAgICEBIwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xOTA0MjQxODM1MDVaFw0yMTA0&#xD;
+            MjMxODM1MDVaME8xCzAJBgNVBAYTAkVVMQ0wCwYDVQQKDARUT09QMQ0wCwYDVQQL&#xD;
+            DARDQ1RGMSIwIAYDVQQDDBlnYXRld2F5LmZyZWVkb25pYS50b29wLmV1MIIBIjAN&#xD;
+            BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAz7uD1TrmwOdl+dJQ7nBjDWZtmu+u&#xD;
+            lG7vWEdP7jBCSDT0bV37hn8z45LIhUaLLvS5MHIyGxf7fvhXZOkPb8QXiU1C7Puo&#xD;
+            5P4i0YdMBS8IuTZmTPMTIO36+Ek5oYlgZ2ZB+LCOE0N1Pi0ko1ERM5mpkYA0+09F&#xD;
+            8HrE+lI6Ezob37A1n+kDpz5n/zsTs64vK+zKm/rjuB6Q6TUN3AhLr+3Me/j3o49K&#xD;
+            9NjMiUh2H6rWrSo9nLppXGMO1oMrqSv5SmkWdy1JYj0oBCjkXQSQWN0LnMcAUBrU&#xD;
+            r4xSXLOuXx6kY+24JbKGgDu6nFKbtPPZtA8/emb48FbJc0nf+PchonYitQIDAQAB&#xD;
+            o4GdMIGaMAkGA1UdEwQCMAAwEQYJYIZIAYb4QgEBBAQDAgQwMCoGCWCGSAGG+EIB&#xD;
+            DQQdFhtUT09QIFBpbG90IFRlc3QgQ2VydGlmaWNhdGUwDgYDVR0PAQH/BAQDAgXg&#xD;
+            MB0GA1UdDgQWBBRz4VScxtiXwurCYBlUc1yjCq8A4jAfBgNVHSMEGDAWgBQVzruh&#xD;
+            PMDANGRod8/RFMMvwVGnwTANBgkqhkiG9w0BAQsFAAOCAgEAvwN2MvamBWubmWg+&#xD;
+            RC7QeGcLbjeNXiaLX3/8abGJZyI6aqMfQANkACV6MNhoR9jPdrbgFys8qmZnA0La&#xD;
+            IyUiXuoN+anDyi+wF7zQiqB0Mnq/f51fl+qL8wq2T8Hzl5eHJ4IEzvxySEyrSl0s&#xD;
+            w+QiEbzbWLnFMh9lsxhZXxsEeyr+idGXSaQbF4dICsic1LKBxDASbxztdis8zuQs&#xD;
+            /YpiPQMMawFDkq1gYldcG3WUXmC8bPo7OpW9qRqlTYRPLkSud4qIYy4F+bSMWvqT&#xD;
+            PMs7TKftDHk+9e8awMf/CkwCsqLKyyhgws8EHKc1soq6Aw4lgvsJGe4nNkxzcUVc&#xD;
+            k4R4SpQYLpFkr0XDcK+0qHYgev0pJ3kzKe/m3O9S+57xd6CCSHEX2E7QrEm9XVYW&#xD;
+            Y4MBcQzDKR1P999lwwKGFu7sSswSW6yjXkllJcyU3o5ghDDZhM3IoMeug7keWP3f&#xD;
+            31rTkHKElGNaVn+Ibhk0QO4QNtxnSuOtNkXc7AwTT5E9AsjcVUlupqUhySkBA51a&#xD;
+            TyNVTn5inHxPdPqT4ZzkB2wNcWcY+jZoJDxuQdefWqN4uFWlmI38DNpgM6pfNlI5&#xD;
+            GoSQd1RNOgBeVLbtCWTTPZrvLx8EZzMCcsAMehYOsW9y8o+kucS1ssJ+Lhw6argf&#xD;
+            XInjAqMNHgrWIaRW4BlwegMAEao=&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:freedonia-dev">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p40::Response##urn:eu.toop.response.shipcertificate-list::1.40" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.twophasedrequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://gw-freedonia.dev.exchange.toop.eu:9082/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEwDCCAqigAwIBAgICEBIwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xOTA0MjQxODM1MDVaFw0yMTA0&#xD;
+            MjMxODM1MDVaME8xCzAJBgNVBAYTAkVVMQ0wCwYDVQQKDARUT09QMQ0wCwYDVQQL&#xD;
+            DARDQ1RGMSIwIAYDVQQDDBlnYXRld2F5LmZyZWVkb25pYS50b29wLmV1MIIBIjAN&#xD;
+            BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAz7uD1TrmwOdl+dJQ7nBjDWZtmu+u&#xD;
+            lG7vWEdP7jBCSDT0bV37hn8z45LIhUaLLvS5MHIyGxf7fvhXZOkPb8QXiU1C7Puo&#xD;
+            5P4i0YdMBS8IuTZmTPMTIO36+Ek5oYlgZ2ZB+LCOE0N1Pi0ko1ERM5mpkYA0+09F&#xD;
+            8HrE+lI6Ezob37A1n+kDpz5n/zsTs64vK+zKm/rjuB6Q6TUN3AhLr+3Me/j3o49K&#xD;
+            9NjMiUh2H6rWrSo9nLppXGMO1oMrqSv5SmkWdy1JYj0oBCjkXQSQWN0LnMcAUBrU&#xD;
+            r4xSXLOuXx6kY+24JbKGgDu6nFKbtPPZtA8/emb48FbJc0nf+PchonYitQIDAQAB&#xD;
+            o4GdMIGaMAkGA1UdEwQCMAAwEQYJYIZIAYb4QgEBBAQDAgQwMCoGCWCGSAGG+EIB&#xD;
+            DQQdFhtUT09QIFBpbG90IFRlc3QgQ2VydGlmaWNhdGUwDgYDVR0PAQH/BAQDAgXg&#xD;
+            MB0GA1UdDgQWBBRz4VScxtiXwurCYBlUc1yjCq8A4jAfBgNVHSMEGDAWgBQVzruh&#xD;
+            PMDANGRod8/RFMMvwVGnwTANBgkqhkiG9w0BAQsFAAOCAgEAvwN2MvamBWubmWg+&#xD;
+            RC7QeGcLbjeNXiaLX3/8abGJZyI6aqMfQANkACV6MNhoR9jPdrbgFys8qmZnA0La&#xD;
+            IyUiXuoN+anDyi+wF7zQiqB0Mnq/f51fl+qL8wq2T8Hzl5eHJ4IEzvxySEyrSl0s&#xD;
+            w+QiEbzbWLnFMh9lsxhZXxsEeyr+idGXSaQbF4dICsic1LKBxDASbxztdis8zuQs&#xD;
+            /YpiPQMMawFDkq1gYldcG3WUXmC8bPo7OpW9qRqlTYRPLkSud4qIYy4F+bSMWvqT&#xD;
+            PMs7TKftDHk+9e8awMf/CkwCsqLKyyhgws8EHKc1soq6Aw4lgvsJGe4nNkxzcUVc&#xD;
+            k4R4SpQYLpFkr0XDcK+0qHYgev0pJ3kzKe/m3O9S+57xd6CCSHEX2E7QrEm9XVYW&#xD;
+            Y4MBcQzDKR1P999lwwKGFu7sSswSW6yjXkllJcyU3o5ghDDZhM3IoMeug7keWP3f&#xD;
+            31rTkHKElGNaVn+Ibhk0QO4QNtxnSuOtNkXc7AwTT5E9AsjcVUlupqUhySkBA51a&#xD;
+            TyNVTn5inHxPdPqT4ZzkB2wNcWcY+jZoJDxuQdefWqN4uFWlmI38DNpgM6pfNlI5&#xD;
+            GoSQd1RNOgBeVLbtCWTTPZrvLx8EZzMCcsAMehYOsW9y8o+kucS1ssJ+Lhw6argf&#xD;
+            XInjAqMNHgrWIaRW4BlwegMAEao=&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:freedonia-dev">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p40::Response##urn:eu.toop.response.shipcertificate::1.40" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.twophasedrequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://gw-freedonia.dev.exchange.toop.eu:9082/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEwDCCAqigAwIBAgICEBIwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xOTA0MjQxODM1MDVaFw0yMTA0&#xD;
+            MjMxODM1MDVaME8xCzAJBgNVBAYTAkVVMQ0wCwYDVQQKDARUT09QMQ0wCwYDVQQL&#xD;
+            DARDQ1RGMSIwIAYDVQQDDBlnYXRld2F5LmZyZWVkb25pYS50b29wLmV1MIIBIjAN&#xD;
+            BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAz7uD1TrmwOdl+dJQ7nBjDWZtmu+u&#xD;
+            lG7vWEdP7jBCSDT0bV37hn8z45LIhUaLLvS5MHIyGxf7fvhXZOkPb8QXiU1C7Puo&#xD;
+            5P4i0YdMBS8IuTZmTPMTIO36+Ek5oYlgZ2ZB+LCOE0N1Pi0ko1ERM5mpkYA0+09F&#xD;
+            8HrE+lI6Ezob37A1n+kDpz5n/zsTs64vK+zKm/rjuB6Q6TUN3AhLr+3Me/j3o49K&#xD;
+            9NjMiUh2H6rWrSo9nLppXGMO1oMrqSv5SmkWdy1JYj0oBCjkXQSQWN0LnMcAUBrU&#xD;
+            r4xSXLOuXx6kY+24JbKGgDu6nFKbtPPZtA8/emb48FbJc0nf+PchonYitQIDAQAB&#xD;
+            o4GdMIGaMAkGA1UdEwQCMAAwEQYJYIZIAYb4QgEBBAQDAgQwMCoGCWCGSAGG+EIB&#xD;
+            DQQdFhtUT09QIFBpbG90IFRlc3QgQ2VydGlmaWNhdGUwDgYDVR0PAQH/BAQDAgXg&#xD;
+            MB0GA1UdDgQWBBRz4VScxtiXwurCYBlUc1yjCq8A4jAfBgNVHSMEGDAWgBQVzruh&#xD;
+            PMDANGRod8/RFMMvwVGnwTANBgkqhkiG9w0BAQsFAAOCAgEAvwN2MvamBWubmWg+&#xD;
+            RC7QeGcLbjeNXiaLX3/8abGJZyI6aqMfQANkACV6MNhoR9jPdrbgFys8qmZnA0La&#xD;
+            IyUiXuoN+anDyi+wF7zQiqB0Mnq/f51fl+qL8wq2T8Hzl5eHJ4IEzvxySEyrSl0s&#xD;
+            w+QiEbzbWLnFMh9lsxhZXxsEeyr+idGXSaQbF4dICsic1LKBxDASbxztdis8zuQs&#xD;
+            /YpiPQMMawFDkq1gYldcG3WUXmC8bPo7OpW9qRqlTYRPLkSud4qIYy4F+bSMWvqT&#xD;
+            PMs7TKftDHk+9e8awMf/CkwCsqLKyyhgws8EHKc1soq6Aw4lgvsJGe4nNkxzcUVc&#xD;
+            k4R4SpQYLpFkr0XDcK+0qHYgev0pJ3kzKe/m3O9S+57xd6CCSHEX2E7QrEm9XVYW&#xD;
+            Y4MBcQzDKR1P999lwwKGFu7sSswSW6yjXkllJcyU3o5ghDDZhM3IoMeug7keWP3f&#xD;
+            31rTkHKElGNaVn+Ibhk0QO4QNtxnSuOtNkXc7AwTT5E9AsjcVUlupqUhySkBA51a&#xD;
+            TyNVTn5inHxPdPqT4ZzkB2wNcWcY+jZoJDxuQdefWqN4uFWlmI38DNpgM6pfNlI5&#xD;
+            GoSQd1RNOgBeVLbtCWTTPZrvLx8EZzMCcsAMehYOsW9y8o+kucS1ssJ+Lhw6argf&#xD;
+            XInjAqMNHgrWIaRW4BlwegMAEao=&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+  </servicegroup>
+  <servicegroup ownerid="admin">
+    <participant scheme="iso6523-actorid-upis" value="9999:testonia-dev" />
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:testonia-dev">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p10::Request##urn:eu.toop.request.registeredorganization::1.10" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.datarequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://cts.acc.exchange.toop.eu:7082/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEqTCCApGgAwIBAgICEAcwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xODEwMTUwODU5MTZaFw0yMDEw&#xD;
+            MTQwODU5MTZaMDgxCzAJBgNVBAYTAlRFMREwDwYDVQQKDAhUZXN0b25pYTEWMBQG&#xD;
+            A1UEAwwNdG9vcC10ZXN0b25pYTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoC&#xD;
+            ggEBAMVugAWyHwArSv6hEeljGggByiAfOZLEYyhdNI+cBmp5H3RDci4LoBDMvDgI&#xD;
+            MhlQ84qeaDydhFr/9vZfcqEkeEd8/MAedX7X2OEsst5kTgRvWmbm1geAWzTeitam&#xD;
+            16gCgPrkDBCYx4yeEh5YppRTwQr8HkE7eP+q8jc+wYIBdPN1zSvstoYY01nO9Trq&#xD;
+            IvM1dju6GUFW7Q9wYbTzyOknTWbu2qpl9ypJPEn9dTY0u0tWuEsnae65+ZyYw7zg&#xD;
+            xsYanhuIuUSzPRPsigCZa3X1cYxmVGwLaZ8tlBBWuTAL9pg5hWRGqthUiCcOOKUu&#xD;
+            lmehjr/sk9AxTePftdfoRbcwF9UCAwEAAaOBnTCBmjAJBgNVHRMEAjAAMBEGCWCG&#xD;
+            SAGG+EIBAQQEAwIEMDAqBglghkgBhvhCAQ0EHRYbVE9PUCBQaWxvdCBUZXN0IENl&#xD;
+            cnRpZmljYXRlMA4GA1UdDwEB/wQEAwIF4DAdBgNVHQ4EFgQULTno2B+D9HPo3/9p&#xD;
+            Wwb96W/n+XswHwYDVR0jBBgwFoAUe6U4N8kNz4fMlzqi5z9njjK5qF4wDQYJKoZI&#xD;
+            hvcNAQELBQADggIBAAv6jv0fgaUR3T1b9DrHIiQikN44rjzrZ7Z4SNYq5e/Sq/JX&#xD;
+            YJ1Fjm/aKgEJmd8M8KGn2tZXznrKY+DPNw7n5dHcP7nYldjIC7DATi7kDzPj0h8O&#xD;
+            qHHARfRBfCw+FyaogT86otoogp84yrKXjKimhg9A1YDgbq411UtXfvG4vJY5h/7l&#xD;
+            Y5OE/Ikki5S4Unx5g3qNLTGfgnF82Dg14oVuGijdev0nmTfDu6UMQdCqQPTf0Pdt&#xD;
+            NEZSjSueXYv+c5BwIEb9zTKgyh8wZ3Y7B6Aka+rvubbX378X+n5PwXMc7wT8uCtd&#xD;
+            ki62ok0JaUNJd7x0eH5/wd8GHEZcW1tfijfLcuaJhMhEYs2S+FpleKjF3SS7CM5O&#xD;
+            TOgY03HiTdDNvUOEbY1+NVOFF7Ib1jy1M4TEwmFcRca5q/IfIKFr0SLgKiu0GqAk&#xD;
+            BVWuCbrTVU5bwRwXDJY6ijwqMfE5S2yLtP9G29J77+6a1cjwjbXvpnff33drELrv&#xD;
+            93lN7EYvZkT6RXaiOfjuAgnLHWXrQz8CSz9zQSe6eLeLF/0YwOnpr5fW//IQ/zqW&#xD;
+            lM5vo0eQ5QJTo0cYL9lqYoJJw3k9yoMCOeb+kFzI5uz4/RdEjevakIYdclREvqSX&#xD;
+            Ou+L3L+loqlUtZ0piJQp6bQYn/7J8oliw5IXvntc1ExO2a+2ecdPUVuxp5Pj&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:testonia-dev">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p10::Response##urn:eu.toop.response.registeredorganization::1.10" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.datarequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://cts.acc.exchange.toop.eu:7082/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEqTCCApGgAwIBAgICEAcwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xODEwMTUwODU5MTZaFw0yMDEw&#xD;
+            MTQwODU5MTZaMDgxCzAJBgNVBAYTAlRFMREwDwYDVQQKDAhUZXN0b25pYTEWMBQG&#xD;
+            A1UEAwwNdG9vcC10ZXN0b25pYTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoC&#xD;
+            ggEBAMVugAWyHwArSv6hEeljGggByiAfOZLEYyhdNI+cBmp5H3RDci4LoBDMvDgI&#xD;
+            MhlQ84qeaDydhFr/9vZfcqEkeEd8/MAedX7X2OEsst5kTgRvWmbm1geAWzTeitam&#xD;
+            16gCgPrkDBCYx4yeEh5YppRTwQr8HkE7eP+q8jc+wYIBdPN1zSvstoYY01nO9Trq&#xD;
+            IvM1dju6GUFW7Q9wYbTzyOknTWbu2qpl9ypJPEn9dTY0u0tWuEsnae65+ZyYw7zg&#xD;
+            xsYanhuIuUSzPRPsigCZa3X1cYxmVGwLaZ8tlBBWuTAL9pg5hWRGqthUiCcOOKUu&#xD;
+            lmehjr/sk9AxTePftdfoRbcwF9UCAwEAAaOBnTCBmjAJBgNVHRMEAjAAMBEGCWCG&#xD;
+            SAGG+EIBAQQEAwIEMDAqBglghkgBhvhCAQ0EHRYbVE9PUCBQaWxvdCBUZXN0IENl&#xD;
+            cnRpZmljYXRlMA4GA1UdDwEB/wQEAwIF4DAdBgNVHQ4EFgQULTno2B+D9HPo3/9p&#xD;
+            Wwb96W/n+XswHwYDVR0jBBgwFoAUe6U4N8kNz4fMlzqi5z9njjK5qF4wDQYJKoZI&#xD;
+            hvcNAQELBQADggIBAAv6jv0fgaUR3T1b9DrHIiQikN44rjzrZ7Z4SNYq5e/Sq/JX&#xD;
+            YJ1Fjm/aKgEJmd8M8KGn2tZXznrKY+DPNw7n5dHcP7nYldjIC7DATi7kDzPj0h8O&#xD;
+            qHHARfRBfCw+FyaogT86otoogp84yrKXjKimhg9A1YDgbq411UtXfvG4vJY5h/7l&#xD;
+            Y5OE/Ikki5S4Unx5g3qNLTGfgnF82Dg14oVuGijdev0nmTfDu6UMQdCqQPTf0Pdt&#xD;
+            NEZSjSueXYv+c5BwIEb9zTKgyh8wZ3Y7B6Aka+rvubbX378X+n5PwXMc7wT8uCtd&#xD;
+            ki62ok0JaUNJd7x0eH5/wd8GHEZcW1tfijfLcuaJhMhEYs2S+FpleKjF3SS7CM5O&#xD;
+            TOgY03HiTdDNvUOEbY1+NVOFF7Ib1jy1M4TEwmFcRca5q/IfIKFr0SLgKiu0GqAk&#xD;
+            BVWuCbrTVU5bwRwXDJY6ijwqMfE5S2yLtP9G29J77+6a1cjwjbXvpnff33drELrv&#xD;
+            93lN7EYvZkT6RXaiOfjuAgnLHWXrQz8CSz9zQSe6eLeLF/0YwOnpr5fW//IQ/zqW&#xD;
+            lM5vo0eQ5QJTo0cYL9lqYoJJw3k9yoMCOeb+kFzI5uz4/RdEjevakIYdclREvqSX&#xD;
+            Ou+L3L+loqlUtZ0piJQp6bQYn/7J8oliw5IXvntc1ExO2a+2ecdPUVuxp5Pj&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:testonia-dev">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p40::Request##urn:eu.toop.request.crewcertificate-list::1.40" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.twophasedrequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://cts.acc.exchange.toop.eu:7082/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEqTCCApGgAwIBAgICEAcwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xODEwMTUwODU5MTZaFw0yMDEw&#xD;
+            MTQwODU5MTZaMDgxCzAJBgNVBAYTAlRFMREwDwYDVQQKDAhUZXN0b25pYTEWMBQG&#xD;
+            A1UEAwwNdG9vcC10ZXN0b25pYTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoC&#xD;
+            ggEBAMVugAWyHwArSv6hEeljGggByiAfOZLEYyhdNI+cBmp5H3RDci4LoBDMvDgI&#xD;
+            MhlQ84qeaDydhFr/9vZfcqEkeEd8/MAedX7X2OEsst5kTgRvWmbm1geAWzTeitam&#xD;
+            16gCgPrkDBCYx4yeEh5YppRTwQr8HkE7eP+q8jc+wYIBdPN1zSvstoYY01nO9Trq&#xD;
+            IvM1dju6GUFW7Q9wYbTzyOknTWbu2qpl9ypJPEn9dTY0u0tWuEsnae65+ZyYw7zg&#xD;
+            xsYanhuIuUSzPRPsigCZa3X1cYxmVGwLaZ8tlBBWuTAL9pg5hWRGqthUiCcOOKUu&#xD;
+            lmehjr/sk9AxTePftdfoRbcwF9UCAwEAAaOBnTCBmjAJBgNVHRMEAjAAMBEGCWCG&#xD;
+            SAGG+EIBAQQEAwIEMDAqBglghkgBhvhCAQ0EHRYbVE9PUCBQaWxvdCBUZXN0IENl&#xD;
+            cnRpZmljYXRlMA4GA1UdDwEB/wQEAwIF4DAdBgNVHQ4EFgQULTno2B+D9HPo3/9p&#xD;
+            Wwb96W/n+XswHwYDVR0jBBgwFoAUe6U4N8kNz4fMlzqi5z9njjK5qF4wDQYJKoZI&#xD;
+            hvcNAQELBQADggIBAAv6jv0fgaUR3T1b9DrHIiQikN44rjzrZ7Z4SNYq5e/Sq/JX&#xD;
+            YJ1Fjm/aKgEJmd8M8KGn2tZXznrKY+DPNw7n5dHcP7nYldjIC7DATi7kDzPj0h8O&#xD;
+            qHHARfRBfCw+FyaogT86otoogp84yrKXjKimhg9A1YDgbq411UtXfvG4vJY5h/7l&#xD;
+            Y5OE/Ikki5S4Unx5g3qNLTGfgnF82Dg14oVuGijdev0nmTfDu6UMQdCqQPTf0Pdt&#xD;
+            NEZSjSueXYv+c5BwIEb9zTKgyh8wZ3Y7B6Aka+rvubbX378X+n5PwXMc7wT8uCtd&#xD;
+            ki62ok0JaUNJd7x0eH5/wd8GHEZcW1tfijfLcuaJhMhEYs2S+FpleKjF3SS7CM5O&#xD;
+            TOgY03HiTdDNvUOEbY1+NVOFF7Ib1jy1M4TEwmFcRca5q/IfIKFr0SLgKiu0GqAk&#xD;
+            BVWuCbrTVU5bwRwXDJY6ijwqMfE5S2yLtP9G29J77+6a1cjwjbXvpnff33drELrv&#xD;
+            93lN7EYvZkT6RXaiOfjuAgnLHWXrQz8CSz9zQSe6eLeLF/0YwOnpr5fW//IQ/zqW&#xD;
+            lM5vo0eQ5QJTo0cYL9lqYoJJw3k9yoMCOeb+kFzI5uz4/RdEjevakIYdclREvqSX&#xD;
+            Ou+L3L+loqlUtZ0piJQp6bQYn/7J8oliw5IXvntc1ExO2a+2ecdPUVuxp5Pj&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:testonia-dev">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p40::Request##urn:eu.toop.request.crewcertificate::1.40" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.twophasedrequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://cts.acc.exchange.toop.eu:7082/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEqTCCApGgAwIBAgICEAcwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xODEwMTUwODU5MTZaFw0yMDEw&#xD;
+            MTQwODU5MTZaMDgxCzAJBgNVBAYTAlRFMREwDwYDVQQKDAhUZXN0b25pYTEWMBQG&#xD;
+            A1UEAwwNdG9vcC10ZXN0b25pYTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoC&#xD;
+            ggEBAMVugAWyHwArSv6hEeljGggByiAfOZLEYyhdNI+cBmp5H3RDci4LoBDMvDgI&#xD;
+            MhlQ84qeaDydhFr/9vZfcqEkeEd8/MAedX7X2OEsst5kTgRvWmbm1geAWzTeitam&#xD;
+            16gCgPrkDBCYx4yeEh5YppRTwQr8HkE7eP+q8jc+wYIBdPN1zSvstoYY01nO9Trq&#xD;
+            IvM1dju6GUFW7Q9wYbTzyOknTWbu2qpl9ypJPEn9dTY0u0tWuEsnae65+ZyYw7zg&#xD;
+            xsYanhuIuUSzPRPsigCZa3X1cYxmVGwLaZ8tlBBWuTAL9pg5hWRGqthUiCcOOKUu&#xD;
+            lmehjr/sk9AxTePftdfoRbcwF9UCAwEAAaOBnTCBmjAJBgNVHRMEAjAAMBEGCWCG&#xD;
+            SAGG+EIBAQQEAwIEMDAqBglghkgBhvhCAQ0EHRYbVE9PUCBQaWxvdCBUZXN0IENl&#xD;
+            cnRpZmljYXRlMA4GA1UdDwEB/wQEAwIF4DAdBgNVHQ4EFgQULTno2B+D9HPo3/9p&#xD;
+            Wwb96W/n+XswHwYDVR0jBBgwFoAUe6U4N8kNz4fMlzqi5z9njjK5qF4wDQYJKoZI&#xD;
+            hvcNAQELBQADggIBAAv6jv0fgaUR3T1b9DrHIiQikN44rjzrZ7Z4SNYq5e/Sq/JX&#xD;
+            YJ1Fjm/aKgEJmd8M8KGn2tZXznrKY+DPNw7n5dHcP7nYldjIC7DATi7kDzPj0h8O&#xD;
+            qHHARfRBfCw+FyaogT86otoogp84yrKXjKimhg9A1YDgbq411UtXfvG4vJY5h/7l&#xD;
+            Y5OE/Ikki5S4Unx5g3qNLTGfgnF82Dg14oVuGijdev0nmTfDu6UMQdCqQPTf0Pdt&#xD;
+            NEZSjSueXYv+c5BwIEb9zTKgyh8wZ3Y7B6Aka+rvubbX378X+n5PwXMc7wT8uCtd&#xD;
+            ki62ok0JaUNJd7x0eH5/wd8GHEZcW1tfijfLcuaJhMhEYs2S+FpleKjF3SS7CM5O&#xD;
+            TOgY03HiTdDNvUOEbY1+NVOFF7Ib1jy1M4TEwmFcRca5q/IfIKFr0SLgKiu0GqAk&#xD;
+            BVWuCbrTVU5bwRwXDJY6ijwqMfE5S2yLtP9G29J77+6a1cjwjbXvpnff33drELrv&#xD;
+            93lN7EYvZkT6RXaiOfjuAgnLHWXrQz8CSz9zQSe6eLeLF/0YwOnpr5fW//IQ/zqW&#xD;
+            lM5vo0eQ5QJTo0cYL9lqYoJJw3k9yoMCOeb+kFzI5uz4/RdEjevakIYdclREvqSX&#xD;
+            Ou+L3L+loqlUtZ0piJQp6bQYn/7J8oliw5IXvntc1ExO2a+2ecdPUVuxp5Pj&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:testonia-dev">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p40::Request##urn:eu.toop.request.registeredorganization::1.40" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.datarequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://cts.acc.exchange.toop.eu:7082/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEqTCCApGgAwIBAgICEAcwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xODEwMTUwODU5MTZaFw0yMDEw&#xD;
+            MTQwODU5MTZaMDgxCzAJBgNVBAYTAlRFMREwDwYDVQQKDAhUZXN0b25pYTEWMBQG&#xD;
+            A1UEAwwNdG9vcC10ZXN0b25pYTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoC&#xD;
+            ggEBAMVugAWyHwArSv6hEeljGggByiAfOZLEYyhdNI+cBmp5H3RDci4LoBDMvDgI&#xD;
+            MhlQ84qeaDydhFr/9vZfcqEkeEd8/MAedX7X2OEsst5kTgRvWmbm1geAWzTeitam&#xD;
+            16gCgPrkDBCYx4yeEh5YppRTwQr8HkE7eP+q8jc+wYIBdPN1zSvstoYY01nO9Trq&#xD;
+            IvM1dju6GUFW7Q9wYbTzyOknTWbu2qpl9ypJPEn9dTY0u0tWuEsnae65+ZyYw7zg&#xD;
+            xsYanhuIuUSzPRPsigCZa3X1cYxmVGwLaZ8tlBBWuTAL9pg5hWRGqthUiCcOOKUu&#xD;
+            lmehjr/sk9AxTePftdfoRbcwF9UCAwEAAaOBnTCBmjAJBgNVHRMEAjAAMBEGCWCG&#xD;
+            SAGG+EIBAQQEAwIEMDAqBglghkgBhvhCAQ0EHRYbVE9PUCBQaWxvdCBUZXN0IENl&#xD;
+            cnRpZmljYXRlMA4GA1UdDwEB/wQEAwIF4DAdBgNVHQ4EFgQULTno2B+D9HPo3/9p&#xD;
+            Wwb96W/n+XswHwYDVR0jBBgwFoAUe6U4N8kNz4fMlzqi5z9njjK5qF4wDQYJKoZI&#xD;
+            hvcNAQELBQADggIBAAv6jv0fgaUR3T1b9DrHIiQikN44rjzrZ7Z4SNYq5e/Sq/JX&#xD;
+            YJ1Fjm/aKgEJmd8M8KGn2tZXznrKY+DPNw7n5dHcP7nYldjIC7DATi7kDzPj0h8O&#xD;
+            qHHARfRBfCw+FyaogT86otoogp84yrKXjKimhg9A1YDgbq411UtXfvG4vJY5h/7l&#xD;
+            Y5OE/Ikki5S4Unx5g3qNLTGfgnF82Dg14oVuGijdev0nmTfDu6UMQdCqQPTf0Pdt&#xD;
+            NEZSjSueXYv+c5BwIEb9zTKgyh8wZ3Y7B6Aka+rvubbX378X+n5PwXMc7wT8uCtd&#xD;
+            ki62ok0JaUNJd7x0eH5/wd8GHEZcW1tfijfLcuaJhMhEYs2S+FpleKjF3SS7CM5O&#xD;
+            TOgY03HiTdDNvUOEbY1+NVOFF7Ib1jy1M4TEwmFcRca5q/IfIKFr0SLgKiu0GqAk&#xD;
+            BVWuCbrTVU5bwRwXDJY6ijwqMfE5S2yLtP9G29J77+6a1cjwjbXvpnff33drELrv&#xD;
+            93lN7EYvZkT6RXaiOfjuAgnLHWXrQz8CSz9zQSe6eLeLF/0YwOnpr5fW//IQ/zqW&#xD;
+            lM5vo0eQ5QJTo0cYL9lqYoJJw3k9yoMCOeb+kFzI5uz4/RdEjevakIYdclREvqSX&#xD;
+            Ou+L3L+loqlUtZ0piJQp6bQYn/7J8oliw5IXvntc1ExO2a+2ecdPUVuxp5Pj&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:testonia-dev">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p40::Request##urn:eu.toop.request.shipcertificate-list::1.40" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.twophasedrequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://cts.acc.exchange.toop.eu:7082/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEqTCCApGgAwIBAgICEAcwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xODEwMTUwODU5MTZaFw0yMDEw&#xD;
+            MTQwODU5MTZaMDgxCzAJBgNVBAYTAlRFMREwDwYDVQQKDAhUZXN0b25pYTEWMBQG&#xD;
+            A1UEAwwNdG9vcC10ZXN0b25pYTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoC&#xD;
+            ggEBAMVugAWyHwArSv6hEeljGggByiAfOZLEYyhdNI+cBmp5H3RDci4LoBDMvDgI&#xD;
+            MhlQ84qeaDydhFr/9vZfcqEkeEd8/MAedX7X2OEsst5kTgRvWmbm1geAWzTeitam&#xD;
+            16gCgPrkDBCYx4yeEh5YppRTwQr8HkE7eP+q8jc+wYIBdPN1zSvstoYY01nO9Trq&#xD;
+            IvM1dju6GUFW7Q9wYbTzyOknTWbu2qpl9ypJPEn9dTY0u0tWuEsnae65+ZyYw7zg&#xD;
+            xsYanhuIuUSzPRPsigCZa3X1cYxmVGwLaZ8tlBBWuTAL9pg5hWRGqthUiCcOOKUu&#xD;
+            lmehjr/sk9AxTePftdfoRbcwF9UCAwEAAaOBnTCBmjAJBgNVHRMEAjAAMBEGCWCG&#xD;
+            SAGG+EIBAQQEAwIEMDAqBglghkgBhvhCAQ0EHRYbVE9PUCBQaWxvdCBUZXN0IENl&#xD;
+            cnRpZmljYXRlMA4GA1UdDwEB/wQEAwIF4DAdBgNVHQ4EFgQULTno2B+D9HPo3/9p&#xD;
+            Wwb96W/n+XswHwYDVR0jBBgwFoAUe6U4N8kNz4fMlzqi5z9njjK5qF4wDQYJKoZI&#xD;
+            hvcNAQELBQADggIBAAv6jv0fgaUR3T1b9DrHIiQikN44rjzrZ7Z4SNYq5e/Sq/JX&#xD;
+            YJ1Fjm/aKgEJmd8M8KGn2tZXznrKY+DPNw7n5dHcP7nYldjIC7DATi7kDzPj0h8O&#xD;
+            qHHARfRBfCw+FyaogT86otoogp84yrKXjKimhg9A1YDgbq411UtXfvG4vJY5h/7l&#xD;
+            Y5OE/Ikki5S4Unx5g3qNLTGfgnF82Dg14oVuGijdev0nmTfDu6UMQdCqQPTf0Pdt&#xD;
+            NEZSjSueXYv+c5BwIEb9zTKgyh8wZ3Y7B6Aka+rvubbX378X+n5PwXMc7wT8uCtd&#xD;
+            ki62ok0JaUNJd7x0eH5/wd8GHEZcW1tfijfLcuaJhMhEYs2S+FpleKjF3SS7CM5O&#xD;
+            TOgY03HiTdDNvUOEbY1+NVOFF7Ib1jy1M4TEwmFcRca5q/IfIKFr0SLgKiu0GqAk&#xD;
+            BVWuCbrTVU5bwRwXDJY6ijwqMfE5S2yLtP9G29J77+6a1cjwjbXvpnff33drELrv&#xD;
+            93lN7EYvZkT6RXaiOfjuAgnLHWXrQz8CSz9zQSe6eLeLF/0YwOnpr5fW//IQ/zqW&#xD;
+            lM5vo0eQ5QJTo0cYL9lqYoJJw3k9yoMCOeb+kFzI5uz4/RdEjevakIYdclREvqSX&#xD;
+            Ou+L3L+loqlUtZ0piJQp6bQYn/7J8oliw5IXvntc1ExO2a+2ecdPUVuxp5Pj&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:testonia-dev">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p40::Request##urn:eu.toop.request.shipcertificate::1.40" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.twophasedrequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://cts.acc.exchange.toop.eu:7082/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEqTCCApGgAwIBAgICEAcwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xODEwMTUwODU5MTZaFw0yMDEw&#xD;
+            MTQwODU5MTZaMDgxCzAJBgNVBAYTAlRFMREwDwYDVQQKDAhUZXN0b25pYTEWMBQG&#xD;
+            A1UEAwwNdG9vcC10ZXN0b25pYTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoC&#xD;
+            ggEBAMVugAWyHwArSv6hEeljGggByiAfOZLEYyhdNI+cBmp5H3RDci4LoBDMvDgI&#xD;
+            MhlQ84qeaDydhFr/9vZfcqEkeEd8/MAedX7X2OEsst5kTgRvWmbm1geAWzTeitam&#xD;
+            16gCgPrkDBCYx4yeEh5YppRTwQr8HkE7eP+q8jc+wYIBdPN1zSvstoYY01nO9Trq&#xD;
+            IvM1dju6GUFW7Q9wYbTzyOknTWbu2qpl9ypJPEn9dTY0u0tWuEsnae65+ZyYw7zg&#xD;
+            xsYanhuIuUSzPRPsigCZa3X1cYxmVGwLaZ8tlBBWuTAL9pg5hWRGqthUiCcOOKUu&#xD;
+            lmehjr/sk9AxTePftdfoRbcwF9UCAwEAAaOBnTCBmjAJBgNVHRMEAjAAMBEGCWCG&#xD;
+            SAGG+EIBAQQEAwIEMDAqBglghkgBhvhCAQ0EHRYbVE9PUCBQaWxvdCBUZXN0IENl&#xD;
+            cnRpZmljYXRlMA4GA1UdDwEB/wQEAwIF4DAdBgNVHQ4EFgQULTno2B+D9HPo3/9p&#xD;
+            Wwb96W/n+XswHwYDVR0jBBgwFoAUe6U4N8kNz4fMlzqi5z9njjK5qF4wDQYJKoZI&#xD;
+            hvcNAQELBQADggIBAAv6jv0fgaUR3T1b9DrHIiQikN44rjzrZ7Z4SNYq5e/Sq/JX&#xD;
+            YJ1Fjm/aKgEJmd8M8KGn2tZXznrKY+DPNw7n5dHcP7nYldjIC7DATi7kDzPj0h8O&#xD;
+            qHHARfRBfCw+FyaogT86otoogp84yrKXjKimhg9A1YDgbq411UtXfvG4vJY5h/7l&#xD;
+            Y5OE/Ikki5S4Unx5g3qNLTGfgnF82Dg14oVuGijdev0nmTfDu6UMQdCqQPTf0Pdt&#xD;
+            NEZSjSueXYv+c5BwIEb9zTKgyh8wZ3Y7B6Aka+rvubbX378X+n5PwXMc7wT8uCtd&#xD;
+            ki62ok0JaUNJd7x0eH5/wd8GHEZcW1tfijfLcuaJhMhEYs2S+FpleKjF3SS7CM5O&#xD;
+            TOgY03HiTdDNvUOEbY1+NVOFF7Ib1jy1M4TEwmFcRca5q/IfIKFr0SLgKiu0GqAk&#xD;
+            BVWuCbrTVU5bwRwXDJY6ijwqMfE5S2yLtP9G29J77+6a1cjwjbXvpnff33drELrv&#xD;
+            93lN7EYvZkT6RXaiOfjuAgnLHWXrQz8CSz9zQSe6eLeLF/0YwOnpr5fW//IQ/zqW&#xD;
+            lM5vo0eQ5QJTo0cYL9lqYoJJw3k9yoMCOeb+kFzI5uz4/RdEjevakIYdclREvqSX&#xD;
+            Ou+L3L+loqlUtZ0piJQp6bQYn/7J8oliw5IXvntc1ExO2a+2ecdPUVuxp5Pj&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:testonia-dev">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p40::Response##urn:eu.toop.response.crewcertificate-list::1.40" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.twophasedrequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://cts.acc.exchange.toop.eu:7082/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEqTCCApGgAwIBAgICEAcwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xODEwMTUwODU5MTZaFw0yMDEw&#xD;
+            MTQwODU5MTZaMDgxCzAJBgNVBAYTAlRFMREwDwYDVQQKDAhUZXN0b25pYTEWMBQG&#xD;
+            A1UEAwwNdG9vcC10ZXN0b25pYTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoC&#xD;
+            ggEBAMVugAWyHwArSv6hEeljGggByiAfOZLEYyhdNI+cBmp5H3RDci4LoBDMvDgI&#xD;
+            MhlQ84qeaDydhFr/9vZfcqEkeEd8/MAedX7X2OEsst5kTgRvWmbm1geAWzTeitam&#xD;
+            16gCgPrkDBCYx4yeEh5YppRTwQr8HkE7eP+q8jc+wYIBdPN1zSvstoYY01nO9Trq&#xD;
+            IvM1dju6GUFW7Q9wYbTzyOknTWbu2qpl9ypJPEn9dTY0u0tWuEsnae65+ZyYw7zg&#xD;
+            xsYanhuIuUSzPRPsigCZa3X1cYxmVGwLaZ8tlBBWuTAL9pg5hWRGqthUiCcOOKUu&#xD;
+            lmehjr/sk9AxTePftdfoRbcwF9UCAwEAAaOBnTCBmjAJBgNVHRMEAjAAMBEGCWCG&#xD;
+            SAGG+EIBAQQEAwIEMDAqBglghkgBhvhCAQ0EHRYbVE9PUCBQaWxvdCBUZXN0IENl&#xD;
+            cnRpZmljYXRlMA4GA1UdDwEB/wQEAwIF4DAdBgNVHQ4EFgQULTno2B+D9HPo3/9p&#xD;
+            Wwb96W/n+XswHwYDVR0jBBgwFoAUe6U4N8kNz4fMlzqi5z9njjK5qF4wDQYJKoZI&#xD;
+            hvcNAQELBQADggIBAAv6jv0fgaUR3T1b9DrHIiQikN44rjzrZ7Z4SNYq5e/Sq/JX&#xD;
+            YJ1Fjm/aKgEJmd8M8KGn2tZXznrKY+DPNw7n5dHcP7nYldjIC7DATi7kDzPj0h8O&#xD;
+            qHHARfRBfCw+FyaogT86otoogp84yrKXjKimhg9A1YDgbq411UtXfvG4vJY5h/7l&#xD;
+            Y5OE/Ikki5S4Unx5g3qNLTGfgnF82Dg14oVuGijdev0nmTfDu6UMQdCqQPTf0Pdt&#xD;
+            NEZSjSueXYv+c5BwIEb9zTKgyh8wZ3Y7B6Aka+rvubbX378X+n5PwXMc7wT8uCtd&#xD;
+            ki62ok0JaUNJd7x0eH5/wd8GHEZcW1tfijfLcuaJhMhEYs2S+FpleKjF3SS7CM5O&#xD;
+            TOgY03HiTdDNvUOEbY1+NVOFF7Ib1jy1M4TEwmFcRca5q/IfIKFr0SLgKiu0GqAk&#xD;
+            BVWuCbrTVU5bwRwXDJY6ijwqMfE5S2yLtP9G29J77+6a1cjwjbXvpnff33drELrv&#xD;
+            93lN7EYvZkT6RXaiOfjuAgnLHWXrQz8CSz9zQSe6eLeLF/0YwOnpr5fW//IQ/zqW&#xD;
+            lM5vo0eQ5QJTo0cYL9lqYoJJw3k9yoMCOeb+kFzI5uz4/RdEjevakIYdclREvqSX&#xD;
+            Ou+L3L+loqlUtZ0piJQp6bQYn/7J8oliw5IXvntc1ExO2a+2ecdPUVuxp5Pj&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:testonia-dev">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p40::Response##urn:eu.toop.response.crewcertificate::1.40" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.twophasedrequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://cts.acc.exchange.toop.eu:7082/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEqTCCApGgAwIBAgICEAcwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xODEwMTUwODU5MTZaFw0yMDEw&#xD;
+            MTQwODU5MTZaMDgxCzAJBgNVBAYTAlRFMREwDwYDVQQKDAhUZXN0b25pYTEWMBQG&#xD;
+            A1UEAwwNdG9vcC10ZXN0b25pYTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoC&#xD;
+            ggEBAMVugAWyHwArSv6hEeljGggByiAfOZLEYyhdNI+cBmp5H3RDci4LoBDMvDgI&#xD;
+            MhlQ84qeaDydhFr/9vZfcqEkeEd8/MAedX7X2OEsst5kTgRvWmbm1geAWzTeitam&#xD;
+            16gCgPrkDBCYx4yeEh5YppRTwQr8HkE7eP+q8jc+wYIBdPN1zSvstoYY01nO9Trq&#xD;
+            IvM1dju6GUFW7Q9wYbTzyOknTWbu2qpl9ypJPEn9dTY0u0tWuEsnae65+ZyYw7zg&#xD;
+            xsYanhuIuUSzPRPsigCZa3X1cYxmVGwLaZ8tlBBWuTAL9pg5hWRGqthUiCcOOKUu&#xD;
+            lmehjr/sk9AxTePftdfoRbcwF9UCAwEAAaOBnTCBmjAJBgNVHRMEAjAAMBEGCWCG&#xD;
+            SAGG+EIBAQQEAwIEMDAqBglghkgBhvhCAQ0EHRYbVE9PUCBQaWxvdCBUZXN0IENl&#xD;
+            cnRpZmljYXRlMA4GA1UdDwEB/wQEAwIF4DAdBgNVHQ4EFgQULTno2B+D9HPo3/9p&#xD;
+            Wwb96W/n+XswHwYDVR0jBBgwFoAUe6U4N8kNz4fMlzqi5z9njjK5qF4wDQYJKoZI&#xD;
+            hvcNAQELBQADggIBAAv6jv0fgaUR3T1b9DrHIiQikN44rjzrZ7Z4SNYq5e/Sq/JX&#xD;
+            YJ1Fjm/aKgEJmd8M8KGn2tZXznrKY+DPNw7n5dHcP7nYldjIC7DATi7kDzPj0h8O&#xD;
+            qHHARfRBfCw+FyaogT86otoogp84yrKXjKimhg9A1YDgbq411UtXfvG4vJY5h/7l&#xD;
+            Y5OE/Ikki5S4Unx5g3qNLTGfgnF82Dg14oVuGijdev0nmTfDu6UMQdCqQPTf0Pdt&#xD;
+            NEZSjSueXYv+c5BwIEb9zTKgyh8wZ3Y7B6Aka+rvubbX378X+n5PwXMc7wT8uCtd&#xD;
+            ki62ok0JaUNJd7x0eH5/wd8GHEZcW1tfijfLcuaJhMhEYs2S+FpleKjF3SS7CM5O&#xD;
+            TOgY03HiTdDNvUOEbY1+NVOFF7Ib1jy1M4TEwmFcRca5q/IfIKFr0SLgKiu0GqAk&#xD;
+            BVWuCbrTVU5bwRwXDJY6ijwqMfE5S2yLtP9G29J77+6a1cjwjbXvpnff33drELrv&#xD;
+            93lN7EYvZkT6RXaiOfjuAgnLHWXrQz8CSz9zQSe6eLeLF/0YwOnpr5fW//IQ/zqW&#xD;
+            lM5vo0eQ5QJTo0cYL9lqYoJJw3k9yoMCOeb+kFzI5uz4/RdEjevakIYdclREvqSX&#xD;
+            Ou+L3L+loqlUtZ0piJQp6bQYn/7J8oliw5IXvntc1ExO2a+2ecdPUVuxp5Pj&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:testonia-dev">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p40::Response##urn:eu.toop.response.registeredorganization::1.40" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.datarequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://cts.acc.exchange.toop.eu:7082/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEqTCCApGgAwIBAgICEAcwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xODEwMTUwODU5MTZaFw0yMDEw&#xD;
+            MTQwODU5MTZaMDgxCzAJBgNVBAYTAlRFMREwDwYDVQQKDAhUZXN0b25pYTEWMBQG&#xD;
+            A1UEAwwNdG9vcC10ZXN0b25pYTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoC&#xD;
+            ggEBAMVugAWyHwArSv6hEeljGggByiAfOZLEYyhdNI+cBmp5H3RDci4LoBDMvDgI&#xD;
+            MhlQ84qeaDydhFr/9vZfcqEkeEd8/MAedX7X2OEsst5kTgRvWmbm1geAWzTeitam&#xD;
+            16gCgPrkDBCYx4yeEh5YppRTwQr8HkE7eP+q8jc+wYIBdPN1zSvstoYY01nO9Trq&#xD;
+            IvM1dju6GUFW7Q9wYbTzyOknTWbu2qpl9ypJPEn9dTY0u0tWuEsnae65+ZyYw7zg&#xD;
+            xsYanhuIuUSzPRPsigCZa3X1cYxmVGwLaZ8tlBBWuTAL9pg5hWRGqthUiCcOOKUu&#xD;
+            lmehjr/sk9AxTePftdfoRbcwF9UCAwEAAaOBnTCBmjAJBgNVHRMEAjAAMBEGCWCG&#xD;
+            SAGG+EIBAQQEAwIEMDAqBglghkgBhvhCAQ0EHRYbVE9PUCBQaWxvdCBUZXN0IENl&#xD;
+            cnRpZmljYXRlMA4GA1UdDwEB/wQEAwIF4DAdBgNVHQ4EFgQULTno2B+D9HPo3/9p&#xD;
+            Wwb96W/n+XswHwYDVR0jBBgwFoAUe6U4N8kNz4fMlzqi5z9njjK5qF4wDQYJKoZI&#xD;
+            hvcNAQELBQADggIBAAv6jv0fgaUR3T1b9DrHIiQikN44rjzrZ7Z4SNYq5e/Sq/JX&#xD;
+            YJ1Fjm/aKgEJmd8M8KGn2tZXznrKY+DPNw7n5dHcP7nYldjIC7DATi7kDzPj0h8O&#xD;
+            qHHARfRBfCw+FyaogT86otoogp84yrKXjKimhg9A1YDgbq411UtXfvG4vJY5h/7l&#xD;
+            Y5OE/Ikki5S4Unx5g3qNLTGfgnF82Dg14oVuGijdev0nmTfDu6UMQdCqQPTf0Pdt&#xD;
+            NEZSjSueXYv+c5BwIEb9zTKgyh8wZ3Y7B6Aka+rvubbX378X+n5PwXMc7wT8uCtd&#xD;
+            ki62ok0JaUNJd7x0eH5/wd8GHEZcW1tfijfLcuaJhMhEYs2S+FpleKjF3SS7CM5O&#xD;
+            TOgY03HiTdDNvUOEbY1+NVOFF7Ib1jy1M4TEwmFcRca5q/IfIKFr0SLgKiu0GqAk&#xD;
+            BVWuCbrTVU5bwRwXDJY6ijwqMfE5S2yLtP9G29J77+6a1cjwjbXvpnff33drELrv&#xD;
+            93lN7EYvZkT6RXaiOfjuAgnLHWXrQz8CSz9zQSe6eLeLF/0YwOnpr5fW//IQ/zqW&#xD;
+            lM5vo0eQ5QJTo0cYL9lqYoJJw3k9yoMCOeb+kFzI5uz4/RdEjevakIYdclREvqSX&#xD;
+            Ou+L3L+loqlUtZ0piJQp6bQYn/7J8oliw5IXvntc1ExO2a+2ecdPUVuxp5Pj&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:testonia-dev">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p40::Response##urn:eu.toop.response.shipcertificate-list::1.40" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.twophasedrequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://cts.acc.exchange.toop.eu:7082/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEqTCCApGgAwIBAgICEAcwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xODEwMTUwODU5MTZaFw0yMDEw&#xD;
+            MTQwODU5MTZaMDgxCzAJBgNVBAYTAlRFMREwDwYDVQQKDAhUZXN0b25pYTEWMBQG&#xD;
+            A1UEAwwNdG9vcC10ZXN0b25pYTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoC&#xD;
+            ggEBAMVugAWyHwArSv6hEeljGggByiAfOZLEYyhdNI+cBmp5H3RDci4LoBDMvDgI&#xD;
+            MhlQ84qeaDydhFr/9vZfcqEkeEd8/MAedX7X2OEsst5kTgRvWmbm1geAWzTeitam&#xD;
+            16gCgPrkDBCYx4yeEh5YppRTwQr8HkE7eP+q8jc+wYIBdPN1zSvstoYY01nO9Trq&#xD;
+            IvM1dju6GUFW7Q9wYbTzyOknTWbu2qpl9ypJPEn9dTY0u0tWuEsnae65+ZyYw7zg&#xD;
+            xsYanhuIuUSzPRPsigCZa3X1cYxmVGwLaZ8tlBBWuTAL9pg5hWRGqthUiCcOOKUu&#xD;
+            lmehjr/sk9AxTePftdfoRbcwF9UCAwEAAaOBnTCBmjAJBgNVHRMEAjAAMBEGCWCG&#xD;
+            SAGG+EIBAQQEAwIEMDAqBglghkgBhvhCAQ0EHRYbVE9PUCBQaWxvdCBUZXN0IENl&#xD;
+            cnRpZmljYXRlMA4GA1UdDwEB/wQEAwIF4DAdBgNVHQ4EFgQULTno2B+D9HPo3/9p&#xD;
+            Wwb96W/n+XswHwYDVR0jBBgwFoAUe6U4N8kNz4fMlzqi5z9njjK5qF4wDQYJKoZI&#xD;
+            hvcNAQELBQADggIBAAv6jv0fgaUR3T1b9DrHIiQikN44rjzrZ7Z4SNYq5e/Sq/JX&#xD;
+            YJ1Fjm/aKgEJmd8M8KGn2tZXznrKY+DPNw7n5dHcP7nYldjIC7DATi7kDzPj0h8O&#xD;
+            qHHARfRBfCw+FyaogT86otoogp84yrKXjKimhg9A1YDgbq411UtXfvG4vJY5h/7l&#xD;
+            Y5OE/Ikki5S4Unx5g3qNLTGfgnF82Dg14oVuGijdev0nmTfDu6UMQdCqQPTf0Pdt&#xD;
+            NEZSjSueXYv+c5BwIEb9zTKgyh8wZ3Y7B6Aka+rvubbX378X+n5PwXMc7wT8uCtd&#xD;
+            ki62ok0JaUNJd7x0eH5/wd8GHEZcW1tfijfLcuaJhMhEYs2S+FpleKjF3SS7CM5O&#xD;
+            TOgY03HiTdDNvUOEbY1+NVOFF7Ib1jy1M4TEwmFcRca5q/IfIKFr0SLgKiu0GqAk&#xD;
+            BVWuCbrTVU5bwRwXDJY6ijwqMfE5S2yLtP9G29J77+6a1cjwjbXvpnff33drELrv&#xD;
+            93lN7EYvZkT6RXaiOfjuAgnLHWXrQz8CSz9zQSe6eLeLF/0YwOnpr5fW//IQ/zqW&#xD;
+            lM5vo0eQ5QJTo0cYL9lqYoJJw3k9yoMCOeb+kFzI5uz4/RdEjevakIYdclREvqSX&#xD;
+            Ou+L3L+loqlUtZ0piJQp6bQYn/7J8oliw5IXvntc1ExO2a+2ecdPUVuxp5Pj&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+    <serviceinfo servicegroupid="iso6523-actorid-upis::9999:testonia-dev">
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p40::Response##urn:eu.toop.response.shipcertificate::1.40" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.twophasedrequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://cts.acc.exchange.toop.eu:7082/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEqTCCApGgAwIBAgICEAcwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xODEwMTUwODU5MTZaFw0yMDEw&#xD;
+            MTQwODU5MTZaMDgxCzAJBgNVBAYTAlRFMREwDwYDVQQKDAhUZXN0b25pYTEWMBQG&#xD;
+            A1UEAwwNdG9vcC10ZXN0b25pYTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoC&#xD;
+            ggEBAMVugAWyHwArSv6hEeljGggByiAfOZLEYyhdNI+cBmp5H3RDci4LoBDMvDgI&#xD;
+            MhlQ84qeaDydhFr/9vZfcqEkeEd8/MAedX7X2OEsst5kTgRvWmbm1geAWzTeitam&#xD;
+            16gCgPrkDBCYx4yeEh5YppRTwQr8HkE7eP+q8jc+wYIBdPN1zSvstoYY01nO9Trq&#xD;
+            IvM1dju6GUFW7Q9wYbTzyOknTWbu2qpl9ypJPEn9dTY0u0tWuEsnae65+ZyYw7zg&#xD;
+            xsYanhuIuUSzPRPsigCZa3X1cYxmVGwLaZ8tlBBWuTAL9pg5hWRGqthUiCcOOKUu&#xD;
+            lmehjr/sk9AxTePftdfoRbcwF9UCAwEAAaOBnTCBmjAJBgNVHRMEAjAAMBEGCWCG&#xD;
+            SAGG+EIBAQQEAwIEMDAqBglghkgBhvhCAQ0EHRYbVE9PUCBQaWxvdCBUZXN0IENl&#xD;
+            cnRpZmljYXRlMA4GA1UdDwEB/wQEAwIF4DAdBgNVHQ4EFgQULTno2B+D9HPo3/9p&#xD;
+            Wwb96W/n+XswHwYDVR0jBBgwFoAUe6U4N8kNz4fMlzqi5z9njjK5qF4wDQYJKoZI&#xD;
+            hvcNAQELBQADggIBAAv6jv0fgaUR3T1b9DrHIiQikN44rjzrZ7Z4SNYq5e/Sq/JX&#xD;
+            YJ1Fjm/aKgEJmd8M8KGn2tZXznrKY+DPNw7n5dHcP7nYldjIC7DATi7kDzPj0h8O&#xD;
+            qHHARfRBfCw+FyaogT86otoogp84yrKXjKimhg9A1YDgbq411UtXfvG4vJY5h/7l&#xD;
+            Y5OE/Ikki5S4Unx5g3qNLTGfgnF82Dg14oVuGijdev0nmTfDu6UMQdCqQPTf0Pdt&#xD;
+            NEZSjSueXYv+c5BwIEb9zTKgyh8wZ3Y7B6Aka+rvubbX378X+n5PwXMc7wT8uCtd&#xD;
+            ki62ok0JaUNJd7x0eH5/wd8GHEZcW1tfijfLcuaJhMhEYs2S+FpleKjF3SS7CM5O&#xD;
+            TOgY03HiTdDNvUOEbY1+NVOFF7Ib1jy1M4TEwmFcRca5q/IfIKFr0SLgKiu0GqAk&#xD;
+            BVWuCbrTVU5bwRwXDJY6ijwqMfE5S2yLtP9G29J77+6a1cjwjbXvpnff33drELrv&#xD;
+            93lN7EYvZkT6RXaiOfjuAgnLHWXrQz8CSz9zQSe6eLeLF/0YwOnpr5fW//IQ/zqW&#xD;
+            lM5vo0eQ5QJTo0cYL9lqYoJJw3k9yoMCOeb+kFzI5uz4/RdEjevakIYdclREvqSX&#xD;
+            Ou+L3L+loqlUtZ0piJQp6bQYn/7J8oliw5IXvntc1ExO2a+2ecdPUVuxp5Pj&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+  </servicegroup>
+
+
+  <servicegroup>
+    <participant scheme="iso6523-actorid-upis" value="1000:test" />
+    <serviceinfo>
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p10::Request##urn:eu.toop.request.registeredorganization::1.10" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.datarequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://gw-freedonia.acc.exchange.toop.eu/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>-----BEGIN CERTIFICATE-----&#xD;
+            MIIEwDCCAqigAwIBAgICEBIwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUx&#xD;
+            DTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElM&#xD;
+            T1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xOTA0MjQxODM1MDVaFw0yMTA0&#xD;
+            MjMxODM1MDVaME8xCzAJBgNVBAYTAkVVMQ0wCwYDVQQKDARUT09QMQ0wCwYDVQQL&#xD;
+            DARDQ1RGMSIwIAYDVQQDDBlnYXRld2F5LmZyZWVkb25pYS50b29wLmV1MIIBIjAN&#xD;
+            BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAz7uD1TrmwOdl+dJQ7nBjDWZtmu+u&#xD;
+            lG7vWEdP7jBCSDT0bV37hn8z45LIhUaLLvS5MHIyGxf7fvhXZOkPb8QXiU1C7Puo&#xD;
+            5P4i0YdMBS8IuTZmTPMTIO36+Ek5oYlgZ2ZB+LCOE0N1Pi0ko1ERM5mpkYA0+09F&#xD;
+            8HrE+lI6Ezob37A1n+kDpz5n/zsTs64vK+zKm/rjuB6Q6TUN3AhLr+3Me/j3o49K&#xD;
+            9NjMiUh2H6rWrSo9nLppXGMO1oMrqSv5SmkWdy1JYj0oBCjkXQSQWN0LnMcAUBrU&#xD;
+            r4xSXLOuXx6kY+24JbKGgDu6nFKbtPPZtA8/emb48FbJc0nf+PchonYitQIDAQAB&#xD;
+            o4GdMIGaMAkGA1UdEwQCMAAwEQYJYIZIAYb4QgEBBAQDAgQwMCoGCWCGSAGG+EIB&#xD;
+            DQQdFhtUT09QIFBpbG90IFRlc3QgQ2VydGlmaWNhdGUwDgYDVR0PAQH/BAQDAgXg&#xD;
+            MB0GA1UdDgQWBBRz4VScxtiXwurCYBlUc1yjCq8A4jAfBgNVHSMEGDAWgBQVzruh&#xD;
+            PMDANGRod8/RFMMvwVGnwTANBgkqhkiG9w0BAQsFAAOCAgEAvwN2MvamBWubmWg+&#xD;
+            RC7QeGcLbjeNXiaLX3/8abGJZyI6aqMfQANkACV6MNhoR9jPdrbgFys8qmZnA0La&#xD;
+            IyUiXuoN+anDyi+wF7zQiqB0Mnq/f51fl+qL8wq2T8Hzl5eHJ4IEzvxySEyrSl0s&#xD;
+            w+QiEbzbWLnFMh9lsxhZXxsEeyr+idGXSaQbF4dICsic1LKBxDASbxztdis8zuQs&#xD;
+            /YpiPQMMawFDkq1gYldcG3WUXmC8bPo7OpW9qRqlTYRPLkSud4qIYy4F+bSMWvqT&#xD;
+            PMs7TKftDHk+9e8awMf/CkwCsqLKyyhgws8EHKc1soq6Aw4lgvsJGe4nNkxzcUVc&#xD;
+            k4R4SpQYLpFkr0XDcK+0qHYgev0pJ3kzKe/m3O9S+57xd6CCSHEX2E7QrEm9XVYW&#xD;
+            Y4MBcQzDKR1P999lwwKGFu7sSswSW6yjXkllJcyU3o5ghDDZhM3IoMeug7keWP3f&#xD;
+            31rTkHKElGNaVn+Ibhk0QO4QNtxnSuOtNkXc7AwTT5E9AsjcVUlupqUhySkBA51a&#xD;
+            TyNVTn5inHxPdPqT4ZzkB2wNcWcY+jZoJDxuQdefWqN4uFWlmI38DNpgM6pfNlI5&#xD;
+            GoSQd1RNOgBeVLbtCWTTPZrvLx8EZzMCcsAMehYOsW9y8o+kucS1ssJ+Lhw6argf&#xD;
+            XInjAqMNHgrWIaRW4BlwegMAEao=&#xD;
+            -----END CERTIFICATE-----</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+    <serviceinfo>
+      <doctypeidentifier scheme="toop-doctypeid-qns" value="urn:eu:toop:ns:dataexchange-1p10::Response##urn:eu.toop.response.registeredorganization::1.10" />
+      <process>
+        <processidentifier scheme="toop-procid-agreement" value="urn:eu.toop.process.datarequestresponse" />
+        <endpoint transportprofile="bdxr-transport-ebms3-as4-v1p0" endpointref="http://gw-freedonia.acc.exchange.toop.eu/holodeckb2b/as4" reqblsig="false" techcontacturl="philip@helger.com">
+          <certificate>file:./blue.pem</certificate>
+          <svcdescription>Test AP</svcdescription>
+        </endpoint>
+      </process>
+    </serviceinfo>
+  </servicegroup>
+
+</smp-data>

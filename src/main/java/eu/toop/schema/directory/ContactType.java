@@ -1,5 +1,5 @@
 
-package eu.toop.directory.schema;
+package eu.toop.schema.directory;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

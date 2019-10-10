@@ -15,34 +15,24 @@
  */
 package eu.toop.simulator;
 
-import com.helger.peppolid.IParticipantIdentifier;
-import com.helger.peppolid.simple.participant.SimpleParticipantIdentifier;
 import com.helger.photon.jetty.JettyStarter;
-import com.typesafe.config.Config;
 import com.typesafe.config.impl.ConfigImpl;
 import eu.toop.commons.util.CliCommand;
 import eu.toop.connector.api.TCConfig;
-import eu.toop.connector.api.r2d2.R2D2Endpoint;
-import eu.toop.connector.api.r2d2.R2D2EndpointProviderConstant;
-import eu.toop.connector.api.r2d2.R2D2ParticipantIDProviderConstant;
 import eu.toop.connector.app.mp.MPConfig;
 import eu.toop.simulator.mock.MultiNsSMMConceptProvider;
+import eu.toop.simulator.mock.XMLBasedEPProvider;
 import eu.toop.simulator.mock.XMLBasedParticipantIDProvider;
-import eu.toop.simulator.util.ConfigUtil;
 import org.eclipse.jetty.server.Server;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nonnull;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.security.cert.CertificateException;
-import java.security.cert.CertificateFactory;
-import java.security.cert.X509Certificate;
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * The program entry point
@@ -54,11 +44,6 @@ public class ToopSimulatorMain {
    * The Logger instance
    */
   private static final Logger LOGGER = LoggerFactory.getLogger(ToopSimulatorMain.class);
-
-
-  private static ArrayList<IParticipantIdentifier> participantsList;
-  private static ArrayList<R2D2Endpoint> r2D2Endpoints;
-
 
   /**
    * Arguments:
@@ -210,127 +195,9 @@ public class ToopSimulatorMain {
    *
    * @throws Exception
    */
-  private static void prepareSimulator() throws Exception {
-
-    prepareSimulatorData();
-
-    prepareDirectorySimulator();
-
-    prepareSMPSimulator();
-
-    prepareSMSSimulator();
-  }
-
-  private static void prepareSMSSimulator() {
-    LOGGER.debug("Preparing SMS Simulator");
-
-    Config config = ConfigUtil.resolveConfiguration("sms");
-
-    List<Map<String, Object>> mappings = (List<Map<String, Object>>) config.getAnyRef("Mappings");
-
-    //iterate over every mapping, create an inverse of it as well, and add both to the MultiNSSmm...
-    //this can be simplified by helper objects
-
-    Map<String, Map<String, Map<String, String>>> mapOpMapsOfMaps = new HashMap<>();
-
-    for (Map<String, Object> mapping : mappings) {
-
-      Map<String, String> conceptMap = new HashMap<>();
-      Map<String, String> inverseConceptMap = new HashMap<>();
-
-      String sourceNS = (String) mapping.get("sourceNS");
-      String targetNS = (String) mapping.get("targetNS");
-      Map<String, String> concepts = (Map<String, String>) mapping.get("concepts");
-
-      for (String key : concepts.keySet()) {
-        String value = concepts.get(key);
-        conceptMap.put(key, value);
-        inverseConceptMap.put(value, key);
-      }
-
-      //forward mapping
-      populateMapping(mapOpMapsOfMaps, conceptMap, sourceNS, targetNS);
-
-      //backwards mappind
-      populateMapping(mapOpMapsOfMaps, inverseConceptMap, targetNS, sourceNS);
-    }
-
-    MPConfig.setSMMConceptProvider(new MultiNsSMMConceptProvider(mapOpMapsOfMaps));
-  }
-
-  private static void populateMapping(Map<String, Map<String, Map<String, String>>> conversionMap,
-                                      Map<String, String> conceptMap, String sourceNS, String targetNS) {
-    Map<String, Map<String, String>> nsMap;
-    if (conversionMap.containsKey(sourceNS)) {
-      nsMap = conversionMap.get(sourceNS);
-    } else {
-      nsMap = new HashMap<>();
-      conversionMap.put(sourceNS, nsMap);
-    }
-
-    if (nsMap.containsKey(targetNS)) {
-      throw new IllegalStateException(sourceNS + "->" + targetNS + " mapping already defined");
-    }
-
-    nsMap.put(targetNS, conceptMap);
-  }
-
-  private static void prepareSMPSimulator() {
-    R2D2EndpointProviderConstant mockEndpointProvider = new R2D2EndpointProviderConstant(r2D2Endpoints);
-    MPConfig.setEndpointProvider(mockEndpointProvider);
-  }
-
-  private static void prepareDirectorySimulator() {
+  private static void prepareSimulator() {
     MPConfig.setParticipantIDProvider(new XMLBasedParticipantIDProvider());
+    MPConfig.setEndpointProvider(new XMLBasedEPProvider());
+    MPConfig.setSMMConceptProvider(new MultiNsSMMConceptProvider());
   }
-
-  private static void prepareSimulatorData(){
-    //read the participantsList of available participant IDs from the conf file
-
-    String pathname = "smp";
-    Config config = ConfigUtil.resolveConfiguration(pathname);
-
-    List<Map<String, String>> mappings = (List<Map<String, String>>) config.getAnyRef("smp");
-    //fill the identifiers to an arraylist.
-
-    if (mappings == null || mappings.isEmpty()) {
-      throw new IllegalStateException("Couldn't load directory mapping. " +
-          "Please make sure that there is at least one record in the directory.conf file or resource");
-    }
-
-    CertificateFactory certificateFactory;
-    try {
-      certificateFactory = CertificateFactory.getInstance("X509");
-    } catch (CertificateException e) {
-      throw new IllegalStateException("Couldn't obtain the X509 cert factory. Please check your java.security settings.");
-    }
-
-
-
-    participantsList = new ArrayList<>(mappings.size());
-    r2D2Endpoints = new ArrayList<>(mappings.size());
-
-
-    mappings.forEach(map -> {
-      if (!map.containsKey("scheme") || !map.containsKey("value")) {
-        throw new IllegalArgumentException("Invalid participant identifier data. " +
-            "The map does not at least on of the keys scheme, value, protocol, host and cert");
-      }
-
-      X509Certificate x509;
-      try {
-        x509 = (X509Certificate) certificateFactory.generateCertificate(new ByteArrayInputStream(map.get("certificate").getBytes()));
-      } catch (CertificateException e) {
-        throw new IllegalStateException("Couldn't create a certificate from the \"identifier \"scheme:" + map.get("scheme") + "\" value=\"" + map.get("value") + "\"\n" + e.getMessage(), e);
-      }
-
-      SimpleParticipantIdentifier simpleParticipantIdentifier = new SimpleParticipantIdentifier(map.get("scheme"), map.get("value"));
-      participantsList.add(simpleParticipantIdentifier);
-      R2D2Endpoint r2D2Endpoint = new R2D2Endpoint(simpleParticipantIdentifier, map.get("transportProtocol"),
-          map.get("endpointURL"), x509);
-      r2D2Endpoints.add(r2D2Endpoint);
-
-    });
-  }
-
 }
