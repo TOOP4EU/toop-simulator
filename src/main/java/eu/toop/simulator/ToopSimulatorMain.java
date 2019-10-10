@@ -19,16 +19,16 @@ import com.helger.peppolid.IParticipantIdentifier;
 import com.helger.peppolid.simple.participant.SimpleParticipantIdentifier;
 import com.helger.photon.jetty.JettyStarter;
 import com.typesafe.config.Config;
-import com.typesafe.config.ConfigFactory;
 import com.typesafe.config.impl.ConfigImpl;
 import eu.toop.commons.util.CliCommand;
 import eu.toop.connector.api.TCConfig;
-import eu.toop.connector.api.r2d2.IR2D2Endpoint;
 import eu.toop.connector.api.r2d2.R2D2Endpoint;
 import eu.toop.connector.api.r2d2.R2D2EndpointProviderConstant;
 import eu.toop.connector.api.r2d2.R2D2ParticipantIDProviderConstant;
 import eu.toop.connector.app.mp.MPConfig;
 import eu.toop.simulator.mock.MultiNsSMMConceptProvider;
+import eu.toop.simulator.mock.XMLBasedParticipantIDProvider;
+import eu.toop.simulator.util.ConfigUtil;
 import org.eclipse.jetty.server.Server;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,7 +36,6 @@ import org.slf4j.LoggerFactory;
 import javax.annotation.Nonnull;
 import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -225,7 +224,7 @@ public class ToopSimulatorMain {
   private static void prepareSMSSimulator() {
     LOGGER.debug("Preparing SMS Simulator");
 
-    Config config = resolveConfiguration("sms");
+    Config config = ConfigUtil.resolveConfiguration("sms");
 
     List<Map<String, Object>> mappings = (List<Map<String, Object>>) config.getAnyRef("Mappings");
 
@@ -276,40 +275,22 @@ public class ToopSimulatorMain {
     nsMap.put(targetNS, conceptMap);
   }
 
-  private static void prepareSMPSimulator() throws CertificateException {
-
-    //SimpleParticipantIdentifier dummyParticipantIdentifier = new SimpleParticipantIdentifier("dummyscheme", "dummyvalue") {
-    //  @Override
-    //  public String toString() {
-    //    return "Dummy participant identifier: " + this.getScheme() + ":" + this.getValue();
-    //  }
-    //};
-//
-    //InputStream crtStream = ToopSimulatorMain.class.getResourceAsStream("/blue.der");//System.getenv("CERT"));
-    //X509Certificate x509 = (X509Certificate) CertificateFactory.getInstance("X509").generateCertificate(crtStream);
-    //R2D2Endpoint dummyR2D2Endpoint = new R2D2Endpoint(dummyParticipantIdentifier, "http", "localhost", x509) { //System.getenv("MSH_URL"), x509) {
-    //  @Override
-    //  public String toString() {
-    //    return "Dummy R2D2Endpoint: " + this.getEndpointURL();
-    //  }
-    //};
-
+  private static void prepareSMPSimulator() {
     R2D2EndpointProviderConstant mockEndpointProvider = new R2D2EndpointProviderConstant(r2D2Endpoints);
     MPConfig.setEndpointProvider(mockEndpointProvider);
   }
 
   private static void prepareDirectorySimulator() {
-    R2D2ParticipantIDProviderConstant constantIDProvider = new R2D2ParticipantIDProviderConstant(participantsList);
-    MPConfig.setParticipantIDProvider(constantIDProvider);
+    MPConfig.setParticipantIDProvider(new XMLBasedParticipantIDProvider());
   }
 
   private static void prepareSimulatorData(){
     //read the participantsList of available participant IDs from the conf file
 
-    String pathname = "discovery";
-    Config config = resolveConfiguration(pathname);
+    String pathname = "smp";
+    Config config = ConfigUtil.resolveConfiguration(pathname);
 
-    List<Map<String, String>> mappings = (List<Map<String, String>>) config.getAnyRef("discovery");
+    List<Map<String, String>> mappings = (List<Map<String, String>>) config.getAnyRef("smp");
     //fill the identifiers to an arraylist.
 
     if (mappings == null || mappings.isEmpty()) {
@@ -352,28 +333,4 @@ public class ToopSimulatorMain {
     });
   }
 
-  /**
-   * Try to read the given path name (possibly adding the extension <code>.conf</code> as a file or a resource.
-   * <br><br>
-   * <p>
-   * First try a file with name <code>pathname + ".conf"</code> and then
-   * if it doesn't exist, try the resource <code>pathname + ".conf"</code>. If the resource also does not exist,
-   * then throw an Exception
-   * </p>
-   *
-   * @param pathname the name of the config file to be parsed
-   * @return the parsed Config object
-   */
-  private static Config resolveConfiguration(String pathname) {
-    Config config;
-    File file = new File(pathname + ".conf");
-    if (file.exists()) {
-      LOGGER.info("Loading config from the file \"" + file.getName() + "\"");
-      config = ConfigFactory.parseFile(file).resolve();
-    } else {
-      LOGGER.info("Loading config from the resource \"" + pathname + ".conf\"");
-      config = ConfigFactory.load(pathname).resolve();
-    }
-    return config;
-  }
 }
