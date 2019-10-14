@@ -20,9 +20,8 @@ import com.typesafe.config.impl.ConfigImpl;
 import eu.toop.commons.util.CliCommand;
 import eu.toop.connector.api.TCConfig;
 import eu.toop.connector.app.mp.MPConfig;
+import eu.toop.simulator.mock.DiscoveryProvider;
 import eu.toop.simulator.mock.MultiNsSMMConceptProvider;
-import eu.toop.simulator.mock.XMLBasedEPProvider;
-import eu.toop.simulator.mock.XMLBasedParticipantIDProvider;
 import org.eclipse.jetty.server.Server;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -196,8 +195,8 @@ public class ToopSimulatorMain {
    * @throws Exception
    */
   private static void prepareSimulator() {
-    MPConfig.setParticipantIDProvider(new XMLBasedParticipantIDProvider());
-    MPConfig.setEndpointProvider(new XMLBasedEPProvider());
+    MPConfig.setParticipantIDProvider(DiscoveryProvider.getInstance());
+    MPConfig.setEndpointProvider(DiscoveryProvider.getInstance());
     MPConfig.setSMMConceptProvider(new MultiNsSMMConceptProvider());
   }
 }

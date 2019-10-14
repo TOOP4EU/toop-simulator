@@ -1,8 +1,5 @@
 package eu.toop.simulator.util;
 
-import eu.toop.schema.directory.ObjectFactory;
-import eu.toop.schema.directory.RootType;
-import eu.toop.simulator.ToopSimulatorMain;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
