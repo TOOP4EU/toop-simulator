@@ -39,6 +39,37 @@ import java.util.Arrays;
  * @author muhammet yildiz
  */
 public class ToopSimulatorMain {
+
+  /**
+   * An enum that represents the working modes of the simulator
+   */
+  private enum SimMode{
+    /**
+     * In this mode the simulator does not contain commander and
+     * this does not expose a DC or a DP endpoint, it solely simulates
+     * the toop infrastructure
+     */
+    SOLE,
+
+    /**
+     * In this mode the simualtor works with an embedded toop-commander that
+     * provides a CLI and a /to-dc endpoint where interaction of the simulator and
+     * the DC takes place within the application. In this mode no DP (i.e. no /to-dp)
+     * endpoint is provided, thus one should also provide -dpURL with an external URL when
+     * of a <code>/to-dp</code> when this mode is set
+     */
+    DC,
+
+    /**
+     * In this mode the simualtor works with an embedded toop-commander that
+     * provides a /to-d- endpoint where interaction of the simulator and
+     * the DP takes place within the application. In this mode no DC (i.e. no /to-dc)
+     * endpoint and no CLI is provided, thus one should also provide -dcURL with an external URL when
+     * this mode is set
+     */
+    DP
+  }
+
   /**
    * The Logger instance
    */
@@ -46,13 +77,17 @@ public class ToopSimulatorMain {
 
   /**
    * Arguments:
-   * No args: If no arguments are provided, the sim works in a sole mode (i.e. no dc and do dp, only toop connector) <br/>
-   * [-mode 0/1/2]: The Working Mode. If 0: Sole, 1: DC, 2: DP. Default: SOLE
-   * [-dcPort PORT]: Toop commander DC Port (DC simulated, dcURL ignored) - default: 25800 <br/>
-   * [-dcURL "URL"]: Only used when -dcPort not provided, ie. don't simulate DC and expect an external URL (another DC) <br/>
-   * [-dpPort PORT]: Toop commander DC Port (DC simulated, dcURL ignored) - default: 25802 <br/>
-   * [-dpURL "URL"]: Only used when -dcPort not provided, ie. don't simulate DC and expect an external URL (another DC) <br/>
-   * [-simPort PORT]: Optional port for the simulator (i.e. the connector port for both DC and DP) default: 25801 <br/>
+   * <ol>
+   *   <li><b>No args: </b>All arguments are optional. If no argument is provided, the simulator works in SOLE mode (i.e. no dc and do dp, only toop connector)</li>
+   *   <li><b>[-mode SOLE/DC/DP]: </b>The Working Mode. Default: SOLE</li>
+   *   <li><b>[-dcPort PORT]: </b>Toop commander DC Port (DC simulated, dcURL ignored) - default: 25800</li>
+   *   <li><b>[-dcURL "URL"]: </b>Only used when -dcPort not provided, ie. don't simulate DC and expect an external URL (another DC)</li>
+   *   <li><b>[-dpPort PORT]: </b>Toop commander DC Port (DC simulated, dcURL ignored) - default: 25802</li>
+   *   <li><b>[-dpURL "URL"]: </b>Only used when -dcPort not provided, ie. don't simulate DC and expect an external URL (another DC)</li>
+   *   <li><b>[-simPort PORT]: </b>Optional port for the simulator (i.e. the connector port for both DC and DP) default: 25801</li>
+   *   <li><b>[-commanderJarBundle "TOOP_COMMANDER_JAR_PATH"]: </b> The relative/full path of the toop-commander jar bundle. Required in DC/DP mode</li>
+   * </ol>
+   *  <br/>
    */
   public static void main(String[] args) throws Exception {
 
@@ -63,14 +98,12 @@ public class ToopSimulatorMain {
     int simPort = 25801;
     String dcURL = "http://localhost:" + dcPort + "/to-dc";
     String dpURL = "http://localhost:" + dpPort + "/to-dp";
-    int mode = 0; //sole
+    SimMode mode = SimMode.SOLE;
 
-    final int SOLE = 0;
-    final int DC = 1;
-    final int DP = 2;
+    boolean dcPortSet = false;
+    boolean dpPortSet = false;
 
-    boolean dcURLUserSet = false;
-    boolean dpURLUserSet = false;
+    String commanderJarBundle = null;
 
     if (args.length > 0) {
       CliCommand command = CliCommand.parse(Arrays.asList(args), false);
@@ -81,34 +114,47 @@ public class ToopSimulatorMain {
 
       if (command.hasOption("dcPort")) {
         dcPort = Integer.parseInt(command.getArguments("dcPort").get(0));
+        dcPortSet = true;
       }
 
       if (command.hasOption("dpPort")) {
         dpPort = Integer.parseInt(command.getArguments("dpPort").get(0));
+        dpPortSet = true;
       }
 
       if (command.hasOption("dcURL")) {
         dcURL = command.getArguments("dcURL").get(0);
-        dcURLUserSet = true;
       }
 
       if (command.hasOption("dpURL")) {
         dpURL = command.getArguments("dpURL").get(0);
-        dpURLUserSet = true;
       }
 
       if (command.hasOption("mode")) {
-        mode = Integer.parseInt(command.getArguments("mode").get(0));
+        mode = SimMode.valueOf(command.getArguments("mode").get(0));
+      }
+
+      if(command.hasOption("commanderJarBundle")){
+        commanderJarBundle = command.getArguments("commanderJarBundle").get(0);
       }
     }
 
     //check if Toop commander is on classpath (if we are not in SOLE mode)
     Class<?> toopCommanderMainClass = null;
-    if (mode != SOLE) {
+    if (mode != SimMode.SOLE) {
+
+      //check if commanderJarBundle is set
+      if(commanderJarBundle == null){
+        LOGGER.error("You are in " + mode + ". You have to set the toop commander jar bundle name ");
+        LOGGER.error("\twith key commanderJarBundle. e.g. -commanderJarBundle \"./toop-commander-0.10.6.jar\" ");
+        return;
+      }
+      //its not SOLE mode. We need the Toop Commander Class. If Its not on the
+      //classpath then we cannot contiune
       try {
         toopCommanderMainClass = Class.forName("eu.toop.commander.ToopCommanderMain", true,
             new URLClassLoader(
-                new URL[]{new File("./toop-commander-0.10.6-SNAPSHOT.jar").toURI().toURL()}
+                new URL[]{new File(commanderJarBundle).toURI().toURL()}
             ));
       } catch (Exception ex) {
         LOGGER.error("Toop Commander doesn't exist on classpath. ");
@@ -116,10 +162,10 @@ public class ToopSimulatorMain {
       }
     }
 
-    if (!dcURLUserSet)
+    if (dcPortSet)
       dcURL = "http://localhost:" + dcPort + "/to-dc";
 
-    if (!dpURLUserSet)
+    if (dpPortSet)
       dpURL = "http://localhost:" + dpPort + "/to-dp";
 
 
@@ -135,16 +181,16 @@ public class ToopSimulatorMain {
       serverLock.wait();
     }
 
-    if (mode != SOLE) {
+    if (mode != SimMode.SOLE) {
       //enter the commander mode
-      if (mode == DP)
+      if (mode == SimMode.DP)
         System.setProperty("CLI_ENABLED", "false");
 
 
       System.setProperty("DC_PORT", dcPort + "");
-      System.setProperty("DC_ENABLED", mode == DC ? "true" : "false");
+      System.setProperty("DC_ENABLED", mode == SimMode.DC ? "true" : "false");
       System.setProperty("DP_PORT", dpPort + "");
-      System.setProperty("DP_ENABLED", mode == DP ? "true" : "false");
+      System.setProperty("DP_ENABLED", mode == SimMode.DP ? "true" : "false");
       System.setProperty("FROM_DC_HOST", "localhost");
       System.setProperty("FROM_DC_PORT", simPort + "");
       System.setProperty("FROM_DP_HOST", "localhost");
