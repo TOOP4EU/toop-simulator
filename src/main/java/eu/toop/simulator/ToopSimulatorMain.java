@@ -83,8 +83,8 @@ public class ToopSimulatorMain {
    *   <li><b>[-mode SOLE/DC/DP]: </b>The Working Mode. Default: SOLE</li>
    *   <li><b>[-dcPort PORT]: </b>Toop commander DC Port (DC simulated, dcURL ignored) - default: 25800</li>
    *   <li><b>[-dcURL "URL"]: </b>Only used when -dcPort not provided, ie. don't simulate DC and expect an external URL (another DC)</li>
-   *   <li><b>[-dpPort PORT]: </b>Toop commander DC Port (DC simulated, dcURL ignored) - default: 25802</li>
-   *   <li><b>[-dpURL "URL"]: </b>Only used when -dcPort not provided, ie. don't simulate DC and expect an external URL (another DC)</li>
+   *   <li><b>[-dpPort PORT]: </b>Toop commander DP Port (DP simulated, dpURL ignored) - default: 25802</li>
+   *   <li><b>[-dpURL "URL"]: </b>Only used when -dpPort not provided, ie. don't simulate DP and expect an external URL (another DP)</li>
    *   <li><b>[-simPort PORT]: </b>Optional port for the simulator (i.e. the connector port for both DC and DP) default: 25801</li>
    * </ol>
    *  <br/>
