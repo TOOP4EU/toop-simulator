@@ -1,3 +1,9 @@
 #!/bin/bash
 
-java -cp toop-simulator-0.10.6-SNAPSHOT.jar eu.toop.simulator.ToopSimulatorMain -mode 1 -dcURL "http://localhost:45899/to-dp" -simPort 50000
+toopVersion=0.10.6-SNAPSHOT
+
+java -jar toop-simulator-${toopVersion}.jar \
+     -mode DC \
+     -dcURL "http://localhost:8082/to-dp" \
+     -commanderJarBundle toop-commander-${toopVersion}.jar \
+     -simPort 50000

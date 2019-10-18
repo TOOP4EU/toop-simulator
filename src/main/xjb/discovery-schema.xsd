@@ -1,0 +1,29 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://eu/toop/simulator/schema/discovery"
+           xmlns:smp="http://docs.oasis-open.org/bdxr/ns/SMP/2016/05" elementFormDefault="qualified"
+           targetNamespace="http://eu/toop/simulator/schema/discovery">
+  <xs:import namespace="http://docs.oasis-open.org/bdxr/ns/SMP/2016/05"
+             schemaLocation="http://docs.oasis-open.org/bdxr/bdx-smp/v1.0/os/schemas/bdx-smp-201605.xsd"/>
+
+  <xs:element name="ServiceMetadataList" type="ServiceMatadataListType"/>
+
+
+  <xs:complexType name="ServiceMatadataListType">
+    <xs:sequence>
+      <xs:element name="CountryAwareServiceMetadata" type="CountryAwareServiceMetadataType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CountryAwareServiceMetadataType">
+    <xs:sequence>
+      <xs:element name="ServiceMetadata" type="smp:ServiceMetadataType"/>
+    </xs:sequence>
+    <xs:attribute name="countryCode" type="CountryCodeType"/>
+  </xs:complexType>
+
+  <xs:simpleType name="CountryCodeType">
+    <xs:restriction base="xs:string">
+      <xs:length value="2"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

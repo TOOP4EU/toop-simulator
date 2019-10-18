@@ -3,7 +3,7 @@
 toopVersion=0.10.6-SNAPSHOT
 
 java -jar toop-simulator-${toopVersion}.jar \
-     -mode DP \
+     -mode SOLE \
      -dcURL "http://localhost:8081/to-dc" \
-     -commanderJarBundle toop-commander-${toopVersion}.jar \
+     -dpURL "http://localhost:8082/to-dc" \
      -simPort 50000
