@@ -17,9 +17,9 @@ package eu.toop.simulator.mock;
 
 import com.helger.commons.string.ToStringGenerator;
 import com.typesafe.config.Config;
+import eu.toop.commander.util.CommanderUtil;
 import eu.toop.connector.api.smm.ISMMConceptProvider;
 import eu.toop.connector.api.smm.MappedValueList;
-import eu.toop.simulator.util.ConfigUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,7 +58,7 @@ public class MultiNsSMMConceptProvider implements ISMMConceptProvider {
   private static Map<String, Map<String, Map<String, String>>> initializeSemanticMap() {
     LOGGER.debug("Preparing SMS Simulator");
 
-    Config config = ConfigUtil.resolveConfiguration("sms");
+    Config config = CommanderUtil.resolveConfiguration("sms");
 
     List<Map<String, Object>> mappings = (List<Map<String, Object>>) config.getAnyRef("Mappings");
 

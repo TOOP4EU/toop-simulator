@@ -15,10 +15,12 @@
  */
 package eu.toop.simulator;
 
+import com.helger.commons.ValueEnforcer;
+import com.helger.commons.io.stream.StreamHelper;
 import com.helger.photon.jetty.JettyStarter;
 import com.typesafe.config.impl.ConfigImpl;
 import eu.toop.commander.ToopCommanderMain;
-import eu.toop.commons.util.CliCommand;
+import eu.toop.commander.util.CommanderUtil;
 import eu.toop.connector.api.TCConfig;
 import eu.toop.connector.app.mp.MPConfig;
 import eu.toop.simulator.mock.DiscoveryProvider;
@@ -29,10 +31,8 @@ import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nonnull;
 import java.io.File;
-import java.lang.reflect.Method;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.util.Arrays;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 
 /**
  * The program entry point
@@ -42,135 +42,54 @@ import java.util.Arrays;
 public class ToopSimulatorMain {
 
   /**
-   * An enum that represents the working modes of the simulator
-   */
-  private enum SimMode{
-    /**
-     * In this mode the simulator does not contain commander and
-     * this does not expose a DC or a DP endpoint, it solely simulates
-     * the toop infrastructure
-     */
-    SOLE,
-
-    /**
-     * In this mode the simualtor works with an embedded toop-commander that
-     * provides a CLI and a /to-dc endpoint where interaction of the simulator and
-     * the DC takes place within the application. In this mode no DP (i.e. no /to-dp)
-     * endpoint is provided, thus one should also provide -dpURL with an external URL when
-     * of a <code>/to-dp</code> when this mode is set
-     */
-    DC,
-
-    /**
-     * In this mode the simualtor works with an embedded toop-commander that
-     * provides a /to-d- endpoint where interaction of the simulator and
-     * the DP takes place within the application. In this mode no DC (i.e. no /to-dc)
-     * endpoint and no CLI is provided, thus one should also provide -dcURL with an external URL when
-     * this mode is set
-     */
-    DP
-  }
-
-  /**
    * The Logger instance
    */
   private static final Logger LOGGER = LoggerFactory.getLogger(ToopSimulatorMain.class);
 
   /**
-   * Arguments:
-   * <ol>
-   *   <li><b>No args: </b>All arguments are optional. If no argument is provided, the simulator works in SOLE mode (i.e. no dc and do dp, only toop connector)</li>
-   *   <li><b>[-mode SOLE/DC/DP]: </b>The Working Mode. Default: SOLE</li>
-   *   <li><b>[-dcPort PORT]: </b>Toop commander DC Port (DC simulated, dcURL ignored) - default: 25800</li>
-   *   <li><b>[-dcURL "URL"]: </b>Only used when -dcPort not provided, ie. don't simulate DC and expect an external URL (another DC)</li>
-   *   <li><b>[-dpPort PORT]: </b>Toop commander DP Port (DP simulated, dpURL ignored) - default: 25802</li>
-   *   <li><b>[-dpURL "URL"]: </b>Only used when -dpPort not provided, ie. don't simulate DP and expect an external URL (another DP)</li>
-   *   <li><b>[-simPort PORT]: </b>Optional port for the simulator (i.e. the connector port for both DC and DP) default: 25801</li>
-   * </ol>
-   *  <br/>
+   * program entry point
    */
   public static void main(String[] args) throws Exception {
 
+    copyConfigAndDataFiles();
     prepareSimulator();
 
-    int dcPort = 25800;
-    int dpPort = 25802;
-    int simPort = 25801;
-    String dcURL = "http://localhost:" + dcPort + "/to-dc";
-    String dpURL = "http://localhost:" + dpPort + "/to-dp";
-    SimMode mode = SimMode.SOLE;
 
-    boolean dcPortSet = false;
-    boolean dpPortSet = false;
-
-    if (args.length > 0) {
-      CliCommand command = CliCommand.parse(Arrays.asList(args), false);
-
-      if (command.hasOption("simPort")) {
-        simPort = Integer.parseInt(command.getArguments("simPort").get(0));
-      }
-
-      if (command.hasOption("dcPort")) {
-        dcPort = Integer.parseInt(command.getArguments("dcPort").get(0));
-        dcPortSet = true;
-      }
-
-      if (command.hasOption("dpPort")) {
-        dpPort = Integer.parseInt(command.getArguments("dpPort").get(0));
-        dpPortSet = true;
-      }
-
-      if (command.hasOption("dcURL")) {
-        dcURL = command.getArguments("dcURL").get(0);
-      }
-
-      if (command.hasOption("dpURL")) {
-        dpURL = command.getArguments("dpURL").get(0);
-      }
-
-      if (command.hasOption("mode")) {
-        mode = SimMode.valueOf(command.getArguments("mode").get(0));
-      }
-    }
-
-    if (dcPortSet)
-      dcURL = "http://localhost:" + dcPort + "/to-dc";
-
-    if (dpPortSet)
-      dpURL = "http://localhost:" + dpPort + "/to-dp";
+    final SimulationMode simulationMode = SimulatorConfig.mode;
 
 
-    TCConfig.setMPToopInterfaceDCOverrideUrl(dcURL);
-    TCConfig.setMPToopInterfaceDPOverrideUrl(dpURL);
+    //Start the simulator in a new thread, and get its thread so that we can wait on it.
+    Thread simulatorThread = startSimulator(simulationMode);
 
-    final Object serverLock = new Object();
+    //now prepare and run commander if we are not in SOLE mode
+    if (simulationMode != SimulationMode.SOLE) {
 
-    Thread simulatorThread = runJetty(serverLock, simPort);
-
-    synchronized (serverLock) {
-      //wait for the server to come up
-      serverLock.wait();
-    }
-
-    if (mode != SimMode.SOLE) {
-      //enter the commander mode
-      if (mode == SimMode.DP)
+      //if we are not dc, then no CLI
+      if (simulationMode != SimulationMode.DC)
         System.setProperty("CLI_ENABLED", "false");
 
+      //only one mode (DC or DP) at a time should be available on the commander
+      System.setProperty("DC_ENABLED", simulationMode == SimulationMode.DC ? "true" : "false");
+      System.setProperty("DP_ENABLED", simulationMode == SimulationMode.DP ? "true" : "false");
 
-      System.setProperty("DC_PORT", dcPort + "");
-      System.setProperty("DC_ENABLED", mode == SimMode.DC ? "true" : "false");
-      System.setProperty("DP_PORT", dpPort + "");
-      System.setProperty("DP_ENABLED", mode == SimMode.DP ? "true" : "false");
+      //set up the /to-dc and /to-dp ports on the commander.
+      System.setProperty("DC_PORT", SimulatorConfig.dcPort + "");
+      System.setProperty("DP_PORT", SimulatorConfig.dpPort + "");
+
+      //we need to make sure that commander knows our /from-dc and /from-dp endpoints,
+      //both of the endpoints (/from-dc and /from-dp) on the commander will point to the
+      //simulator. We don't have to worry about that because, the commander is here to communicate
+      //with our simulator. And only once side at a time (DC or DP) will be enabled,
+      //the other side, even if configured, will be ignored (disabled)
       System.setProperty("FROM_DC_HOST", "localhost");
-      System.setProperty("FROM_DC_PORT", simPort + "");
+      System.setProperty("FROM_DC_PORT", SimulatorConfig.connectorPort + "");
       System.setProperty("FROM_DP_HOST", "localhost");
-      System.setProperty("FROM_DP_PORT", simPort + "");
+      System.setProperty("FROM_DP_PORT", SimulatorConfig.connectorPort + "");
 
       ConfigImpl.reloadSystemPropertiesConfig();
 
-      //Run toop commander
-      ToopCommanderMain.main(args);
+      //Tip, top. Run the toop commander
+      ToopCommanderMain.startCommander();
     }
 
 
@@ -178,6 +97,53 @@ public class ToopSimulatorMain {
     simulatorThread.join();
   }
 
+  private static Thread startSimulator(SimulationMode simulationMode) throws InterruptedException {
+    String dcURL;
+    String dpURL;
+
+    if (simulationMode == SimulationMode.DC) {
+      //we are simulating dc, so ignore the config URL and create one on localhost
+      dcURL = "http://localhost:" + SimulatorConfig.dcPort + "/to-dc";
+    } else {
+      //we are not simulating dc, it means we need an actual dc endpoint. get it from config
+      dcURL = SimulatorConfig.dcURL;
+    }
+
+    if (simulationMode == SimulationMode.DP) {
+      //we are simulating dp, so ignore the config URL and create one on localhost
+      dpURL = "http://localhost:" + SimulatorConfig.dpPort + "/to-dp";
+    } else {
+      //we are not simulating dp, it means we need an actual dp endpoint. get it from config
+      dpURL = SimulatorConfig.dcURL;
+    }
+
+    TCConfig.setMPToopInterfaceDCOverrideUrl(dcURL);
+    TCConfig.setMPToopInterfaceDPOverrideUrl(dpURL);
+
+    final Object serverLock = new Object();
+
+    //start jetty
+    Thread simulatorThread = runJetty(serverLock, SimulatorConfig.connectorPort);
+
+    synchronized (serverLock) {
+      //wait for the server to come up
+      serverLock.wait();
+    }
+
+    return simulatorThread;
+  }
+
+  /**
+   * Copy the toop-simulator.conf, sms.conf and discovery-data.xml from classpath
+   * to the current directory, so that the user can edit them without
+   * dealing with the jar file. <br/>
+   * Don't touch if they exist
+   */
+  private static void copyConfigAndDataFiles() {
+    CommanderUtil.transferResourceToCurrentDirectory("/sms.conf");
+    CommanderUtil.transferResourceToCurrentDirectory("/discovery-data.xml");
+    CommanderUtil.transferResourceToCurrentDirectory("/toop-simulator.conf");
+  }
   private static Thread runJetty(final Object serverLock, final int simPort) {
 
     Thread simulatorThread = new Thread(() -> {
