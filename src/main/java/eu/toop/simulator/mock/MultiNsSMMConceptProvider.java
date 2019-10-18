@@ -43,10 +43,18 @@ public class MultiNsSMMConceptProvider implements ISMMConceptProvider {
 
   private final Map<String, Map<String, Map<String, String>>> m_nsMap;
 
+  /**
+   * Create the concept provider by initializin the semantic map
+   */
   public MultiNsSMMConceptProvider() {
     this.m_nsMap = initializeSemanticMap();
   }
 
+  /**
+   * Parse and resolve the sms.conf file/classpath resource and create
+   * a mapping from and to TOOP concepts.
+   * @return
+   */
   private static Map<String, Map<String, Map<String, String>>> initializeSemanticMap() {
     LOGGER.debug("Preparing SMS Simulator");
 

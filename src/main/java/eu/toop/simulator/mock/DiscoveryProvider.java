@@ -48,7 +48,10 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * TODO: write javadoc
+ * This class plays the role of both a directory and an SMP server. It reads its contents
+ * from the file or classpath resource 'disovery-data.xml' and creates a map in the memory
+ * to provide query results.
+ *
  * @author yerlibilgin
  */
 public class DiscoveryProvider implements IR2D2ParticipantIDProvider, IR2D2EndpointProvider {

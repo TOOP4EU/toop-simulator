@@ -41,7 +41,7 @@ import java.io.Serializable;
 /**
  * TOOP {@link IMessageExchangeSPI} implementation using ph-as4.
  *
- * @author muhammet yildiz
+ * @author yerlibilgin
  */
 @IsSPIImplementation
 public class MockDCDPMessageExchange implements IMessageExchangeSPI {

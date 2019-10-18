@@ -17,6 +17,7 @@ package eu.toop.simulator;
 
 import com.helger.photon.jetty.JettyStarter;
 import com.typesafe.config.impl.ConfigImpl;
+import eu.toop.commander.ToopCommanderMain;
 import eu.toop.commons.util.CliCommand;
 import eu.toop.connector.api.TCConfig;
 import eu.toop.connector.app.mp.MPConfig;
@@ -85,7 +86,6 @@ public class ToopSimulatorMain {
    *   <li><b>[-dpPort PORT]: </b>Toop commander DC Port (DC simulated, dcURL ignored) - default: 25802</li>
    *   <li><b>[-dpURL "URL"]: </b>Only used when -dcPort not provided, ie. don't simulate DC and expect an external URL (another DC)</li>
    *   <li><b>[-simPort PORT]: </b>Optional port for the simulator (i.e. the connector port for both DC and DP) default: 25801</li>
-   *   <li><b>[-commanderJarBundle "TOOP_COMMANDER_JAR_PATH"]: </b> The relative/full path of the toop-commander jar bundle. Required in DC/DP mode</li>
    * </ol>
    *  <br/>
    */
@@ -102,8 +102,6 @@ public class ToopSimulatorMain {
 
     boolean dcPortSet = false;
     boolean dpPortSet = false;
-
-    String commanderJarBundle = null;
 
     if (args.length > 0) {
       CliCommand command = CliCommand.parse(Arrays.asList(args), false);
@@ -132,33 +130,6 @@ public class ToopSimulatorMain {
 
       if (command.hasOption("mode")) {
         mode = SimMode.valueOf(command.getArguments("mode").get(0));
-      }
-
-      if(command.hasOption("commanderJarBundle")){
-        commanderJarBundle = command.getArguments("commanderJarBundle").get(0);
-      }
-    }
-
-    //check if Toop commander is on classpath (if we are not in SOLE mode)
-    Class<?> toopCommanderMainClass = null;
-    if (mode != SimMode.SOLE) {
-
-      //check if commanderJarBundle is set
-      if(commanderJarBundle == null){
-        LOGGER.error("You are in " + mode + ". You have to set the toop commander jar bundle name ");
-        LOGGER.error("\twith key commanderJarBundle. e.g. -commanderJarBundle \"./toop-commander-0.10.6.jar\" ");
-        return;
-      }
-      //its not SOLE mode. We need the Toop Commander Class. If Its not on the
-      //classpath then we cannot contiune
-      try {
-        toopCommanderMainClass = Class.forName("eu.toop.commander.ToopCommanderMain", true,
-            new URLClassLoader(
-                new URL[]{new File(commanderJarBundle).toURI().toURL()}
-            ));
-      } catch (Exception ex) {
-        LOGGER.error("Toop Commander doesn't exist on classpath. ");
-        return;
       }
     }
 
@@ -196,19 +167,18 @@ public class ToopSimulatorMain {
       System.setProperty("FROM_DP_HOST", "localhost");
       System.setProperty("FROM_DP_PORT", simPort + "");
 
-
       ConfigImpl.reloadSystemPropertiesConfig();
 
-      //RUN TOOP Commander via reflection.
-      final Method main = toopCommanderMainClass.getMethod("main", String[].class);
-      System.out.println(main);
-      main.invoke(null, (Object) args);
-
-      simulatorThread.join();
+      //Run toop commander
+      ToopCommanderMain.main(args);
     }
+
+
+    //wait for the simulator thread to exit
+    simulatorThread.join();
   }
 
-  public static Thread runJetty(final Object serverLock, final int simPort) {
+  private static Thread runJetty(final Object serverLock, final int simPort) {
 
     Thread simulatorThread = new Thread(() -> {
       try {
