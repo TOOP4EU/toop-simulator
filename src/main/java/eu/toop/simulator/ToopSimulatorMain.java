@@ -144,7 +144,15 @@ public class ToopSimulatorMain {
     CommanderUtil.transferResourceToCurrentDirectory("/discovery-data.xml");
     CommanderUtil.transferResourceToCurrentDirectory("/toop-simulator.conf");
   }
-  private static Thread runJetty(final Object serverLock, final int simPort) {
+
+  /**
+   * Start simulator server
+   * @param serverLock used to notify all the threads waiting on this lock to wake up
+   *                   after server start.
+   * @param httpPort the port to publish the jetty on
+   * @return
+   */
+  private static Thread runJetty(final Object serverLock, final int httpPort) {
 
     Thread simulatorThread = new Thread(() -> {
       try {
@@ -155,8 +163,8 @@ public class ToopSimulatorMain {
               serverLock.notify();
             }
           }
-        }.setPort(simPort)
-            .setStopPort(simPort + 100)
+        }.setPort(httpPort)
+            .setStopPort(httpPort + 100)
             .setSessionCookieName("TOOP_TC_SESSION")
             .setContainerIncludeJarPattern(JettyStarter.CONTAINER_INCLUDE_JAR_PATTERN_ALL);
         js.run();
