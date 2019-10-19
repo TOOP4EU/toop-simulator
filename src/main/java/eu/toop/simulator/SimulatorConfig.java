@@ -73,7 +73,7 @@ public class SimulatorConfig {
     //otherwise go for classpath resource
     String pathName = "toop-simulator.conf";
 
-    Config conf = CommanderUtil.resolveConfiguration(pathName)
+    Config conf = CommanderUtil.resolveConfiguration(pathName, true)
         .withFallback(ConfigFactory.systemProperties())
         .resolve();
 

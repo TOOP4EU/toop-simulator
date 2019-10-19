@@ -15,7 +15,7 @@
 
   <xs:complexType name="CountryAwareServiceMetadataType">
     <xs:sequence>
-      <xs:element name="ServiceMetadata" type="smp:ServiceMetadataType"/>
+      <xs:element name="ServiceMetadata" type="smp:ServiceMetadataType" maxOccurs="unbounded"/>
     </xs:sequence>
     <xs:attribute name="countryCode" type="CountryCodeType"/>
   </xs:complexType>

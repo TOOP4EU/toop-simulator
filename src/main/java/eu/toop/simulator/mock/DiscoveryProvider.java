@@ -28,9 +28,7 @@ import eu.toop.connector.api.r2d2.*;
 import eu.toop.simulator.schema.discovery.ObjectFactory;
 import eu.toop.simulator.schema.discovery.ServiceMatadataListType;
 import eu.toop.simulator.util.JAXBUtil;
-import org.oasis_open.docs.bdxr.ns.smp._2016._05.DocumentIdentifierType;
-import org.oasis_open.docs.bdxr.ns.smp._2016._05.ParticipantIdentifierType;
-import org.oasis_open.docs.bdxr.ns.smp._2016._05.ProcessIdentifierType;
+import org.oasis_open.docs.bdxr.ns.smp._2016._05.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Node;
@@ -44,6 +42,7 @@ import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -166,26 +165,26 @@ public class DiscoveryProvider implements IR2D2ParticipantIDProvider, IR2D2Endpo
 
       String countrycode = countryAwareServiceMetadataType.getCountryCode();
 
+      countryAwareServiceMetadataType.getServiceMetadata().forEach(serviceMetadataType -> {
+        DocumentIdentifierType documentIdentifier = serviceMetadataType.getServiceInformation().getDocumentIdentifier();
+        IDocumentTypeIdentifier docID = TCIdentifierFactory.INSTANCE_TC.createDocumentTypeIdentifier(documentIdentifier.getScheme(), documentIdentifier.getValue());
 
-      //TODO: vulnerable, do null check
-      DocumentIdentifierType documentIdentifier = countryAwareServiceMetadataType.getServiceMetadata().getServiceInformation().getDocumentIdentifier();
-      IDocumentTypeIdentifier docID = TCIdentifierFactory.INSTANCE_TC.createDocumentTypeIdentifier(documentIdentifier.getScheme(), documentIdentifier.getValue());
 
+        DIRQuery dirQuery = new DIRQuery(countrycode, docID);
 
-      DIRQuery dirQuery = new DIRQuery(countrycode, docID);
+        ICommonsSet<IParticipantIdentifier> identifierSet;
+        if(directoryMap.containsKey(dirQuery)){
+          identifierSet = directoryMap.get(dirQuery);
+        } else {
+          identifierSet = new CommonsHashSet<>();
+          directoryMap.put(dirQuery, identifierSet);
+        }
 
-      ICommonsSet<IParticipantIdentifier> identifierSet;
-      if(directoryMap.containsKey(dirQuery)){
-        identifierSet = directoryMap.get(dirQuery);
-      } else {
-        identifierSet = new CommonsHashSet<>();
-        directoryMap.put(dirQuery, identifierSet);
-      }
-
-      //now add a new participant identifier to this set.
-      //TODO: vulnerable, do null check
-      identifierSet.add(TCIdentifierFactory.INSTANCE.createParticipantIdentifier(countryAwareServiceMetadataType.getServiceMetadata().getServiceInformation().getParticipantIdentifier().getScheme(),
-          countryAwareServiceMetadataType.getServiceMetadata().getServiceInformation().getParticipantIdentifier().getValue()));
+        //now add a new participant identifier to this set.
+        //TODO: vulnerable, do null check
+        identifierSet.add(TCIdentifierFactory.INSTANCE.createParticipantIdentifier(serviceMetadataType.getServiceInformation().getParticipantIdentifier().getScheme(),
+            serviceMetadataType.getServiceInformation().getParticipantIdentifier().getValue()));
+      });
     });
   }
 
@@ -199,77 +198,82 @@ public class DiscoveryProvider implements IR2D2ParticipantIDProvider, IR2D2Endpo
     smpMap = new HashMap<>();
 
     serviceMatadataListType.getCountryAwareServiceMetadata().forEach(country -> {
-      ParticipantIdentifierType participantIdentifier = country.getServiceMetadata().getServiceInformation().getParticipantIdentifier();
-      IParticipantIdentifier participantID = TCIdentifierFactory.INSTANCE_TC.createParticipantIdentifier(participantIdentifier.getScheme(),
-          participantIdentifier.getValue());
 
-      DocumentIdentifierType documentIdentifier = country.getServiceMetadata().getServiceInformation().getDocumentIdentifier();
-      IDocumentTypeIdentifier documentTypeID = TCIdentifierFactory.INSTANCE_TC.createDocumentTypeIdentifier(documentIdentifier.getScheme(), documentIdentifier.getValue());
+      country.getServiceMetadata().stream().map(ServiceMetadataType::getServiceInformation).forEach(serviceInformation -> {
 
-      country.getServiceMetadata().getServiceInformation().getProcessList().getProcess().forEach(processType -> {
-        ProcessIdentifierType processIdentifier = processType.getProcessIdentifier();
-        IProcessIdentifier procID = TCIdentifierFactory.INSTANCE_TC.createProcessIdentifier(processIdentifier.getScheme(), processIdentifier.getValue());
-        processType.getServiceEndpointList().getEndpoint().forEach(endpointType -> {
-          String transportProfile = endpointType.getTransportProfile();
+        ParticipantIdentifierType participantIdentifier = serviceInformation.getParticipantIdentifier();
+        IParticipantIdentifier participantID = TCIdentifierFactory.INSTANCE_TC.createParticipantIdentifier(participantIdentifier.getScheme(),
+            participantIdentifier.getValue());
 
-          try {
-            final X509Certificate x509Certificate[] = new X509Certificate[1];
-            //check if we have an extension to set the certificate from file
-            endpointType.getExtension().forEach(extensionType -> {
-              try {
-                if (extensionType.getAny() != null) {
-                  Node any = (Node) extensionType.getAny();
+        DocumentIdentifierType documentIdentifier = serviceInformation.getDocumentIdentifier();
+        IDocumentTypeIdentifier documentTypeID = TCIdentifierFactory.INSTANCE_TC.createDocumentTypeIdentifier(documentIdentifier.getScheme(), documentIdentifier.getValue());
 
-                  if (any.getLocalName().equals("CertFileName")) {
-                    //this is a special case for simulator. One can want to put his retificate as
-                    //a file name, so that we can parse it from the file.
+        serviceInformation.getProcessList().getProcess().forEach(processType -> {
+          ProcessIdentifierType processIdentifier = processType.getProcessIdentifier();
+          IProcessIdentifier procID = TCIdentifierFactory.INSTANCE_TC.createProcessIdentifier(processIdentifier.getScheme(), processIdentifier.getValue());
+          processType.getServiceEndpointList().getEndpoint().forEach(endpointType -> {
+            String transportProfile = endpointType.getTransportProfile();
 
-                    InputStream stream;
-                    String path = any.getTextContent();
-                    File file = new File(path);
-                    if (file.exists()) {
-                      stream = new FileInputStream(file);
-                    } else {
-                      //file doesn't exist, try resource
-                      stream = DiscoveryProvider.this.getClass().getResourceAsStream("/" + path);
-                      if (stream == null) {
-                        throw new IllegalStateException("A file or a classpath resource with name " + path + " was not found");
+            try {
+              final X509Certificate x509Certificate[] = new X509Certificate[1];
+              //check if we have an extension to set the certificate from file
+              endpointType.getExtension().forEach(extensionType -> {
+                try {
+                  if (extensionType.getAny() != null) {
+                    Node any = (Node) extensionType.getAny();
+
+                    if (any.getLocalName().equals("CertFileName")) {
+                      //this is a special case for simulator. One can want to put his retificate as
+                      //a file name, so that we can parse it from the file.
+
+                      InputStream stream;
+                      String path = any.getTextContent();
+                      File file = new File(path);
+                      if (file.exists()) {
+                        stream = new FileInputStream(file);
+                      } else {
+                        //file doesn't exist, try resource
+                        stream = DiscoveryProvider.this.getClass().getResourceAsStream("/" + path);
+                        if (stream == null) {
+                          throw new IllegalStateException("A file or a classpath resource with name " + path + " was not found");
+                        }
                       }
+                      LOGGER.debug("FULL CERT PATH PARSE: " + file.getAbsolutePath());
+                      x509Certificate[0] = (X509Certificate) certificateFactory.generateCertificate(stream);
                     }
-                    LOGGER.debug("FULL CERT PATH PARSE: " + file.getAbsolutePath());
-                    x509Certificate[0] = (X509Certificate) certificateFactory.generateCertificate(stream);
+
                   }
-
+                } catch (Exception ex) {
+                  throw new IllegalStateException(ex.getMessage(), ex);
                 }
-              } catch (Exception ex) {
-                throw new IllegalStateException(ex.getMessage(), ex);
+              });
+
+              //do we have a certificate ?
+              if (x509Certificate[0] == null) {
+                //no we don't, so load it form the default smp cert element
+                x509Certificate[0] = (X509Certificate) certificateFactory.generateCertificate(new NonBlockingByteArrayInputStream(endpointType.getCertificate()));
               }
-            });
 
-            //do we have a certificate ?
-            if (x509Certificate[0] == null) {
-              //no we don't, so load it form the default smp cert element
-              x509Certificate[0] = (X509Certificate) certificateFactory.generateCertificate(new NonBlockingByteArrayInputStream(endpointType.getCertificate()));
+              ICommonsList<IR2D2Endpoint> list;
+
+              SMPQuery smpQuery = new SMPQuery(participantID, documentTypeID, procID, transportProfile);
+              if (smpMap.containsKey(smpQuery)) {
+                list = smpMap.get(smpQuery);
+              } else {
+                list = new CommonsArrayList<>();
+                smpMap.put(smpQuery, list);
+              }
+
+              list.add(new R2D2Endpoint(participantID, endpointType.getTransportProfile(), endpointType.getEndpointURI(),
+                  x509Certificate[0]));
+
+            } catch (Exception ex) {
+              LOGGER.error(ex.getMessage(), ex);
             }
-
-            ICommonsList<IR2D2Endpoint> list;
-
-            SMPQuery smpQuery = new SMPQuery(participantID, documentTypeID, procID, transportProfile);
-            if (smpMap.containsKey(smpQuery)) {
-              list = smpMap.get(smpQuery);
-            } else {
-              list = new CommonsArrayList<>();
-              smpMap.put(smpQuery, list);
-            }
-
-            list.add(new R2D2Endpoint(participantID, endpointType.getTransportProfile(), endpointType.getEndpointURI(),
-                x509Certificate[0]));
-
-          } catch (Exception ex) {
-            LOGGER.error(ex.getMessage(), ex);
-          }
+          });
         });
       });
+
     });
   }
 

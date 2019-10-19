@@ -11,6 +11,7 @@ import eu.toop.simulator.schema.discovery.ServiceMatadataListType;
 import eu.toop.simulator.util.JAXBUtil;
 import org.junit.Assert;
 import org.junit.Test;
+import org.oasis_open.docs.bdxr.ns.smp._2016._05.ServiceMetadataType;
 import org.w3c.dom.Node;
 
 public class DiscoveryTest {
@@ -20,23 +21,25 @@ public class DiscoveryTest {
     type.getCountryAwareServiceMetadata().forEach(countryAwareServiceMetadataType -> {
       System.out.println(countryAwareServiceMetadataType.getCountryCode());
 
-      countryAwareServiceMetadataType.getServiceMetadata().getServiceInformation().getProcessList().getProcess().forEach(processType -> {
-        processType.getServiceEndpointList().getEndpoint().forEach(endpointType -> {
-          System.out.println(endpointType.getEndpointURI());
+      countryAwareServiceMetadataType.getServiceMetadata().stream().map(ServiceMetadataType::getServiceInformation).forEach(serviceInformationType -> {
+        serviceInformationType.getProcessList().getProcess().forEach(processType -> {
+          processType.getServiceEndpointList().getEndpoint().forEach(endpointType -> {
+            System.out.println(endpointType.getEndpointURI());
 
-          if (endpointType.getExtension().size() > 0) {
-            endpointType.getExtension().forEach(extensionType -> {
-              System.out.println(extensionType.getAny());
-              if (extensionType.getAny() != null) {
-                Node any = (Node) extensionType.getAny();
+            if (endpointType.getExtension().size() > 0) {
+              endpointType.getExtension().forEach(extensionType -> {
+                System.out.println(extensionType.getAny());
+                if (extensionType.getAny() != null) {
+                  Node any = (Node) extensionType.getAny();
 
 
-                System.out.println(any.getNodeName());
-                System.out.println(any.getTextContent());
+                  System.out.println(any.getNodeName());
+                  System.out.println(any.getTextContent());
 
-              }
-            });
-          }
+                }
+              });
+            }
+          });
         });
       });
     });

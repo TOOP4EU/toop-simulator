@@ -58,7 +58,7 @@ public class MultiNsSMMConceptProvider implements ISMMConceptProvider {
   private static Map<String, Map<String, Map<String, String>>> initializeSemanticMap() {
     LOGGER.debug("Preparing SMS Simulator");
 
-    Config config = CommanderUtil.resolveConfiguration("sms");
+    Config config = CommanderUtil.resolveConfiguration("sms", false);
 
     List<Map<String, Object>> mappings = (List<Map<String, Object>>) config.getAnyRef("Mappings");
 

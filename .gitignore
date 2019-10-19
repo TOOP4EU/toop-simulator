@@ -31,3 +31,7 @@ target/
 dump
 .factorypath
 .vscode
+discovery-data.xml
+logs
+sms.conf
+toop-simulator.conf

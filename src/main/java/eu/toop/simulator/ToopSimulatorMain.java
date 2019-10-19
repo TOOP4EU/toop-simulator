@@ -114,7 +114,7 @@ public class ToopSimulatorMain {
       dpURL = "http://localhost:" + SimulatorConfig.dpPort + "/to-dp";
     } else {
       //we are not simulating dp, it means we need an actual dp endpoint. get it from config
-      dpURL = SimulatorConfig.dcURL;
+      dpURL = SimulatorConfig.dpURL;
     }
 
     TCConfig.setMPToopInterfaceDCOverrideUrl(dcURL);
