@@ -34,11 +34,11 @@ public class JAXBUtil {
   private static final Logger LOGGER = LoggerFactory.getLogger(JAXBUtil.class);
 
   /**
-   * Unmarshals the path given to the given Type T using the object factory class provided as an argument.<br/>
+   * Unmarshals the path given to the given Type T using the object factory class provided as an argument.<br>
    * If a file with the given <code>path</code> name exists then it is parsed, otherwise
    * a resource with <code>"/" + path</code> is tried. If that also does not exist, then en exception is thrown
    * @param path file or resource to be parsed as XML.
-   * @param objectFactoryClass
+   * @param objectFactoryClass the class of ObjectFactory generated for the root schema.
    * @return the java object parsed from the given path.
    */
   public static <T> T parseFileOrResource(String path, Class<?> objectFactoryClass) {
