@@ -1,61 +1,64 @@
 # toop-simulator
+[![Build Status](https://api.travis-ci.org/TOOP4EU/toop-simulator.svg?branch=master)](https://travis-ci.org/TOOP4EU/toop-simulator)
 
+**Latest Release:** [0.10.6](https://repo1.maven.org/maven2/eu/toop/toop-simulator/0.10.6/)
+
+
+
+* [Overview](#Overview)
+* [Getting started](#Getting started)
+* [Toop Simulator Architecture](#Toop Simulator Architecture)
+* [Simulation Modes](#Simulation Modes)
+* [Configuration](#Configuration)
+* [Basic configuration](#Basic configuration)
+  * [toop-simulator.conf](#toop-simulator.conf)
+* [Advanced Configuration](#Advanced Configuration)
+  * [toop-connector.properties](#toop-connector.properties)
+  * [discovery-data.xml](#discovery-data.xml)
+  * [sms.conf](#sms.conf)
+
+## Overview
 The TOOP Infrastructure Simulator provides a platform that mimics the workflow
-of the entire TOOP Infrastructure in a local and possibly online environment.
-Its purpose is to help DC and DP instances test their systems mostly during
-development, prior to joining a production environment.
-The simulator contains offline working mocks of the TOOP Directory,
-SMP, SMS and Message Exchange Module. The Dir and SMP mocks provide dummy answers to the queries.
-While the SMS does a static mapping with respect to the definitions in the file/resource `sms.conf`.
-It simulates the end-to-end data flow of the Toop infrastructure
+of the entire TOOP Infrastructure in a local or online environment. Its purpose is to assist DC and DP instances 
+for testing their systems during development, prior to joining a production environment.
 
-## Workflow
+## Getting started
+* Download the jar bundle from https://repo1.maven.org/maven2/eu/toop/toop-simulator/0.10.6/toop-simulator-0.10.6-bundle.jar
+* run it as `java -jar toop-simulator-0.10.6-bundle.jar`. This will start the simulator 
+in [DP mode](#Simulation Modes) (i.e. it will simulate the toop-connector as well as a DP).
+[More on simulator modes](#Simulation Modes)
+* The simulator will start http servers on ports 8081 and 8082 for the connector and DP respectively. 
+It will assume the existence of and use a `/to-dc` endpoint (i.e. DC) on `http://localhost:8080/to-dc`.
+* Now you can,
+  * start up your own DC on localhost:8080
+  * send requests to the simulator on port `http://localhost:8081/from-dc`
+  * and receive responses or errors on port `http://localhost:8080/to-dc`
 
-To compile the entire project, run "mvn verify".
 
-To run the application, 
-* go to `./target` directory : ```cd ./target```
-* copy the `toop-simulator.jks` to the current directory: `cp ../toop-simulator.jks .`
-* run the app: `java -jar toop-simulator-{version}.jar`
-* Browse http://localhost:8090 to verify that it is working.
+## Toop Simulator Architecture
 
-Note: You can provide a different http port as below:
+![Alt text](./docs/diagram.svg)
+<img src="./docs/diagram.svg">
 
-```bash
- java -jar toop-simulator-{version}.jar 9789
-```
+The simulator mimics the TOOP Directory, SMP, SMS and Message Exchange Modules. The Directory and SMP simulators provide 
+discovery service by using the file [`discovery-data.xml`](#discovery\-data.xml), 
+SMS does a static mapping with respect to the definitions in the file [`sms.conf`](#sms).
+It simulates the end-to-end data flow of the Toop infrastructure. 
+These files are created in the current directory with default values if they don't exist.
+
+
+
+## Simulation Modes
 
 ## Configuration
+### Basic configuration
+#### toop-simulator.conf
 
-The simulator is essentially a toop-connector; therefore it contains a `toop-connector.properties` file. 
- 
-### toop-connector.properties
+### Advanced Configuration
 
-The properties file is completely the same as the it is supposed to be in `toop-connector`. 
-It is located in the root directory of the jar file.
-However, the important key-value pairs are listed below:
+#### discovery\-data\.xml
 
-```properties
-# SMM namespace URI to map to
-toop.smm.namespaceuri = http://toop.elo/elonia-business-register
-# Where is the DP located (for step 2/4)
-toop.mp.dp.url = http://localhost:8091/to-dp
-
-# Where is the DC located (for step 4/4)
-toop.mp.dc.url = http://localhost:8091/to-dc
-
-# Keystore for signing the ASiC content
-toop.keystore.type         = JKS
-toop.keystore.path         = toop-simulator.jks
-toop.keystore.password     = toop4eu
-toop.keystore.key.alias    = toop-simulator
-toop.keystore.key.password = toop4eu
-```
-
-The other properties don't matter. Since there is no external interface connection, 
-please ignore all the TOOP Dir, SMP, SMS, MEM, BDXL related properties.
-
-### sms.conf
+#### sms.conf
 
 This is the resource that contains all the information about the semantic mapping of
 the concepts from and to the toop namespace (`http://toop.eu/registered-organization`). 
@@ -103,3 +106,4 @@ mappings as the simulator does this for you (with the current assumption that ma
 
 **Note**: The value of `toop.smm.namespaceuri` in the `toop-connector.properties` is very important to be set to the namespace of
 the DP that the simulator will send the asic requests to.
+
