@@ -10,11 +10,11 @@
 * [Toop Simulator Architecture](#Toop Simulator Architecture)
 * [Simulation Modes](#Simulation Modes)
 * [Configuration](#Configuration)
-* [Basic configuration](#Basic configuration)
-  * [toop-simulator.conf](#toop-simulator.conf)
-* [Advanced Configuration](#Advanced Configuration)
-  * [toop-connector.properties](#toop-connector.properties)
-  * [discovery-data.xml](#discovery-data.xml)
+* [Basic configuration](#basic-configuration)
+  * [toop-simulator.conf](#toop\-simulator.conf)
+* [Advanced Configuration](#Advanced-Configuration)
+  * [toop-connector.properties](#toop\-connector.properties)
+  * [discovery-data.xml](#discovery\-data.xml)
   * [sms.conf](#sms.conf)
 
 ## Overview
