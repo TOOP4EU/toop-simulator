@@ -16,8 +16,7 @@
     limitations under the License.
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>eu.toop</groupId>
@@ -27,7 +26,7 @@
   <groupId>eu.toop</groupId>
   <artifactId>toop-simulator</artifactId>
   <name>toop-simulator</name>
-  <version>0.10.6-SNAPSHOT</version>
+  <version>0.10.6</version>
   <packaging>jar</packaging>
   <description>Contains the TOOP Simulator Web Application</description>
   <url>https://github.com/toop4eu/toop-simulator</url>
@@ -50,7 +49,7 @@
     <connection>scm:git:git@github.com:toop4eu/toop-simulator.git</connection>
     <developerConnection>scm:git:git@github.com:toop4eu/toop-simulator.git</developerConnection>
     <url>http://github.com/toop4eu/toop-simulator</url>
-    <tag>HEAD</tag>
+    <tag>toop-simulator-0.10.6</tag>
   </scm>
 
   <organization>
@@ -165,7 +164,7 @@
               <shadedArtifactAttached>true</shadedArtifactAttached>
               <shadedClassifierName>bundle</shadedClassifierName>
               <transformers>
-                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
                 <transformer implementation="org.apache.maven.plugins.shade.resource.DontIncludeResourceTransformer">
                   <resource>.RSA</resource>
                   <resource>.SF</resource>
