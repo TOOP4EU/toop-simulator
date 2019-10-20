@@ -37,8 +37,8 @@ It will assume the existence of and use a `/to-dc` endpoint (i.e. DC) on `http:/
 
 ## Toop Simulator Architecture
 
-![Alt text](./docs/diagram.svg)
-<img src="./docs/diagram.svg">
+![Alt text](./docs/diagram.svg?sanitize=true)
+
 
 The simulator mimics the TOOP Directory, SMP, SMS and Message Exchange Modules. The Directory and SMP simulators provide 
 discovery service by using the file [`discovery-data.xml`](#discovery\-data.xml), 
