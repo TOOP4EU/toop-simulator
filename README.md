@@ -169,7 +169,7 @@ The `DC_URL` variable can be omitted, in which case the default DC url (`http://
 ## Configuration
 ### Basic configuration
 When the simulator is started, it creates a file named `toop-simulator.conf` in the current directory
-if it doesn't exist. This is a HOCON file that allows configuring the simulation modes, http ports and endpoints.
+if it doesn't exist. This is a [HOCON](https://github.com/lightbend/config/blob/master/HOCON.md) file that allows configuring the simulation modes, http ports and endpoints.
 
 **Sample `toop-simulator.conf`**
 ```hocon
@@ -206,6 +206,9 @@ explicitly changing the `toop-simulator.connectorPort`, or setting `CONNECTOR_PO
 ```shell script
 java -DCONNECTOR_PORT=8091 toop-simulator-0.10.6-bundle.jar
 ```
+
+Windows users, please see 
+[**Setting Environment variables on Windows**](https://www.shellhacks.com/windows-set-environment-variable-cmd-powershell/).
 
 ### Advanced Configuration
 
@@ -304,15 +307,11 @@ by the simulator. The certificate file may be a
 
 #### Semantic mapping
 
-This is the resource that contains all the information about the semantic mapping of
+The simulator reads the `sms.conf` file that contains all the information about the semantic mapping of
 the concepts from and to the toop namespace (`http://toop.eu/registered-organization`). 
-It currently contains the predefined mappings for `elonia` and `freedonia`. 
+The default contents are the predefined mappings for `elonia` and `freedonia`. 
 
-**Note**: If the file `sms.conf` exists in the working directory of the simulator, it will be loaded;
-otherwise the simulator will try to load the resource `sms.conf` that is in the root directory
-of the jar file. 
-
-The resource is a typesafe config file that contains a `list` of `mapping groups` 
+`sms.conf` is a [HOCON](https://github.com/lightbend/config/blob/master/HOCON.md) config file that contains a `list` of `mapping groups` 
 each containing source and destination namespaces (i.e. `sourceNS` and `targetNS`) 
 and a `mapping of concepts`. A fragment from `sms.conf` is given below:
 
