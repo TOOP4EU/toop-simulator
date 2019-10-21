@@ -46,9 +46,12 @@ in `DC` and `DP` modes is also bundled inside.
 
 
 In `DC` mode, toop-simulator launches a toop-commander which provides a command line
-interface and a `DC` endpoint connected directly to the simulator. In `DC` mode, you have to provide the URL of an external DP
-to communicate with. The architecture view for the `DC` mode is given below.
+interface and a `DC` endpoint connected directly to the simulator. In `DC` mode, 
+you may provide a URL for an external DP via the `DP_URL` to communicate with. 
+The `DP_URL` variable can be omitted, in which case the default DP url 
+(`http://localhost:8082/to-dp`) will be used.
 
+The architecture view for the `DC` mode is given below.
 
 <br/>
 <br/>
@@ -61,7 +64,7 @@ to communicate with. The architecture view for the `DC` mode is given below.
 <br/>
 <br/>
 
-To run the simulator in `DC` mode, run the following command
+To launch the simulator in `DC` mode, run the following command
 ```
 # using JVM ARGS
 java -DSIM_MODE=DC -DDP_URL="http://some.dp/to-dp" -jar toop-simulator-0.10.6-bundle.jar
@@ -76,7 +79,6 @@ java -jar toop-simulator-0.10.6-bundle.jar
 The simulator will launch a `/to-dc` endpoint as well as the toop-connector endpoints (`/from-dc`, `/from-dp`...) and 
 a command line interface that you can send requests from (please see [toop-commander](https://github.com/TOOP4EU/toop-commander)).
 
-The `DP_URL` variable can be omitted, in which case the default DP url (`http://localhost:8082/to-dp`) will be used.
 
 ### SOLE Mode
 
@@ -100,7 +102,7 @@ and `http://localhost:8082/to-dp`) will be used.
 <br/>
 
 Assuming that you have some external DC and DP urls (e.g. `http://memberstate.a:8080/to-dc` and `http://memberstate.b:8080/to-dp`),
-to run the simulator in `SOLE` mode, run the following command
+to launch the simulator in `SOLE` mode, run the following command
 ```
 # using JVM ARGS
 java -DSIM_MODE=SOLE -DDC_URL="http://memberstate.a:8080/to-dc" \
@@ -166,7 +168,44 @@ The `DC_URL` variable can be omitted, in which case the default DC url (`http://
 
 ## Configuration
 ### Basic configuration
+When the simulator is started, it creates a file named `toop-simulator.conf` in the current directory
+if it doesn't exist. This is a HOCON file that allows configuring the simulation modes, http ports and endpoints.
 
+**Sample `toop-simulator.conf`**
+```hocon
+toop-simulator {
+  #the simulator mode, one of SOLE DC, DP
+  mode = "DP"
+  mode = ${?SIM_MODE}
+
+  #Used only in DC Mode
+  dcPort = 8080
+  dcPort = ${?DC_PORT}
+ 
+  #Used only in DP mode 
+  dpPort = 8082
+  dpPort = ${?DP_PORT}
+
+  #used only if mode != DC
+  dcURL = "http://localhost:8080/to-dc"
+  dcURL = ${?DC_URL}
+
+  #used only if mode != DP
+  dpURL = "http://localhost:8082/to-dp"
+  dpURL = ${?DP_URL}
+
+  #The simulator will run the connector on this port
+  connectorPort = 8081
+  connectorPort = ${?CONNECTOR_PORT}
+}
+```
+
+You don't have to directly edit this file (unless you want to persist your settings). For every configuration
+item there is an ENV or JVM_ARG alternative. For example you can run the toop-connector on a different port by 
+explicitly changing the `toop-simulator.connectorPort`, or setting `CONNECTOR_PORT` variable via ENV/JVM_ARG:
+```shell script
+java -DCONNECTOR_PORT=8091 toop-simulator-0.10.6-bundle.jar
+```
 
 ### Advanced Configuration
 
