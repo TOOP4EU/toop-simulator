@@ -13,6 +13,7 @@
   * [Advanced Configuration](#Advanced-Configuration)
      * [Configuring discovery](#configuring-discovery)
      * [Semantic mapping](#semantic-mapping)
+ * [Toop Simulator architecture](#toop-simulator-architecture)
 
 
 ## Introduction
@@ -352,4 +353,28 @@ the DP that the simulator will send the asic requests to. The simulator includes
 the jar file. Please see 
 [TOOP Connector Deployment and Configuration Guide](http://wiki.ds.unipi.gr/display/TOOP/TOOP+Connector+Deployment+and+Configuration+Guide)
 for more information on configuring `toop-connector.properties` 
+
+
+## Toop Simulator architecture
+
+The below diagram shows the internal architecture of toop-simulator. 
+
+![DP MODE OVERVIEW](./docs/toop-simulator.svg?sanitize=true "DP Mode Overview")
+
+* The directory and capability lookup (SMP) is served by the 
+[DiscoveryProvider](./src/main/java/eu/toop/simulator/mock/DiscoveryProvider.java) 
+module which implements [IR2D2ParticipantIDProvider](https://github.com/TOOP4EU/toop-connector/blob/master/toop-connector-api/src/main/java/eu/toop/connector/api/r2d2/IR2D2ParticipantIDProvider.java)
+and [IR2D2EndpointProvider](https://github.com/TOOP4EU/toop-connector/blob/master/toop-connector-api/src/main/java/eu/toop/connector/api/r2d2/IR2D2EndpointProvider.java)
+interfaces by interpreting `discovery-data.xml` and serving participant identifiers and R2D2 endpoints.
+
+* The [MultiNsSMMConceptProvider](./src/main/java/eu/toop/simulator/mock/MultiNsSMMConceptProvider.java) module implements 
+[ISMMConceptProvider](https://github.com/TOOP4EU/toop-connector/blob/master/toop-connector-api/src/main/java/eu/toop/connector/api/smm/ISMMConceptProvider.java) 
+and interprets `smm.conf` and provides translations from and to the `toop.smm.namespaceuri`.
+
+* The [MockDCDPMessageExchange](./src/main/java/eu/toop/simulator/mock/MockDCDPMessageExchange.java) module
+implements [IMessageExchangeSPI](https://github.com/TOOP4EU/toop-connector/blob/master/toop-connector-api/src/main/java/eu/toop/connector/api/as4/IMessageExchangeSPI.java)
+and shortcuts a connector to connector communication by skipping the four corner model.
+
+The interfaces can be found under [toop-connector-api](https://github.com/TOOP4EU/toop-connector/tree/master/toop-connector-api)
+
 
