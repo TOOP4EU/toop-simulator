@@ -5,18 +5,17 @@
 
 
 
-* [Overview](#Overview)
+* [Introduction](#Introduction)
 * [Getting started](#Getting-started)
-* [Toop Simulator Architecture](#Toop-Simulator-Architecture)
 * [Simulation Modes](#Simulation-Modes)
 * [Configuration](#Configuration)
-* [Basic configuration](#basic-configuration)
-  * [toop-simulator.conf](#toop-simulatorconf)
-* [Advanced Configuration](#Advanced-Configuration)
-  * [discovery-data.xml](#discovery-dataxml)
-  * [sms.conf](#smsconf)
+  * [Basic configuration](#basic-configuration)
+  * [Advanced Configuration](#Advanced-Configuration)
+     * [Configuring discovery](#configuring-discovery)
+     * [Semantic mapping](#semantic-mapping)
 
-## Overview
+
+## Introduction
 The TOOP Infrastructure Simulator provides a platform that mimics the workflow
 of the entire TOOP Infrastructure in a local or online environment. Its purpose is to assist DC and DP instances 
 for testing their systems during development, prior to joining a production environment.
@@ -40,11 +39,11 @@ A [toop-commander](https://github.com/TOOP4EU/toop-commander) which is activated
 in `DC` and `DP` modes is also bundled inside.
 
 ### DC Mode
-<sub><sup>
+
 * **As JVM  ARG:** -DSIM_MODE=DC<br/>
 * **As ENV variable:** export SIM_MODE=DC<br/>
 * **via toop-simulator.conf:** toop-simulator.mode="DC"
-</sup></sub>
+
 
 In `DC` mode, toop-simulator launches a toop-commander which provides a command line
 interface and a `DC` endpoint connected directly to the simulator. In `DC` mode, you have to provide the URL of an external DP
@@ -80,11 +79,10 @@ a command line interface that you can send requests from (please see [toop-comma
 The `DP_URL` variable can be omitted, in which case the default DP url (`http://localhost:8082/to-dp`) will be used.
 
 ### SOLE Mode
-<sub><sup>
+
 * **As JVM  ARG:** -DSIM_MODE=SOLE<br/>
 * **As ENV variable:** export SIM_MODE=SOLE<br/>
 * **via toop-simulator.conf:** toop-simulator.mode="SOLE"
-</sup></sub>
 
 In `SOLE` mode, toop-simulator launches a toop-connector without a `DC` or `DP` simulation and no CLI. 
 
@@ -121,13 +119,13 @@ The simulator will launch toop-connector endpoints (`/from-dc`, `/from-dp`...) a
 from the configured DC and DP endpoints.
 
 ### DP Mode
-<sub><sup>
+
 
 * By avoiding the SIM_MODE argument (DP mode is default)
 * **As JVM  ARG:** -DSIM_MODE=DP<br/>
 * **As ENV variable:** export SIM_MODE=DP<br/>
 * **via toop-simulator.conf:** toop-simulator.mode="DP"
-</sup></sub>
+
 
 In `DP` mode, toop-simulator launches a toop-connector and a toop-commander with a DP that is directly connected
 to the simulator and NO CLI (because the responses from toop-commander's DP interface are automatic).
@@ -168,7 +166,7 @@ The `DC_URL` variable can be omitted, in which case the default DC url (`http://
 
 ## Configuration
 ### Basic configuration
-#### toop-simulator.conf
+
 
 ### Advanced Configuration
 
@@ -180,9 +178,9 @@ It simulates the end-to-end data flow of the Toop infrastructure.
 These files are created in the current directory with default values if they don't exist.
 
 
-#### discovery\-data\.xml
+#### Configuring discovery
 
-#### sms.conf
+#### Semantic mapping
 
 This is the resource that contains all the information about the semantic mapping of
 the concepts from and to the toop namespace (`http://toop.eu/registered-organization`). 
