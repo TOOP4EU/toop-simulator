@@ -6,16 +6,15 @@
 
 
 * [Overview](#Overview)
-* [Getting started](#Getting started)
-* [Toop Simulator Architecture](#Toop Simulator Architecture)
-* [Simulation Modes](#Simulation Modes)
+* [Getting started](#Getting-started)
+* [Toop Simulator Architecture](#Toop-Simulator-Architecture)
+* [Simulation Modes](#Simulation-Modes)
 * [Configuration](#Configuration)
 * [Basic configuration](#basic-configuration)
-  * [toop-simulator.conf](#toop\-simulator.conf)
+  * [toop-simulator.conf](#toop-simulatorconf)
 * [Advanced Configuration](#Advanced-Configuration)
-  * [toop-connector.properties](#toop\-connector.properties)
-  * [discovery-data.xml](#discovery\-data.xml)
-  * [sms.conf](#sms.conf)
+  * [discovery-data.xml](#discovery-dataxml)
+  * [sms.conf](#smsconf)
 
 ## Overview
 The TOOP Infrastructure Simulator provides a platform that mimics the workflow
@@ -35,26 +34,151 @@ It will assume the existence of and use a `/to-dc` endpoint (i.e. DC) on `http:/
   * and receive responses or errors on port `http://localhost:8080/to-dc`
 
 
-## Toop Simulator Architecture
-
-![Alt text](./docs/overview.svg?sanitize=true)
-<img src="./docs/overview.svg?sanitize=true" />
-
-The simulator mimics the TOOP Directory, SMP, SMS and Message Exchange Modules. The Directory and SMP simulators provide 
-discovery service by using the file [`discovery-data.xml`](#discovery\-data.xml), 
-SMS does a static mapping with respect to the definitions in the file [`sms.conf`](#sms).
-It simulates the end-to-end data flow of the Toop infrastructure. 
-These files are created in the current directory with default values if they don't exist.
-
-
-
 ## Simulation Modes
+Toop simulator supports three working modes; namely `DC`, `SOLE` and `DP` (_default_).
+A [toop-commander](https://github.com/TOOP4EU/toop-commander) which is activated only
+in `DC` and `DP` modes is also bundled inside.
+
+### DC Mode
+<sub><sup>
+* **As JVM  ARG:** -DSIM_MODE=DC<br/>
+* **As ENV variable:** export SIM_MODE=DC<br/>
+* **via toop-simulator.conf:** toop-simulator.mode="DC"
+</sup></sub>
+
+In `DC` mode, toop-simulator launches a toop-commander which provides a command line
+interface and a `DC` endpoint connected directly to the simulator. In `DC` mode, you have to provide the URL of an external DP
+to communicate with. The architecture view for the `DC` mode is given below.
+
+
+<br/>
+<br/>
+<br/>
+
+![DC MODE OVERVIEW](./docs/DC-mode-overview.svg?sanitize=true "DC Mode Overview")
+
+
+<br/>
+<br/>
+<br/>
+
+To run the simulator in `DC` mode, run the following command
+```
+# using JVM ARGS
+java -DSIM_MODE=DC -DDP_URL="http://some.dp/to-dp" -jar toop-simulator-0.10.6-bundle.jar
+
+# or alternatively set env variables
+export SIM_MODE=DC
+export DP_URL="http://some.dp/to-dp"
+java -jar toop-simulator-0.10.6-bundle.jar
+
+```
+
+The simulator will launch a `/to-dc` endpoint as well as the toop-connector endpoints (`/from-dc`, `/from-dp`...) and 
+a command line interface that you can send requests from (please see [toop-commander](https://github.com/TOOP4EU/toop-commander)).
+
+The `DP_URL` variable can be omitted, in which case the default DP url (`http://localhost:8082/to-dp`) will be used.
+
+### SOLE Mode
+<sub><sup>
+* **As JVM  ARG:** -DSIM_MODE=SOLE<br/>
+* **As ENV variable:** export SIM_MODE=SOLE<br/>
+* **via toop-simulator.conf:** toop-simulator.mode="SOLE"
+</sup></sub>
+
+In `SOLE` mode, toop-simulator launches a toop-connector without a `DC` or `DP` simulation and no CLI. 
+
+If the `DC_URL` and `DP_URL` variable are omitted, then the default values (`http://localhost:8080/to-dc` 
+and `http://localhost:8082/to-dp`) will be used.
+
+<br/>
+<br/>
+<br/>
+
+![SOLE MODE OVERVIEW](./docs/SOLE-mode-overview.svg?sanitize=true "SOLE Mode Overview")
+
+<br/>
+<br/>
+<br/>
+
+Assuming that you have some external DC and DP urls (e.g. `http://memberstate.a:8080/to-dc` and `http://memberstate.b:8080/to-dp`),
+to run the simulator in `SOLE` mode, run the following command
+```
+# using JVM ARGS
+java -DSIM_MODE=SOLE -DDC_URL="http://memberstate.a:8080/to-dc" \
+      -DDP_URL="http://memberstate.b:8080/to-dp" \
+      -jar toop-simulator-0.10.6-bundle.jar
+
+# or alternatively set env variables
+export SIM_MODE=SOLE
+export DC_URL="http://memberstate.a:8080/to-dc"
+export DP_URL="http://memberstate.b:8080/to-dp"
+java -jar toop-simulator-0.10.6-bundle.jar
+
+```
+
+The simulator will launch toop-connector endpoints (`/from-dc`, `/from-dp`...) and wait for requests and responses 
+from the configured DC and DP endpoints.
+
+### DP Mode
+<sub><sup>
+
+* By avoiding the SIM_MODE argument (DP mode is default)
+* **As JVM  ARG:** -DSIM_MODE=DP<br/>
+* **As ENV variable:** export SIM_MODE=DP<br/>
+* **via toop-simulator.conf:** toop-simulator.mode="DP"
+</sup></sub>
+
+In `DP` mode, toop-simulator launches a toop-connector and a toop-commander with a DP that is directly connected
+to the simulator and NO CLI (because the responses from toop-commander's DP interface are automatic).
+The architecture view for the `DP` mode is given below.
+
+
+<br/>
+<br/>
+<br/>
+
+![DP MODE OVERVIEW](./docs/DP-mode-overview.svg?sanitize=true "DP Mode Overview")
+
+<br/>
+<br/>
+<br/>
+
+
+To run the simulator in `DP` mode, run the following command
+```
+
+# by omitting the SIM_MODE variable (DP is default)
+# and DC_URL (which will be defaulted to http://localhost:8080/to-dc
+java -jar toop-simulator-0.10.6-bundle.jar
+
+
+# using JVM ARGS
+java -DSIM_MODE=DP -DDP_URL="http://some.dp/to-dp" -jar toop-simulator-0.10.6-bundle.jar
+
+# or alternatively set env variables
+export SIM_MODE=DP
+export DC_URL="http://some.dc/to-dc"
+java -jar toop-simulator-0.10.6-bundle.jar
+
+```
+
+The `DC_URL` variable can be omitted, in which case the default DC url (`http://localhost:8080/to-dc`) will be used.
+
 
 ## Configuration
 ### Basic configuration
 #### toop-simulator.conf
 
 ### Advanced Configuration
+
+
+The simulator mimics the TOOP Directory, SMP, SMS and Message Exchange Modules. The Directory and SMP simulators provide 
+discovery service by using the file [`discovery-data.xml`](#discovery-dataxml), 
+SMS does a static mapping with respect to the definitions in the file [`sms.conf`](#smsconf).
+It simulates the end-to-end data flow of the Toop infrastructure. 
+These files are created in the current directory with default values if they don't exist.
+
 
 #### discovery\-data\.xml
 
