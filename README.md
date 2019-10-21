@@ -210,14 +210,97 @@ java -DCONNECTOR_PORT=8091 toop-simulator-0.10.6-bundle.jar
 ### Advanced Configuration
 
 
-The simulator mimics the TOOP Directory, SMP, SMS and Message Exchange Modules. The Directory and SMP simulators provide 
-discovery service by using the file [`discovery-data.xml`](#discovery-dataxml), 
-SMS does a static mapping with respect to the definitions in the file [`sms.conf`](#smsconf).
-It simulates the end-to-end data flow of the Toop infrastructure. 
-These files are created in the current directory with default values if they don't exist.
+The simulator mimics the TOOP Directory, SMP, SMS and Message Exchange Modules. 
+The Directory and SMP simulators provide discovery service by consuming the file
+`discovery-data.xml`, SMS does a static mapping with respect to the definitions 
+in the file `sms.conf`. These files are created in the current directory with default
+values if they don't exist.
 
 
 #### Configuring discovery
+
+You may want to add discovery information for a country and participant id. In this case, you need to
+modify the `discovery-data.xml` file. The sample structure of this file is as follows:
+
+````xml
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+
+<sim:ServiceMetadataList xmlns:bdxr="http://docs.oasis-open.org/bdxr/ns/SMP/2016/05"
+                         xmlns:sim="http://eu/toop/simulator/schema/discovery">
+
+
+  <sim:CountryAwareServiceMetadata countryCode="GQ">
+    <sim:ServiceMetadata>
+      <bdxr:ServiceInformation>
+        <bdxr:ParticipantIdentifier scheme="iso6523-actorid-upis">9999:elonia-dev</bdxr:ParticipantIdentifier>
+        <bdxr:DocumentIdentifier scheme="toop-doctypeid-qns">
+          urn:eu:toop:ns:dataexchange-1p40::Request##urn:eu.toop.request.registeredorganization::1.40
+        </bdxr:DocumentIdentifier>
+        <bdxr:ProcessList>
+          <bdxr:Process>
+            <bdxr:ProcessIdentifier scheme="toop-procid-agreement">urn:eu.toop.process.datarequestresponse</bdxr:ProcessIdentifier>
+            <bdxr:ServiceEndpointList>
+              <bdxr:Endpoint transportProfile="bdxr-transport-ebms3-as4-v1p0">
+                <bdxr:EndpointURI>http://gw-elonia.acc.exchange.toop.eu/holodeckb2b/as4</bdxr:EndpointURI>
+                <bdxr:RequireBusinessLevelSignature>false</bdxr:RequireBusinessLevelSignature>
+                <bdxr:Certificate>
+                  MIIEvTCCAqWgAwIBAgICEBEwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUxDTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElMT1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xOTA0MjQxODMyMzBaFw0yMTA0MjMxODMyMzBaMEwxCzAJBgNVBAYTAkVVMQ0wCwYDVQQKDARUT09QMQ0wCwYDVQQLDARDQ1RGMR8wHQYDVQQDDBZnYXRld2F5LmVsb25pYS50b29wLmV1MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzBbWuqRILiMKRxJkHxYiZFYw1pRGplx4HtlTY1+RxjHT/mTQDv1cQ4PZ8RbPSLUl3dHzeddMBURX8ssGIz+UvCaA8bChCBvReFVtEWU0CZTb+eWqyYzgByTXdu5fEFsDiw55SHixo/c0zvqLMU9Qcatroa9wy4IUV+YCSiRudjSdNqKh3uoAixKSgPf7XRA6GLXQBxb/QJZQ5gIMRAN5Ql3YwsAai0ZQtrTHJ07sDq6061uYL/JU4WOuXRDomZsIDH0lUakChdHf0UdPPWT6bDauq8T4d499oo33NqRyPneuijvEwZrV/cEgpWSFWKETRFxqJdCZMFpuONJ4V3aZWwIDAQABo4GdMIGaMAkGA1UdEwQCMAAwEQYJYIZIAYb4QgEBBAQDAgQwMCoGCWCGSAGG+EIBDQQdFhtUT09QIFBpbG90IFRlc3QgQ2VydGlmaWNhdGUwDgYDVR0PAQH/BAQDAgXgMB0GA1UdDgQWBBRp1HcAq76F4SH3JzmS8Nzenk1sYzAfBgNVHSMEGDAWgBQVzruhPMDANGRod8/RFMMvwVGnwTANBgkqhkiG9w0BAQsFAAOCAgEARQPqia+/iULw07a9P59WWxmGqX+8OWJdN4cQNODNW3xL6z7RQkBGvQNPFnyTLAy9wjr8/ZmLxYoD754UTXQOXqHl+6pPGZarVpyCpP3CIAxkDUkehrYznmdYHgtcNHvX9L2Nx4s10HWidR+RLdzbH74Re2XoB7EFs0SKdPg5KAhEU5yiKUTrg/82ltyJuagnBjrS7nJguXlGmLPXc4n9WE38MS2tnDs/1hSpiUkM60G0Ut773hFHeT4ld3O3gU1/g6sra3tsy+cpBIe41mdNBiCVlwA7TwD1Tto9sq7DUXjsSzUoRylydEED1ulRN54aCKflDV9HMZpn71Ylv2z7frqb30NKHYMCCKqbNLcJNzvgWA0kU6EuCqPlGJgrkJrgPKXLYiWXh6Z62d0s/f6k+uJGOMPsh7yl+gWSsRHnw1zw9TNlz5KGTvcalkhOdDI+8isjzGMW6e6Skh+XsJxOlgNRNVXxE3Ar0448gOuKbw3Skh28Ddr2amd6uWEg9hWWUVb2GtQBT+2OxFi8Lk96GwGCgVDG2S7VPfKHiGPapDw6K3DVnrsRnSuzf8FnYT8tMNoLVGmvspkf4RO3eAx5HF0mx3i78whACBcP/4HmAtAStK1hh1fXe0niGuJP+6A4leAUItfSWGM6q3o2lIfSEBz1sW2Kb8zULWMmsskUITk=
+                </bdxr:Certificate>
+                <bdxr:ServiceDescription>Test AP</bdxr:ServiceDescription>
+                <bdxr:TechnicalContactUrl>philip@helger.com</bdxr:TechnicalContactUrl>
+              </bdxr:Endpoint>
+            </bdxr:ServiceEndpointList>
+          </bdxr:Process>
+        </bdxr:ProcessList>
+      </bdxr:ServiceInformation>
+    </sim:ServiceMetadata>
+
+    <sim:ServiceMetadata>...
+    </sim:ServiceMetadata>
+
+  </sim:CountryAwareServiceMetadata>
+
+  <sim:CountryAwareServiceMetadata countryCode="PF">
+   ...
+  </sim:CountryAwareServiceMetadata>
+
+  ...
+
+</sim:ServiceMetadataList>
+````
+
+The file contains a root `ServiceMetadataList` that can contain multiple `CountryAwareServiceMetadata` elements.
+A `CountryAwareServiceMetadata` element has an attribute called `countryCode` that takes 
+a two letter country code. 
+
+A `CountryAwareServiceMetadata` element may contain multiple `ServiceMetadata` elements. 
+The [`ServiceMetadata`](http://docs.oasis-open.org/bdxr/bdx-smp/v1.0/os/bdx-smp-v1.0-os.html#_Toc490131026) type
+has been inherited from the [OASIS SMP Specification](http://docs.oasis-open.org/bdxr/bdx-smp/v1.0/bdx-smp-v1.0.html) 
+[XSD Schema](http://docs.oasis-open.org/bdxr/bdx-smp/v1.0/os/schemas/bdx-smp-201605.xsd).
+
+**NOTE**: For ease of use, the simulator supports reading the certificates from external files by providing their file
+system paths in an extension called `:CertFileName` as given in the below example.
+
+```xml
+<bdxr:Endpoint transportProfile="bdxr-transport-ebms3-as4-v1p0">
+    <bdxr:EndpointURI>https://www.as4gateway.com/msh</bdxr:EndpointURI>
+    <!-- we are using cert file, so this binary value is dummy. See the extension-->
+    <bdxr:Certificate>MIIC9jCC</bdxr:Certificate>
+    <bdxr:ServiceDescription>RO 1 Endpoint</bdxr:ServiceDescription>
+    <bdxr:TechnicalContactUrl>Jerry</bdxr:TechnicalContactUrl>
+    <!-- In order not to violate the SMP schema we have to provide
+         our certficate file name in an extension -->
+    <bdxr:Extension>
+      <!-- Put the certificate path in this element (DER or PEM) file -->
+      <sim:CertFileName>path/to/my/certificate.der</sim:CertFileName>
+    </bdxr:Extension>
+</bdxr:Endpoint>
+```
+You **have to** provide a dummy base64 string in the `bdxr:Certificate` element for successfull schema parsing, which will be ignored
+by the simulator. The certificate file may be a 
+[DER](https://en.wikipedia.org/wiki/X.690#DER_encoding) or a 
+[PEM](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) file.
 
 #### Semantic mapping
 
@@ -265,6 +348,9 @@ Mappings=[
 You can add as many mappings as possible. You don't need to add the  _inverse_ of the 
 mappings as the simulator does this for you (with the current assumption that mappings are one-to-one).
 
-**Note**: The value of `toop.smm.namespaceuri` in the `toop-connector.properties` is very important to be set to the namespace of
-the DP that the simulator will send the asic requests to.
+**Note**: The value of `toop.smm.namespaceuri` in the `toop-connector.properties` is important to be set to the namespace of
+the DP that the simulator will send the asic requests to. The simulator includes a toop-connector.properties file within 
+the jar file. Please see 
+[TOOP Connector Deployment and Configuration Guide](http://wiki.ds.unipi.gr/display/TOOP/TOOP+Connector+Deployment+and+Configuration+Guide)
+for more information on configuring `toop-connector.properties` 
 
