@@ -276,8 +276,8 @@ a two letter country code.
 
 A `CountryAwareServiceMetadata` element may contain multiple `ServiceMetadata` elements. 
 The [`ServiceMetadata`](http://docs.oasis-open.org/bdxr/bdx-smp/v1.0/os/bdx-smp-v1.0-os.html#_Toc490131026) type
-has been inherited from the [OASIS SMP Specification](http://docs.oasis-open.org/bdxr/bdx-smp/v1.0/bdx-smp-v1.0.html) 
-[XSD Schema](http://docs.oasis-open.org/bdxr/bdx-smp/v1.0/os/schemas/bdx-smp-201605.xsd).
+has been inherited from the [XSD Schema](http://docs.oasis-open.org/bdxr/bdx-smp/v1.0/os/schemas/bdx-smp-201605.xsd)
+ of the [OASIS Service Metadata Publishing (SMP) Version 1.0](http://docs.oasis-open.org/bdxr/bdx-smp/v1.0/bdx-smp-v1.0.html).
 
 **NOTE**: For ease of use, the simulator supports reading the certificates from external files by providing their file
 system paths in an extension called `:CertFileName` as given in the below example.
