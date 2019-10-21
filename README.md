@@ -248,9 +248,7 @@ modify the `discovery-data.xml` file. The sample structure of this file is as fo
               <bdxr:Endpoint transportProfile="bdxr-transport-ebms3-as4-v1p0">
                 <bdxr:EndpointURI>http://gw-elonia.acc.exchange.toop.eu/holodeckb2b/as4</bdxr:EndpointURI>
                 <bdxr:RequireBusinessLevelSignature>false</bdxr:RequireBusinessLevelSignature>
-                <bdxr:Certificate>
-                  MIIEvTCCAqWgAwIBAgICEBEwDQYJKoZIhvcNAQELBQAwVzELMAkGA1UEBhMCRVUxDTALBgNVBAoMBFRPT1AxDTALBgNVBAsMBENDVEYxKjAoBgNVBAMMIVRPT1AgUElMT1RTIFRFU1QgQUNDRVNTIFBPSU5UUyBDQTAeFw0xOTA0MjQxODMyMzBaFw0yMTA0MjMxODMyMzBaMEwxCzAJBgNVBAYTAkVVMQ0wCwYDVQQKDARUT09QMQ0wCwYDVQQLDARDQ1RGMR8wHQYDVQQDDBZnYXRld2F5LmVsb25pYS50b29wLmV1MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzBbWuqRILiMKRxJkHxYiZFYw1pRGplx4HtlTY1+RxjHT/mTQDv1cQ4PZ8RbPSLUl3dHzeddMBURX8ssGIz+UvCaA8bChCBvReFVtEWU0CZTb+eWqyYzgByTXdu5fEFsDiw55SHixo/c0zvqLMU9Qcatroa9wy4IUV+YCSiRudjSdNqKh3uoAixKSgPf7XRA6GLXQBxb/QJZQ5gIMRAN5Ql3YwsAai0ZQtrTHJ07sDq6061uYL/JU4WOuXRDomZsIDH0lUakChdHf0UdPPWT6bDauq8T4d499oo33NqRyPneuijvEwZrV/cEgpWSFWKETRFxqJdCZMFpuONJ4V3aZWwIDAQABo4GdMIGaMAkGA1UdEwQCMAAwEQYJYIZIAYb4QgEBBAQDAgQwMCoGCWCGSAGG+EIBDQQdFhtUT09QIFBpbG90IFRlc3QgQ2VydGlmaWNhdGUwDgYDVR0PAQH/BAQDAgXgMB0GA1UdDgQWBBRp1HcAq76F4SH3JzmS8Nzenk1sYzAfBgNVHSMEGDAWgBQVzruhPMDANGRod8/RFMMvwVGnwTANBgkqhkiG9w0BAQsFAAOCAgEARQPqia+/iULw07a9P59WWxmGqX+8OWJdN4cQNODNW3xL6z7RQkBGvQNPFnyTLAy9wjr8/ZmLxYoD754UTXQOXqHl+6pPGZarVpyCpP3CIAxkDUkehrYznmdYHgtcNHvX9L2Nx4s10HWidR+RLdzbH74Re2XoB7EFs0SKdPg5KAhEU5yiKUTrg/82ltyJuagnBjrS7nJguXlGmLPXc4n9WE38MS2tnDs/1hSpiUkM60G0Ut773hFHeT4ld3O3gU1/g6sra3tsy+cpBIe41mdNBiCVlwA7TwD1Tto9sq7DUXjsSzUoRylydEED1ulRN54aCKflDV9HMZpn71Ylv2z7frqb30NKHYMCCKqbNLcJNzvgWA0kU6EuCqPlGJgrkJrgPKXLYiWXh6Z62d0s/f6k+uJGOMPsh7yl+gWSsRHnw1zw9TNlz5KGTvcalkhOdDI+8isjzGMW6e6Skh+XsJxOlgNRNVXxE3Ar0448gOuKbw3Skh28Ddr2amd6uWEg9hWWUVb2GtQBT+2OxFi8Lk96GwGCgVDG2S7VPfKHiGPapDw6K3DVnrsRnSuzf8FnYT8tMNoLVGmvspkf4RO3eAx5HF0mx3i78whACBcP/4HmAtAStK1hh1fXe0niGuJP+6A4leAUItfSWGM6q3o2lIfSEBz1sW2Kb8zULWMmsskUITk=
-                </bdxr:Certificate>
+                <bdxr:Certificate>AA==</bdxr:Certificate>
                 <bdxr:ServiceDescription>Test AP</bdxr:ServiceDescription>
                 <bdxr:TechnicalContactUrl>philip@helger.com</bdxr:TechnicalContactUrl>
               </bdxr:Endpoint>
@@ -283,14 +281,13 @@ The [`ServiceMetadata`](http://docs.oasis-open.org/bdxr/bdx-smp/v1.0/os/bdx-smp-
 has been inherited from the [XSD Schema](http://docs.oasis-open.org/bdxr/bdx-smp/v1.0/os/schemas/bdx-smp-201605.xsd)
  of the [OASIS Service Metadata Publishing (SMP) Version 1.0](http://docs.oasis-open.org/bdxr/bdx-smp/v1.0/bdx-smp-v1.0.html).
 
-**NOTE**: For ease of use, the simulator supports reading the certificates from external files by providing their file
-system paths in an extension called `:CertFileName` as given in the below example.
+**NOTE**: Since the message exchange service is simulated, the certificate entry might be a dummy byte array (e.g. `AA==` which is a base64 encoded 1 byte array). But if you want to disable MEM mocking and communicate with a real gateway, then you have to provide a real base64 encoded certificate. For ease of use, the simulator also supports reading the certificates from external files by providing their file system paths in an extension called `:CertFileName` as given in the below example.
 
 ```xml
 <bdxr:Endpoint transportProfile="bdxr-transport-ebms3-as4-v1p0">
     <bdxr:EndpointURI>https://www.as4gateway.com/msh</bdxr:EndpointURI>
     <!-- we are using cert file, so this binary value is dummy. See the extension-->
-    <bdxr:Certificate>MIIC9jCC</bdxr:Certificate>
+    <bdxr:Certificate>AA==</bdxr:Certificate>
     <bdxr:ServiceDescription>RO 1 Endpoint</bdxr:ServiceDescription>
     <bdxr:TechnicalContactUrl>Jerry</bdxr:TechnicalContactUrl>
     <!-- In order not to violate the SMP schema we have to provide
@@ -301,8 +298,9 @@ system paths in an extension called `:CertFileName` as given in the below exampl
     </bdxr:Extension>
 </bdxr:Endpoint>
 ```
-You **have to** provide a dummy base64 string in the `bdxr:Certificate` element for successfull schema parsing, which will be ignored
-by the simulator. The certificate file may be a 
+You **have to** provide a dummy base64 string in the `bdxr:Certificate` element for successfull schema parsing,
+even though it will be ignored by the simulator.
+. The certificate file may be a 
 [DER](https://en.wikipedia.org/wiki/X.690#DER_encoding) or a 
 [PEM](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) file.
 
