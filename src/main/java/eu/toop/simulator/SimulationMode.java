@@ -18,6 +18,7 @@ package eu.toop.simulator;
 
 /**
  * An enum that represents the working modes of the simulator
+ * @author yerlibilgin
  */
 public enum SimulationMode {
   /**

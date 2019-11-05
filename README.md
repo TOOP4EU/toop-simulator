@@ -198,9 +198,19 @@ toop-simulator {
   #The simulator will run the connector on this port
   connectorPort = 8081
   connectorPort = ${?CONNECTOR_PORT}
+  
+  # Since V0.10.7
+  # should we simulate the gateway connection or not?
+  # if true then the gateways are skipped and this simulator instance works as
+  # a compound connector of the two member states, otherwise (false) the MEM message
+  # is passed to the gateway configured with the key toop.mem.as4.endpoint and all
+  # the toop.mem.as4.* configurations (see toop-connector.properties) become significant
+  mockGateway = true
+  mockGateway = ${?MOCK_GATEWAY}
 }
 ```
 
+**Note That** the configuration key `mockGateway` has been added since V0.10.7-SNAPSHOT, and does not exist in 0.10.6
 You don't have to directly edit this file (unless you want to persist your settings). For every configuration
 item there is an ENV or JVM_ARG alternative. For example you can run the toop-connector on a different port by 
 explicitly changing the `toop-simulator.connectorPort`, or setting `CONNECTOR_PORT` variable via ENV/JVM_ARG:

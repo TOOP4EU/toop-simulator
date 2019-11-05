@@ -25,6 +25,7 @@ import com.helger.peppolid.IParticipantIdentifier;
 import com.helger.peppolid.IProcessIdentifier;
 import eu.toop.connector.api.TCIdentifierFactory;
 import eu.toop.connector.api.r2d2.*;
+import eu.toop.simulator.ToopSimulatorResources;
 import eu.toop.simulator.schema.discovery.ObjectFactory;
 import eu.toop.simulator.schema.discovery.ServiceMatadataListType;
 import eu.toop.simulator.util.JAXBUtil;
@@ -42,7 +43,6 @@ import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -100,8 +100,8 @@ public class DiscoveryProvider implements IR2D2ParticipantIDProvider, IR2D2Endpo
   }
 
   private DiscoveryProvider() {
-    //parse the file or resource discovery-data.xml (TODO: replace it with a property)
-    serviceMatadataListType = JAXBUtil.parseFileOrResource("discovery-data.xml", ObjectFactory.class);
+    //parse the file or resource discovery-data.xml
+    serviceMatadataListType = JAXBUtil.parseURL(ToopSimulatorResources.getDiscoveryDataResURL(), ObjectFactory.class);
 
     //build a database for beter performance
 
@@ -122,7 +122,7 @@ public class DiscoveryProvider implements IR2D2ParticipantIDProvider, IR2D2Endpo
 
     DIRQuery dirQuery = new DIRQuery(sCountryCode, aDocumentTypeID);
 
-    if(directoryMap.containsKey(dirQuery)){
+    if (directoryMap.containsKey(dirQuery)) {
       return directoryMap.get(dirQuery);
     }
 
@@ -143,7 +143,7 @@ public class DiscoveryProvider implements IR2D2ParticipantIDProvider, IR2D2Endpo
 
     SMPQuery smpQuery = new SMPQuery(aRecipientID, aDocumentTypeID, aProcessID, sTransportProfileID);
 
-    if(smpMap.containsKey(smpQuery)){
+    if (smpMap.containsKey(smpQuery)) {
       return smpMap.get(smpQuery);
     }
 
@@ -173,7 +173,7 @@ public class DiscoveryProvider implements IR2D2ParticipantIDProvider, IR2D2Endpo
         DIRQuery dirQuery = new DIRQuery(countrycode, docID);
 
         ICommonsSet<IParticipantIdentifier> identifierSet;
-        if(directoryMap.containsKey(dirQuery)){
+        if (directoryMap.containsKey(dirQuery)) {
           identifierSet = directoryMap.get(dirQuery);
         } else {
           identifierSet = new CommonsHashSet<>();
@@ -232,10 +232,16 @@ public class DiscoveryProvider implements IR2D2ParticipantIDProvider, IR2D2Endpo
                       if (file.exists()) {
                         stream = new FileInputStream(file);
                       } else {
-                        //file doesn't exist, try resource
-                        stream = DiscoveryProvider.this.getClass().getResourceAsStream("/" + path);
-                        if (stream == null) {
-                          throw new IllegalStateException("A file or a classpath resource with name " + path + " was not found");
+                        //try possibly from resource root dir
+                        file = new File(ToopSimulatorResources.SIMULATOR_CONFIG_DIR + path);
+                        if (file.exists()) {
+                          stream = new FileInputStream(file);
+                        } else {
+                          //file doesn't exist, try resource
+                          stream = DiscoveryProvider.this.getClass().getResourceAsStream("/" + path);
+                          if (stream == null) {
+                            throw new IllegalStateException("A file or a classpath resource with name " + path + " was not found");
+                          }
                         }
                       }
                       LOGGER.debug("FULL CERT PATH PARSE: " + file.getAbsolutePath());

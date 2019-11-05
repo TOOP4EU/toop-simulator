@@ -14,6 +14,7 @@ package eu.toop.simulator.util;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,6 +24,7 @@ import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.net.URL;
 
 /**
  * A utility class that provides marshalling/unmarshalling
@@ -34,35 +36,30 @@ public class JAXBUtil {
   private static final Logger LOGGER = LoggerFactory.getLogger(JAXBUtil.class);
 
   /**
-   * Unmarshals the path given to the given Type T using the object factory class provided as an argument.<br>
-   * If a file with the given <code>path</code> name exists then it is parsed, otherwise
-   * a resource with <code>"/" + path</code> is tried. If that also does not exist, then en exception is thrown
-   * @param path file or resource to be parsed as XML.
+   * Unmarshals the url given to the provided Type T using the object factory class provided as an argument.<br>
+   * If the resource cannot be found, then an <code>IllegalStateException</code> is thrown
+   *
+   * @param url                the URL of the resource to be parsed as XML.
    * @param objectFactoryClass the class of ObjectFactory generated for the root schema.
    * @return the java object parsed from the given path.
    */
-  public static <T> T parseFileOrResource(String path, Class<?> objectFactoryClass) {
+  public static <T> T parseURL(URL url, Class<?> objectFactoryClass) {
     InputStream inputStream = null;
     try {
       JAXBContext jaxbContext = JAXBContext.newInstance(objectFactoryClass);
 
       Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 
-      if (new File(path).exists()) {
-        inputStream = new FileInputStream(path);
-      } else {
-        inputStream = objectFactoryClass.getResourceAsStream("/" + path);
-        if (inputStream == null)
-          throw new IllegalStateException("A file nor a resource with the name " + path + " couldn't be found!");
-      }
+      inputStream = url.openStream();
+      if (inputStream == null)
+        throw new IllegalStateException("A file nor a resource with the name " + url + " couldn't be found!");
       T t = ((JAXBElement<T>) jaxbUnmarshaller.unmarshal(inputStream)).getValue();
       return t;
     } catch (RuntimeException ex) {
       throw ex;
     } catch (Exception ex) {
       LOGGER.error(ex.getMessage(), ex);
-      throw new IllegalStateException("Couldn't parse file/resource " + path +
-          "[" + ex.getMessage() + "]. Check the log for details");
+      throw new IllegalStateException("Couldn't parse URL " + url + "[" + ex.getMessage() + "]. Check the log for details");
     } finally {
       try {
         inputStream.close();

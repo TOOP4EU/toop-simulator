@@ -15,24 +15,16 @@
  */
 package eu.toop.simulator;
 
-import com.helger.commons.ValueEnforcer;
-import com.helger.commons.io.stream.StreamHelper;
 import com.helger.photon.jetty.JettyStarter;
 import com.typesafe.config.impl.ConfigImpl;
 import eu.toop.commander.ToopCommanderMain;
-import eu.toop.commander.util.CommanderUtil;
 import eu.toop.connector.api.TCConfig;
 import eu.toop.connector.app.mp.MPConfig;
 import eu.toop.simulator.mock.DiscoveryProvider;
 import eu.toop.simulator.mock.MultiNsSMMConceptProvider;
 import org.eclipse.jetty.server.Server;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nonnull;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
 
 /**
  * The program entry point
@@ -42,16 +34,11 @@ import java.io.InputStream;
 public class ToopSimulatorMain {
 
   /**
-   * The Logger instance
-   */
-  private static final Logger LOGGER = LoggerFactory.getLogger(ToopSimulatorMain.class);
-
-  /**
    * program entry point
    */
   public static void main(String[] args) throws Exception {
 
-    copyConfigAndDataFiles();
+    ToopSimulatorResources.transferResourcesToFileSystem();
     prepareSimulator();
 
 
@@ -131,18 +118,6 @@ public class ToopSimulatorMain {
     }
 
     return simulatorThread;
-  }
-
-  /**
-   * Copy the toop-simulator.conf, sms.conf and discovery-data.xml from classpath
-   * to the current directory, so that the user can edit them without
-   * dealing with the jar file. <br/>
-   * Don't touch if they exist
-   */
-  private static void copyConfigAndDataFiles() {
-    CommanderUtil.transferResourceToCurrentDirectory("/sms.conf");
-    CommanderUtil.transferResourceToCurrentDirectory("/discovery-data.xml");
-    CommanderUtil.transferResourceToCurrentDirectory("/toop-simulator.conf");
   }
 
   /**

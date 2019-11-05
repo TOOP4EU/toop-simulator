@@ -16,8 +16,7 @@
 package eu.toop.simulator;
 
 import com.typesafe.config.Config;
-import com.typesafe.config.ConfigFactory;
-import eu.toop.commander.util.CommanderUtil;
+import eu.toop.commander.util.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -68,14 +67,13 @@ public class SimulatorConfig {
    */
   public static final int connectorPort;
 
-  static {
-    //check if the file toop-simulator.conf exists, and load it,
-    //otherwise go for classpath resource
-    String pathName = "toop-simulator.conf";
+  /**
+   * A flag that indicates whether the gateway communication should be mocked (<code>true</code>) or not (<code>false</code>)
+   */
+  public static final boolean mockGateway;
 
-    Config conf = CommanderUtil.resolveConfiguration(pathName, true)
-        .withFallback(ConfigFactory.systemProperties())
-        .resolve();
+  static {
+    Config conf = Util.resolveConfiguration(ToopSimulatorResources.getSimulatorConfResource(), true);
 
     try {
       mode = SimulationMode.valueOf(conf.getString("toop-simulator.mode"));
@@ -90,5 +88,7 @@ public class SimulatorConfig {
     dpURL = conf.getString("toop-simulator.dpURL");
 
     connectorPort = conf.getInt("toop-simulator.connectorPort");
+
+    mockGateway = conf.getBoolean("toop-simulator.mockGateway");
   }
 }

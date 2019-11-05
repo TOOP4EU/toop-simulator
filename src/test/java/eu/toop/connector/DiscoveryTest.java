@@ -5,6 +5,7 @@ import com.helger.commons.collection.impl.ICommonsSet;
 import com.helger.peppolid.IParticipantIdentifier;
 import eu.toop.connector.api.TCIdentifierFactory;
 import eu.toop.connector.api.r2d2.IR2D2Endpoint;
+import eu.toop.simulator.ToopSimulatorResources;
 import eu.toop.simulator.mock.DiscoveryProvider;
 import eu.toop.simulator.schema.discovery.ObjectFactory;
 import eu.toop.simulator.schema.discovery.ServiceMatadataListType;
@@ -17,7 +18,7 @@ import org.w3c.dom.Node;
 public class DiscoveryTest {
   @Test
   public void parseXml() {
-    ServiceMatadataListType type = JAXBUtil.parseFileOrResource("discovery-data.xml", ObjectFactory.class);
+    ServiceMatadataListType type = JAXBUtil.parseURL(ToopSimulatorResources.getDiscoveryDataResURL(), ObjectFactory.class);
     type.getCountryAwareServiceMetadata().forEach(countryAwareServiceMetadataType -> {
       System.out.println(countryAwareServiceMetadataType.getCountryCode());
 

@@ -81,14 +81,19 @@
 
     <dependency>
       <groupId>eu.toop</groupId>
-      <artifactId>toop-connector</artifactId>
+      <artifactId>toop-commander</artifactId>
+      <version>${project.version}</version>
     </dependency>
 
 
     <dependency>
       <groupId>eu.toop</groupId>
-      <artifactId>toop-commander</artifactId>
-      <version>${toop.version}</version>
+      <artifactId>toop-connector</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>eu.toop</groupId>
+      <artifactId>toop-mem-default</artifactId>
     </dependency>
 
     <!-- Logging -->

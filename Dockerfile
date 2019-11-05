@@ -16,7 +16,7 @@
 FROM tomcat:8-jre8
 
 
-ARG SIMULATOR_JAR_NAME=toop-simulator-0.10.6-SNAPSHOT.jar
+ARG SIMULATOR_JAR_NAME=toop-simulator-0.10.7-SNAPSHOT-bundle.jar
 
 #create tc webapp folder
 WORKDIR /simulator
@@ -30,4 +30,4 @@ ENV JAVA_OPTS="$JAVA_OPTS -Dtoop.connector.server.properties.path=/toop-dir/tc/c
 ADD ./target/${SIMULATOR_JAR_NAME} ./
 
 #run connector setup
-CMD ["sh", "-c", "java $JAVA_OPTS -jar ${SIMULATOR_JAR_NAME} -simPort ${SIM_PORT} -dcURL \"${DC_URL}\" -dpURL \"${DP_URL}\""]
+CMD ["sh", "-c", "java $JAVA_OPTS -jar ${SIMULATOR_JAR_NAME}"]
