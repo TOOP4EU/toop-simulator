@@ -26,7 +26,7 @@
   <groupId>eu.toop</groupId>
   <artifactId>toop-simulator</artifactId>
   <name>toop-simulator</name>
-  <version>0.10.7-SNAPSHOT</version>
+  <version>0.10.6-2-SNAPSHOT</version>
   <packaging>jar</packaging>
   <description>Contains the TOOP Simulator Web Application</description>
   <url>https://github.com/toop4eu/toop-simulator</url>
