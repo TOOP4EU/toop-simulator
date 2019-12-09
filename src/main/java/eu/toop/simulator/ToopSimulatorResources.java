@@ -77,7 +77,7 @@ public class ToopSimulatorResources {
   /**
    * Copy the toop-simulator.conf, sms.conf and discovery-data.xml from classpath
    * to the current directory, so that the user can edit them without
-   * dealing with the jar file. <br/>
+   * dealing with the jar file. <br>
    * Don't touch if they exist
    */
   public static void transferResourcesToFileSystem() {
