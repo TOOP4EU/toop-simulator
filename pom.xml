@@ -82,7 +82,7 @@
     <dependency>
       <groupId>eu.toop</groupId>
       <artifactId>toop-commander</artifactId>
-      <version>${project.version}</version>
+      <version>${toop.version}</version>
     </dependency>
 
 
