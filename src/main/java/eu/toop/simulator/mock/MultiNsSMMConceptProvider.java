@@ -114,7 +114,7 @@ public class MultiNsSMMConceptProvider implements ISMMConceptProvider {
 
   @Nonnull
   @Override
-  public MappedValueList getAllMappedValues(@Nonnull String sLogPrefix, @Nonnull String sSourceNamespace, @Nonnull String sDestNamespace) throws IOException {
+  public MappedValueList getAllMappedValues(@Nonnull String sLogPrefix, @Nonnull String sSourceNamespace, @Nonnull String sDestNamespace) {
     LOGGER.info(sLogPrefix +
         "Using static Map for SMM mappings from '" +
         sSourceNamespace +

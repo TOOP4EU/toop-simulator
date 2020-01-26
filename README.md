@@ -1,7 +1,7 @@
 # toop-simulator
 [![Build Status](https://api.travis-ci.org/TOOP4EU/toop-simulator.svg?branch=master)](https://travis-ci.org/TOOP4EU/toop-simulator)
 
-**Latest Release:** [0.10.6](https://repo1.maven.org/maven2/eu/toop/toop-simulator/0.10.6/)
+**Latest Release:** [0.10.8](https://repo1.maven.org/maven2/eu/toop/toop-simulator/0.10.8/)
 
 
 
@@ -22,8 +22,8 @@ of the entire TOOP Infrastructure in a local or online environment. Its purpose 
 for testing their systems during development, prior to joining a production environment.
 
 ## Getting started
-* Download the jar bundle from https://repo1.maven.org/maven2/eu/toop/toop-simulator/0.10.6/toop-simulator-0.10.6-bundle.jar
-* run it as `java -jar toop-simulator-0.10.6-bundle.jar`. This will start the simulator 
+* Download the jar bundle from https://repo1.maven.org/maven2/eu/toop/toop-simulator/0.10.8/toop-simulator-0.10.8-bundle.jar
+* run it as `java -jar toop-simulator-0.10.8-bundle.jar`. This will start the simulator 
 in [DP mode](#Simulation Modes) (i.e. it will simulate the toop-connector as well as a DP).
 [More on simulator modes](#Simulation Modes)
 * The simulator will start http servers on ports 8081 and 8082 for the connector and DP respectively. 
@@ -68,12 +68,12 @@ The architecture view for the `DC` mode is given below.
 To launch the simulator in `DC` mode, run the following command
 ```
 # using JVM ARGS
-java -DSIM_MODE=DC -DDP_URL="http://some.dp/to-dp" -jar toop-simulator-0.10.6-bundle.jar
+java -DSIM_MODE=DC -DDP_URL="http://some.dp/to-dp" -jar toop-simulator-0.10.8-bundle.jar
 
 # or alternatively set env variables
 export SIM_MODE=DC
 export DP_URL="http://some.dp/to-dp"
-java -jar toop-simulator-0.10.6-bundle.jar
+java -jar toop-simulator-0.10.8-bundle.jar
 
 ```
 
@@ -108,13 +108,13 @@ to launch the simulator in `SOLE` mode, run the following command
 # using JVM ARGS
 java -DSIM_MODE=SOLE -DDC_URL="http://memberstate.a:8080/to-dc" \
       -DDP_URL="http://memberstate.b:8080/to-dp" \
-      -jar toop-simulator-0.10.6-bundle.jar
+      -jar toop-simulator-0.10.8-bundle.jar
 
 # or alternatively set env variables
 export SIM_MODE=SOLE
 export DC_URL="http://memberstate.a:8080/to-dc"
 export DP_URL="http://memberstate.b:8080/to-dp"
-java -jar toop-simulator-0.10.6-bundle.jar
+java -jar toop-simulator-0.10.8-bundle.jar
 
 ```
 
@@ -151,16 +151,16 @@ To run the simulator in `DP` mode, run the following command
 
 # by omitting the SIM_MODE variable (DP is default)
 # and DC_URL (which will be defaulted to http://localhost:8080/to-dc
-java -jar toop-simulator-0.10.6-bundle.jar
+java -jar toop-simulator-0.10.8-bundle.jar
 
 
 # using JVM ARGS
-java -DSIM_MODE=DP -DDP_URL="http://some.dp/to-dp" -jar toop-simulator-0.10.6-bundle.jar
+java -DSIM_MODE=DP -DDP_URL="http://some.dp/to-dp" -jar toop-simulator-0.10.8-bundle.jar
 
 # or alternatively set env variables
 export SIM_MODE=DP
 export DC_URL="http://some.dc/to-dc"
-java -jar toop-simulator-0.10.6-bundle.jar
+java -jar toop-simulator-0.10.8-bundle.jar
 
 ```
 
@@ -215,7 +215,7 @@ You don't have to directly edit this file (unless you want to persist your setti
 item there is an ENV or JVM_ARG alternative. For example you can run the toop-connector on a different port by 
 explicitly changing the `toop-simulator.connectorPort`, or setting `CONNECTOR_PORT` variable via ENV/JVM_ARG:
 ```shell script
-java -DCONNECTOR_PORT=8091 toop-simulator-0.10.6-bundle.jar
+java -DCONNECTOR_PORT=8091 toop-simulator-0.10.8-bundle.jar
 ```
 
 Windows users, please see 

@@ -17,7 +17,7 @@
 FROM tomcat:8-jre8
 
 
-ARG SIMULATOR_JAR_NAME=toop-simulator-0.10.7-SNAPSHOT-bundle.jar
+ARG SIMULATOR_JAR_NAME=toop-simulator-0.10.8-bundle.jar
 
 #create tc webapp folder
 WORKDIR /simulator
