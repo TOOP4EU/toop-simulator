@@ -16,10 +16,22 @@
 #
 
 
-toopVersion=0.10.6-SNAPSHOT
 
-java -jar toop-simulator-${toopVersion}.jar \
-     -mode DC \
-     -dcURL "http://localhost:8082/to-dp" \
-     -commanderJarBundle toop-commander-${toopVersion}.jar \
-     -simPort 50000
+version=`mvn -o org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate -Dexpression=project.version | grep -v '\['`
+JAR="target/toop-simulator-${version}-bundle.jar"
+
+if [[ ! -r $JAR ]]
+then
+  mvn verify
+else
+  echo "$JAR exists"
+fi
+
+export SIM_MODE=DP
+#DC_PORT=8080
+#DP_PORT=8082
+#DC_URL="http://localhost:8080/to-dc"
+#DP_URL="http://localhost:8082/to-dp"
+#CONNECTOR_PORT=8081
+
+java -jar $JAR

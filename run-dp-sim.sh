@@ -16,10 +16,32 @@
 #
 
 
-toopVersion=0.10.6-SNAPSHOT
+version=`mvn -o org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate -Dexpression=project.version | grep -v '\['`
+JAR="target/toop-simulator-${version}-bundle.jar"
 
-java -jar toop-simulator-${toopVersion}.jar \
-     -mode DP \
-     -dcURL "http://localhost:8081/to-dc" \
-     -commanderJarBundle toop-commander-${toopVersion}.jar \
-     -simPort 50000
+if [[ ! -r $JAR ]]
+then
+  mvn verify
+else
+  echo "$JAR exists"
+fi
+
+
+export SIM_MODE=DP
+#DC_PORT=8080
+#DP_PORT=8082
+#DC_URL="http://localhost:8080/to-dc"
+#DP_URL="http://localhost:8082/to-dp"
+#CONNECTOR_PORT=8081
+
+
+# Since V0.10.7
+# should we simulate the gateway connection or not?
+# if true then the gateways are skipped and this simulator instance works as
+# a compound connector of the two member states, otherwise (false) the MEM message
+# is passed to the gateway configured with the key toop.mem.as4.endpoint and all
+# the toop.mem.as4.* configurations (see toop-connector.properties) become significant
+#MOCK_GATEWAY=true/false
+
+
+java -jar $JAR

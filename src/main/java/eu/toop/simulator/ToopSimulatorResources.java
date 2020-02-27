@@ -131,7 +131,7 @@ public class ToopSimulatorResources {
    * @param cpResourceCandidate if the <code>fileCandidate</code> doesn't exist then this classpath resources URL is returned
    * @return the URL of one of the parameters
    */
-  public static URL getUrlForEither(String fileCandidate, String cpResourceCandidate) {
+  private static URL getUrlForEither(String fileCandidate, String cpResourceCandidate) {
     File confFile = new File(fileCandidate);
 
     if (confFile.exists()){
