@@ -34,7 +34,7 @@
 
   <properties>
     <main.class.name>eu.toop.simulator.ToopSimulatorMain</main.class.name>
-    <toop.version>0.10.8</toop.version>
+    <toop.version>0.10.9-SNAPSHOT</toop.version>
   </properties>
 
   <licenses>

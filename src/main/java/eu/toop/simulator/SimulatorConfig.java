@@ -90,5 +90,13 @@ public class SimulatorConfig {
     connectorPort = conf.getInt("toop-simulator.connectorPort");
 
     mockGateway = conf.getBoolean("toop-simulator.mockGateway");
+
+    LOGGER.debug("mode: " + mode);
+    LOGGER.debug("dcPort: " + dcPort);
+    LOGGER.debug("dpPort: " + dpPort);
+    LOGGER.debug("dcURL: " + dcURL);
+    LOGGER.debug("dpURL: " + dpURL);
+    LOGGER.debug("connectorPort: " + connectorPort);
+    LOGGER.debug("mockGateway: " + mockGateway);
   }
 }
