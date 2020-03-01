@@ -19,7 +19,7 @@
            xmlns:smp="http://docs.oasis-open.org/bdxr/ns/SMP/2016/05" elementFormDefault="qualified"
            targetNamespace="http://eu/toop/simulator/schema/discovery">
   <xs:import namespace="http://docs.oasis-open.org/bdxr/ns/SMP/2016/05"
-             schemaLocation="http://docs.oasis-open.org/bdxr/bdx-smp/v1.0/os/schemas/bdx-smp-201605.xsd"/>
+             schemaLocation="./bdx-smp-201605.xsd"/>
 
   <xs:element name="ServiceMetadataList" type="ServiceMatadataListType"/>
 
